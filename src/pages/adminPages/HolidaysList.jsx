@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AddHoliday from "./AddHoliday";
+import { deleteHoliday, updateHoliday } from "../../reduxStore/slices/holidaysSlice";
 
 const HolidaysList = () => {
   const holidayDropdownRef = useRef({});
@@ -10,6 +11,10 @@ const HolidaysList = () => {
   const [holidayDropdown, setHolidayDropdown] = useState(false);
   const [showAddHoliday, setShowAddHoliday] = useState(false);
   const [showEditHoliday, setShowEditHoliday] = useState(false);
+  const [showDeleteHoliday, setShowDeleteHoliday] = useState(false);
+  const [selectedHoliday, setSelectedHoliday] = useState(null);
+
+
   // console.log("holidayData: ", holidayData);
 
   const toggleDropdown = (id) => {
@@ -26,17 +31,29 @@ const HolidaysList = () => {
   };
   const ShowAddHolidayModal = () => {
     setShowAddHoliday(!showAddHoliday);
+    setHolidayDropdown(null)
+  };
+  const ShowDeleteHolidayModal = (id) => {
+    console.log("id",id)
+    setShowDeleteHoliday(!showDeleteHoliday);
+    setHolidayDropdown(null)
+    setSelectedHoliday(id)
+
   };
 
-  const ShowEditHolidayModal = () => {
+  const ShowEditHolidayModal = (data) => {
     setShowEditHoliday(!showEditHoliday);
+    setHolidayDropdown(null)
+    setSelectedHoliday(data)
+
+
   };
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
 
   useEffect(() => {
     setHolidayData(holidayListData);
@@ -84,8 +101,8 @@ const HolidaysList = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {holidayData &&
-                    holidayData.map((data, index) => (
+                  {holidayListData &&
+                    holidayListData.map((data, index) => (
                       <tr class="holiday-completed">
                         <td>{data?.id}</td>
                         <td>{data?.title}</td>
@@ -128,7 +145,7 @@ const HolidaysList = () => {
                                   data-bs-toggle="modal"
                                   data-bs-target="#edit_holiday"
                                   // onClick={() => ShowEditEmployeeModal(data)}
-                                  onClick={ShowEditHolidayModal}
+                                  onClick={()=>ShowEditHolidayModal(data)}
                                 >
                                   <i class="fa-solid fa-pencil m-r-5"></i> Edit
                                 </Link>
@@ -137,6 +154,7 @@ const HolidaysList = () => {
                                   data-bs-toggle="modal"
                                   data-bs-target="#delete_holiday"
                                   // onClick={() => ShowDeleteEmployeeModal(data)}
+                                  onClick={()=>ShowDeleteHolidayModal(data.id)}
                                 >
                                   <i class="fa-regular fa-trash-can m-r-5"></i>{" "}
                                   Delete
@@ -164,12 +182,101 @@ const HolidaysList = () => {
       {showEditHoliday && (
         <EditHoliday
           ShowEditHolidayModal={ShowEditHolidayModal}
+          selectedHoliday ={selectedHoliday}
           // actionType={"add"}
         />
       )}
-      {/* <AddHoliday /> */}
+      {
+        showDeleteHoliday && (
+          <DeleteHoliday ShowDeleteHolidayModal={ShowDeleteHolidayModal}   selectedHoliday ={selectedHoliday} />
+        )
+      }
+     
 
-      <div class="modal custom-modal fade" id="delete_holiday" role="dialog">
+    
+    </div>
+  );
+};
+
+export default HolidaysList;
+
+const EditHoliday = ({ ShowEditHolidayModal, selectedHoliday }) => {
+
+  const [formData, setFormData] = useState({
+    title:selectedHoliday.title,
+    holiday_date:selectedHoliday.holiday_date
+  })
+
+  const dispatch = useDispatch()
+  console.log("updated data", selectedHoliday)
+  const handleUpdate =()=>{
+     dispatch(updateHoliday(selectedHoliday))
+  }
+  
+  return (
+    <>
+      <div class="modal-backdrop fade show"></div>
+
+    <div class="modal custom-modal d-block" id="edit_holiday" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Holiday</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              onClick={ShowEditHolidayModal}
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="input-block mb-3">
+                <label class="col-form-label">
+                  Holiday Name <span class="text-danger">*</span>
+                </label>
+                <input class="form-control" value={formData.title} type="text" />
+              </div>
+              <div class="input-block mb-3">
+                <label class="col-form-label">
+                  Holiday Date <span class="text-danger">*</span>
+                </label>
+                <div class="cal-icon">
+                  <input
+                    class="form-control datetimepicker"
+                    value={formData.holiday_date}
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="submit-section">
+                <button class="btn btn-primary submit-btn" onClick={handleUpdate} >Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    </>
+  );
+};
+
+const DeleteHoliday =({ShowDeleteHolidayModal,selectedHoliday}) =>{
+
+  console.log("Selected holiday ID", selectedHoliday)
+  const dispatch = useDispatch()
+  const handleDelete =()=>{
+    dispatch(deleteHoliday(selectedHoliday))
+    ShowDeleteHolidayModal()
+  }
+  return (
+    <>
+      <div class="modal-backdrop fade show"></div>
+
+      <div class="modal custom-modal d-block" id="delete_holiday" role="dialog">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-body">
@@ -183,6 +290,7 @@ const HolidaysList = () => {
                     <a
                       href="javascript:void(0);"
                       class="btn btn-primary continue-btn"
+                      onClick={handleDelete}
                     >
                       Delete
                     </a>
@@ -192,6 +300,7 @@ const HolidaysList = () => {
                       href="javascript:void(0);"
                       data-bs-dismiss="modal"
                       class="btn btn-primary cancel-btn"
+                      onClick={ShowDeleteHolidayModal}
                     >
                       Cancel
                     </a>
@@ -201,56 +310,6 @@ const HolidaysList = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
-};
-
-export default HolidaysList;
-
-const EditHoliday = ({ ShowEditHolidayModal }) => {
-  return (
-    <div class="modal custom-modal fade" id="edit_holiday" role="dialog">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Edit Holiday</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="input-block mb-3">
-                <label class="col-form-label">
-                  Holiday Name <span class="text-danger">*</span>
-                </label>
-                <input class="form-control" value="New Year" type="text" />
-              </div>
-              <div class="input-block mb-3">
-                <label class="col-form-label">
-                  Holiday Date <span class="text-danger">*</span>
-                </label>
-                <div class="cal-icon">
-                  <input
-                    class="form-control datetimepicker"
-                    value="01-01-2019"
-                    type="text"
-                  />
-                </div>
-              </div>
-              <div class="submit-section">
-                <button class="btn btn-primary submit-btn">Save</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+      </div></>
+  )
+}

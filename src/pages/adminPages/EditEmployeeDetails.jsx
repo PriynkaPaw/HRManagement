@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { updateEmployee } from "../../reduxStore/slices/employeeSlice";
 const EditEmployeeDetails = ({ employeeToUpdate, ShowEditEmployeeModal }) => {
   
           console.log("employeeToUpdate: ", employeeToUpdate);
@@ -51,7 +50,7 @@ const EditEmployeeDetails = ({ employeeToUpdate, ShowEditEmployeeModal }) => {
 
                       if (validate()) {
                         // setFormData((prevemployee) => [...prevemployee, employee]);
-                        dispatch(updateEmployee(employee));
+                        // dispatch(updateEmployee(employee));
                         console.log("Form data is valid:", employee);
                         ShowEditEmployeeModal();
                         // reset the form fields after submission
@@ -65,6 +64,7 @@ const EditEmployeeDetails = ({ employeeToUpdate, ShowEditEmployeeModal }) => {
                           phone: "",
                           department: "",
                           designation: "",
+                          ctc:""
                         });
                       } else {
                         console.log("Form has validation errors:", errors);
@@ -192,7 +192,7 @@ const EditEmployeeDetails = ({ employeeToUpdate, ShowEditEmployeeModal }) => {
                         Department <span class="text-danger">*</span>
                       </label>
                       <select
-                        class="select"
+                        class=" form-control select"
                         name="department"
                         value={employee?.department}
                         onChange={handleChange}
@@ -210,7 +210,7 @@ const EditEmployeeDetails = ({ employeeToUpdate, ShowEditEmployeeModal }) => {
                         Designation <span class="text-danger">*</span>
                       </label>
                       <select
-                        class="select"
+                        class=" form-control select"
                         name="position"
                         value={employee?.position}
                         onChange={handleChange}
@@ -222,8 +222,20 @@ const EditEmployeeDetails = ({ employeeToUpdate, ShowEditEmployeeModal }) => {
                       </select>
                     </div>
                   </div>
+                  <div class="col-sm-6">
+                    <div class="input-block mb-3">
+                      <label class="col-form-label">CTC </label>
+                      <input
+                        class="form-control"
+                        name="ctc"
+                        value={employee?.ctc}
+                        onChange={handleChange}
+                        type="text"
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div class="table-responsive m-t-15">
+                {/* <div class="table-responsive m-t-15">
                   <table class="table table-striped custom-table">
                     <thead>
                       <tr>
@@ -647,7 +659,7 @@ const EditEmployeeDetails = ({ employeeToUpdate, ShowEditEmployeeModal }) => {
                       </tr>
                     </tbody>
                   </table>
-                </div>
+                </div> */}
                 <div class="submit-section">
                   <button class="btn btn-primary submit-btn">Save</button>
                 </div>

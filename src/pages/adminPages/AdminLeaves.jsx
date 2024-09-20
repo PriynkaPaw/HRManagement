@@ -1,50 +1,86 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { addLeave, deleteLeave, updateLeave } from "../../reduxStore/slices/leaveSlice";
+
+
 function AdminLeaves() {
   const leaveListData = useSelector((state) => state.leave.leaves);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const [leaveDropdown, setLeaveDropdown] = useState(false);
-  const [leaveData, setLeaveData] = useState(leaveListData);
+  const [leaveDropdown, setLeaveDropdown] = useState(null); 
   const [showEditLeave, setShowEditLeave] = useState(false);
   const [showAddLeave, setShowAddLeave] = useState(false);
   const [showDeleteLeaveModal, setDeleteLeaveModal] = useState(false);
+  const [leaveStatusDropdown, setLeaveStatusDropdown] = useState(null); 
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredEmployees, setFilteredLeaves] = useState(leaveListData);
+  const [leaveType, setLeaveType] = useState('');
+  const [leaveStatus, setLeaveStatus] = useState('');
+  const [selectedData , setSelectedData] = useState('')
 
-  const ShowEditLeaveModal = () => {
-    setShowEditLeave(!showEditLeave);
-  };
+  useEffect(() => {
+    setFilteredLeaves(leaveListData);
+  }, [leaveListData]);
 
-  const ShowAddLeaveModal = () => {
-    setShowAddLeave(!showAddLeave);
-  };
-  const ShowDeleteLeaveModal = () => {
-    setDeleteLeaveModal(!showDeleteLeaveModal);
-  };
-  const leaveDropdownRef = useRef({});
   const toggleDropdown = (id) => {
-    console.log("id: ", id);
     setLeaveDropdown((prevId) => (prevId === id ? null : id));
+  };
+
+  const toggleLeaveStatusDropdown = (id) => {
+    setLeaveStatusDropdown((prevId) => (prevId === id ? null : id));
   };
   const handleClickOutside = (event) => {
     if (
       leaveDropdownRef.current &&
       !leaveDropdownRef.current.contains(event.target)
     ) {
-      setLeaveDropdown(false);
+      setLeaveDropdown(null);
     }
   };
-  //   useEffect(() => {
-  //     document.addEventListener("mousedown", handleClickOutside);
-  //     return () => {
-  //       document.removeEventListener("mousedown", handleClickOutside);
-  //     };
-  //   }, []);
-  useEffect(() => {
-    setLeaveData(leaveListData);
-  }, [leaveData]);
+
+  const leaveDropdownRef = useRef(null);
+
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
+
+  const handleSearch = () => {
+    console.log("leaveListData", leaveListData);
+    const query = searchQuery.toLowerCase();
+    const filtered = leaveListData.filter((leave) => {
+      const leaveStartDate = new Date(leave.from); 
+      const leaveEndDate = new Date(leave.to); 
+      const selectedStartDate = startDate ? new Date(startDate) : new Date('1900-01-01');
+      const selectedEndDate = endDate ? new Date(endDate) : new Date('2100-12-31');
+  
+      return (
+        (leave.employee_name && leave.employee_name.toLowerCase().includes(query)) &&
+        
+        (!leaveType || leave.leave_type.toLowerCase() === leaveType.toLowerCase()) &&
+        
+        (!leaveStatus || leave.status.toLowerCase() === leaveStatus.toLowerCase()) &&
+        
+        (leaveStartDate >= selectedStartDate && leaveEndDate <= selectedEndDate)
+      );
+    });
+  
+    console.log("filtered", filtered);
+    setFilteredLeaves(filtered);
+  };
+  
+
+
+  const ShowEditLeaveModal = (data) =>{ setShowEditLeave(!showEditLeave); setSelectedData(data)}
+  const ShowAddLeaveModal = () => setShowAddLeave(!showAddLeave);
+  const ShowDeleteLeaveModal = (data) => {setDeleteLeaveModal(!showDeleteLeaveModal);
+    setSelectedData(data)
+  }
 
   return (
     <>
@@ -76,6 +112,7 @@ function AdminLeaves() {
           </div>
 
           <div className="row">
+            {/* Stats Section */}
             <div className="col-md-3 d-flex">
               <div className="stats-info w-100">
                 <h6>Today Presents</h6>
@@ -106,31 +143,33 @@ function AdminLeaves() {
             </div>
           </div>
 
+          {/* Filter Section */}
           <div className="row filter-row">
             <div className="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
               <div className="input-block mb-3 form-focus">
-                <input type="text" className="form-control floating" />
+                 
+                  <input type="text" className="form-control floating"  onChange={(e) => setSearchQuery(e.target.value)}  value={searchQuery}  />
                 <label className="focus-label">Employee Name</label>
               </div>
             </div>
             <div className="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
               <div className="input-block mb-3 form-focus select-focus">
-                <select className="form-control select floating">
-                  <option> -- Select -- </option>
-                  <option>Casual Leave</option>
-                  <option>Medical Leave</option>
-                  <option>Loss of Pay</option>
+                <select onChange={(e) => setLeaveType(e.target.value)}  value={leaveType}  className="form-control select floating">
+                  <option value='' > -- Select -- </option>
+                  <option value="Casual Leave" >Casual Leave</option>
+                  <option value="Medical Leave" >Medical Leave</option>
+                  <option value="Loss of Pay" >Loss of Pay</option>
                 </select>
                 <label className="focus-label">Leave Type</label>
               </div>
             </div>
             <div className="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
               <div className="input-block mb-3 form-focus select-focus">
-                <select className="form-control select floating">
-                  <option> -- Select -- </option>
-                  <option> Pending </option>
-                  <option> Approved </option>
-                  <option> Rejected </option>
+                <select onChange={(e) => setLeaveStatus(e.target.value)}  value={leaveStatus} className="form-control select floating">
+                  <option value=""> -- Select -- </option>
+                  <option value="Pending"> Pending </option>
+                  <option value="Approved"> Approved </option>
+                  <option value="Rejected"> Rejected </option>
                 </select>
                 <label className="focus-label">Leave Status</label>
               </div>
@@ -138,10 +177,6 @@ function AdminLeaves() {
             <div className="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
               <div className="input-block mb-3 form-focus">
                 <div className="cal-icon">
-                  {/* <input
-                    className="form-control floating datetimepicker"
-                    type="text"
-                  /> */}
                   <DatePicker
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
@@ -166,13 +201,14 @@ function AdminLeaves() {
               </div>
             </div>
             <div className="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-              <a href="#" className="btn btn-success w-100">
+              <a href="#" className="btn btn-success w-100" onClick={handleSearch}>
                 {" "}
                 Search{" "}
               </a>
             </div>
           </div>
 
+          {/* Leaves Table */}
           <div className="row">
             <div className="col-md-12">
               <div className="table-responsive">
@@ -190,38 +226,41 @@ function AdminLeaves() {
                     </tr>
                   </thead>
                   <tbody>
-                    {leaveData &&
-                      leaveData.map((data, index) => (
-                        <>
-                          <tr>
-                            <td>
-                              <h2 className="table-avatar">
-                                <a href="profile.html" className="avatar">
-                                  <img src={data.img_url} alt="User Image" />
-                                </a>
-                                <a href="#">
-                                  {data.employee_name}{" "}
-                                  <span>{data.designation}</span>
-                                </a>
-                              </h2>
-                            </td>
-                            <td>{data.leave_type}</td>
-                            <td>{data.from} </td>
-                            <td>{data.to}</td>
-                            <td>{data.no_of_day} </td>
-                            <td>{data.reason}</td>
-                            <td className="text-center">
-                              <div className="dropdown action-label">
-                                <a
-                                  className="btn btn-white btn-sm btn-rounded dropdown-toggle"
-                                  href="#"
-                                  data-bs-toggle="dropdown"
-                                  aria-expanded="false"
-                                >
-                                  <i className="fa-regular fa-circle-dot text-purple"></i>{" "}
-                                  New
-                                </a>
-                                <div className="dropdown-menu dropdown-menu-right">
+                    {filteredEmployees &&
+                      filteredEmployees.map((data) => (
+                        <tr key={data.id}>
+                          <td>
+                            <h2 className="table-avatar">
+                              <a href="profile.html" className="avatar">
+                                <img src={data.img_url} alt="User Image" />
+                              </a>
+                              <a href="#">
+                                {data.employee_name}{" "}
+                                <span>{data.designation}</span>
+                              </a>
+                            </h2>
+                          </td>
+                          <td>{data.leave_type}</td>
+                          <td>{data.from}</td>
+                          <td>{data.to}</td>
+                          <td>{data.no_of_day}</td>
+                          <td>{data.reason}</td>
+                          <td className="text-center">
+                            <div className="dropdown action-label">
+                              <a
+                                className="btn btn-white btn-sm btn-rounded dropdown-toggle"
+                                href="#"
+                                onClick={(e) => {
+                                  e.preventDefault(); // Prevent default anchor behavior
+                                  toggleLeaveStatusDropdown(data.id); // Toggle dropdown for specific item
+                                }}
+                                aria-expanded={leaveStatusDropdown === data.id}
+                              >
+                                <i className="fa-regular fa-circle-dot text-purple"></i>{" "}
+                              {data.status}
+                              </a>
+                              {leaveStatusDropdown === data.id && (
+                                <div className="dropdown-menu dropdown-menu-right show">
                                   <a className="dropdown-item" href="#">
                                     <i className="fa-regular fa-circle-dot text-purple"></i>{" "}
                                     New
@@ -236,7 +275,7 @@ function AdminLeaves() {
                                     data-bs-toggle="modal"
                                     data-bs-target="#approve_leave"
                                   >
-                                    <i className="fa-regular fa-circle-dot text-success"></i>{" "}
+                                    <i className="fa-regular fa-circle-dot text-success "></i>{" "}
                                     Approved
                                   </a>
                                   <a className="dropdown-item" href="#">
@@ -244,49 +283,48 @@ function AdminLeaves() {
                                     Declined
                                   </a>
                                 </div>
-                              </div>
-                            </td>
-                            <td className="text-end">
-                              <div
-                                ref={leaveDropdownRef}
-                                className="dropdown dropdown-action"
+                              )}
+                            </div>
+                          </td>
+                          <td className="text-end">
+                            <div
+                              ref={leaveDropdownRef}
+                              className="dropdown dropdown-action"
+                            >
+                              <Link
+                                className="action-icon dropdown-toggle show"
+                                data-bs-toggle="dropdown"
+                                aria-expanded={leaveDropdown === data.id}
+                                onClick={() => toggleDropdown(data.id)}
                               >
-                                <Link
-                                  className="action-icon dropdown-toggle show"
-                                  data-bs-toggle="dropdown"
-                                  aria-expanded={leaveDropdown === data.id}
-                                  onClick={() => toggleDropdown(data.id)}
-                                >
-                                  <i className="material-icons">more_vert</i>
-                                </Link>
-                                {leaveDropdown === data.id && (
-                                  <div className="dropdown-menu dropdown-menu-right show">
-                                    <Link
-                                      class="dropdown-item"
-                                      data-bs-toggle="modal"
-                                      data-bs-target="#edit_holiday"
-                                      onClick={ShowEditLeaveModal}
-                                    >
-                                      <i class="fa-solid fa-pencil m-r-5"></i>{" "}
-                                      Edit
-                                    </Link>
-
-                                    <Link
-                                      class="dropdown-item"
-                                      data-bs-toggle="modal"
-                                      data-bs-target="#edit_holiday"
-                                      onClick={ShowDeleteLeaveModal}
-                                    >
-                                      <i className="fa-regular fa-trash-can m-r-5"></i>{" "}
-                                      Delete
-                                    </Link>
-                                  </div>
-                                )}
-                              </div>
-                            </td>
-                          </tr>
-                        </>
-                      ))}
+                                <i className="material-icons">more_vert</i>
+                              </Link>
+                              {leaveDropdown === data.id && (
+                                <div className="dropdown-menu dropdown-menu-right show">
+                                  <Link
+                                    className="dropdown-item"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#edit_holiday"
+                                    onClick={()=>ShowEditLeaveModal(data)}
+                                  >
+                                    <i className="fa-solid fa-pencil m-r-5"></i>{" "}
+                                    Edit
+                                  </Link>
+                                  <Link
+                                    className="dropdown-item"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#delete_approve"
+                                    onClick={()=>ShowDeleteLeaveModal(data)}
+                                  >
+                                    <i className="fa-regular fa-trash-can m-r-5"></i>{" "}
+                                    Delete
+                                  </Link>
+                                </div>
+                              )}
+                            </div>
+                          </td>
+                        </tr>
+                   )   )}
                   </tbody>
                 </table>
               </div>
@@ -297,6 +335,7 @@ function AdminLeaves() {
         {showEditLeave && (
           <EditLeave
             ShowEditLeaveModal={ShowEditLeaveModal}
+            selectedData={selectedData}
             // actionType={"add"}
           />
         )}
@@ -304,7 +343,7 @@ function AdminLeaves() {
         {showAddLeave && <AddLeave ShowAddLeaveModal={ShowAddLeaveModal} />}
 
         {showDeleteLeaveModal && (
-          <DeleteLeave ShowDeleteLeaveModal={ShowDeleteLeaveModal} />
+          <DeleteLeave ShowDeleteLeaveModal={ShowDeleteLeaveModal} selectedData={selectedData} />
         )}
 
         <div
@@ -355,11 +394,15 @@ function AdminLeaves() {
   );
 }
 
+
 export default AdminLeaves;
 
-const EditLeave = ({ ShowEditLeaveModal }) => {
+const EditLeave = ({ ShowEditLeaveModal , selectedData }) => {
+ const dispatch = useDispatch()
+
   const handleSubmitEditLeave = () => {
     ShowEditLeaveModal();
+    dispatch(updateLeave(selectedData))
   };
   return (
     <>
@@ -468,20 +511,35 @@ const EditLeave = ({ ShowEditLeaveModal }) => {
 
 const AddLeave = ({ ShowAddLeaveModal }) => {
   const [leaveFormData, setLeaveFormData] = useState({
-    employeeId: "",
+    id: Math.random(),
     leave_type: "",
-    start_date: "",
-    end_date: "",
-    leave_status: "",
+    from: "",
+    to: "",
+    status: "new",
     reason: "",
-  });
+  img_url: "assets/img/profiles/avatar-10.jpg",
+  employee_name: "Richard Miles",
+  designation: "Web Developer",
+  no_of_day: "1 day",
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setLeaveFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+
+  });
+ 
+
+  const handleChange = (eOrName, value) => {
+    if (typeof eOrName === 'object' && eOrName.target) {
+      const { name, value } = eOrName.target;
+      setLeaveFormData({
+        ...leaveFormData,
+        [name]: value,
+      });
+    } else {
+      // Handle DatePicker input
+      setLeaveFormData({
+        ...leaveFormData,
+        [eOrName]: value,
+      });
+    }
   };
   const [errors, setErrors] = useState({});
 
@@ -530,11 +588,14 @@ const AddLeave = ({ ShowAddLeaveModal }) => {
 
     return formErrors;
   };
+  const dispatch = useDispatch()
 
   const handleSubmitLeave = (e) => {
     e.preventDefault();
-
+    console.log("Form submitted:", leaveFormData);
+    dispatch(addLeave(leaveFormData))
     const formErrors = validateForm();
+   ShowAddLeaveModal()
 
     if (Object.keys(formErrors).length === 0) {
       console.log("Form submitted:", leaveFormData);
@@ -576,7 +637,7 @@ const AddLeave = ({ ShowAddLeaveModal }) => {
                     name="leave_type"
                     value={leaveFormData.leave_type}
                     onChange={handleChange}
-                    className="   form-control select"
+                    className="form-control select"
                   >
                     <option>Select Leave Type</option>
                     <option>Casual Leave 12 Days</option>
@@ -591,13 +652,22 @@ const AddLeave = ({ ShowAddLeaveModal }) => {
                     From <span className="text-danger">*</span>
                   </label>
                   <div className="cal-icon">
-                    <input
+                    {/* <input
                       className="form-control datetimepicker"
                       type="text"
-                      name="start_date"
-                      value={leaveFormData.start_date}
+                      name="from"
+                      value={leaveFormData.from}
                       onChange={handleChange}
-                    />
+                    /> */}
+                <DatePicker
+  selected={leaveFormData.from}
+  name="from"
+  onChange={(date) => handleChange('from', date)} // Pass name and date directly
+  className="form-control datetimepicker  "
+  dateFormat="dd/MM/yyyy" 
+/>
+
+
                   </div>
                 </div>
                 <div className="input-block mb-3">
@@ -605,13 +675,13 @@ const AddLeave = ({ ShowAddLeaveModal }) => {
                     To <span className="text-danger">*</span>
                   </label>
                   <div className="cal-icon">
-                    <input
-                      className="form-control datetimepicker"
-                      type="text"
-                      name="end_date"
-                      value={leaveFormData.end_date}
-                      onChange={handleChange}
-                    />
+                      <DatePicker
+  selected={leaveFormData.to}
+  name="to"
+  onChange={(date) => handleChange('to', date)} // Pass name and date directly
+  className="form-control datetimepicker  "
+  dateFormat="dd/MM/yyyy" 
+/>
                   </div>
                 </div>
                 <div className="input-block mb-3">
@@ -619,7 +689,7 @@ const AddLeave = ({ ShowAddLeaveModal }) => {
                     Number of days <span className="text-danger">*</span>
                   </label>
                   <input
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     className="form-control"
                     readonly
                     type="text"
@@ -666,7 +736,13 @@ const AddLeave = ({ ShowAddLeaveModal }) => {
   );
 };
 
-const DeleteLeave = ({ ShowDeleteLeaveModal }) => {
+const DeleteLeave = ({ ShowDeleteLeaveModal, selectedData }) => {
+ const dispatch = useDispatch()
+ const handleDelete = ()=>{
+  dispatch(deleteLeave(selectedData.id))
+  ShowDeleteLeaveModal()
+ }
+  console.log('selectedData', selectedData)
   return (
     <>
       <div class="modal-backdrop fade show"></div>
@@ -685,6 +761,7 @@ const DeleteLeave = ({ ShowDeleteLeaveModal }) => {
                     <a
                       href="javascript:void(0);"
                       className="btn btn-primary continue-btn"
+                      onClick={handleDelete}
                     >
                       Delete
                     </a>

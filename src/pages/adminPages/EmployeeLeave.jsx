@@ -134,34 +134,7 @@ function EmployeeLeave() {
                             </td>
                             <td class="text-end">
                               <div class="dropdown dropdown-action">
-                                {/* <a
-                                  href="#"
-                                  class="action-icon dropdown-toggle"
-                                  data-bs-toggle="dropdown"
-                                  aria-expanded="false"
-                                >
-                                  <i class="material-icons">more_vert</i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                  <a
-                                    class="dropdown-item"
-                                    href="#"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#edit_leave"
-                                  >
-                                    <i class="fa-solid fa-pencil m-r-5"></i>{" "}
-                                    Edit
-                                  </a>
-                                  <a
-                                    class="dropdown-item"
-                                    href="#"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#delete_approve"
-                                  >
-                                    <i class="fa-regular fa-trash-can m-r-5"></i>{" "}
-                                    Delete
-                                  </a>
-                                </div> */}
+                           
                                 <Link
                                   className="action-icon dropdown-toggle show"
                                   data-bs-toggle="dropdown"

@@ -54,17 +54,17 @@ const EmployeeLeaveSlice = createSlice({
   name: "leaves",
   initialState,
   reducers: {
-    addLeave: (state, action) => {
+    EaddLeave: (state, action) => {
       console.log("addLeave");
       state.leaves.push(action.payload);
       console.log("action.payload: ", action.payload);
     },
-    deleteLeave: (state, action) => {
+    EdeleteLeave: (state, action) => {
       state.leaves = state.holidays.filter(
         (holiday) => holiday.id !== action.payload
       );
     },
-    updateLeave: (state, action) => {
+    EupdateLeave: (state, action) => {
       const index = state.leaves.findIndex(
         (holiday) => holiday.id === action.payload.id
       );
@@ -75,6 +75,6 @@ const EmployeeLeaveSlice = createSlice({
   },
 });
 
-export const { addLeave, deleteLeave, updateLeave } =
+export const { EaddLeave, EdeleteLeave, EupdateLeave } =
   EmployeeLeaveSlice.actions;
 export default EmployeeLeaveSlice.reducer;

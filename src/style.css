@@ -1,0 +1,23 @@
+.react-datepicker-wrapper{
+    display: block !important;
+}
+
+
+
+body {
+    font-family: "CircularStd", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #4D5154;
+    background-color: #f7f7f7;
+    overflow-x: hidden;
+    line-height: 1.5;
+    margin: 0;
+   
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+.select-option{
+    /* color: red; */
+    font-size: 19px;
+}

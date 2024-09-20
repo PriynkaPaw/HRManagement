@@ -8,7 +8,9 @@ const App = () => {
 
   return (
     <Router>
-      {isAuthenticated ? <AuthenticatedRoutes /> : <UnauthenticatedRoutes />}
+      {/* {isAuthenticated ? <AuthenticatedRoutes /> : <UnauthenticatedRoutes />} */}
+      <AuthenticatedRoutes />
+      <UnauthenticatedRoutes />
     </Router>
   );
 };

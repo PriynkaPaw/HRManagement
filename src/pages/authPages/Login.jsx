@@ -1,7 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { loginUser } from "../../reduxStore/Reducer/authReducer";
 
 const Login = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+   const [loginFormData, setLoginFormData] = useState({
+    email:"",
+    password:""
+   })
+
+   const handleChange =(e)=>{
+      const {name, value} = e.target
+      setLoginFormData({
+        ...loginFormData,
+        [name]: value,
+      });
+   }
+
+   const handleSubmit =async(e)=>{
+    e.preventDefault()
+    console.log("loginForm Data", loginFormData)
+   try {
+    
+    dispatch(loginUser(loginFormData))
+    navigate('/dasboard')
+    
+   } catch (error) {
+    
+   }
+   }
   return (
     <div class="account-page">
       <div class="main-wrapper">
@@ -19,13 +49,15 @@ const Login = () => {
                 <h3 class="account-title">Login</h3>
                 <p class="account-subtitle">Access to our dashboard</p>
 
-                <form action="https://smarthr.dreamstechnologies.com/html/template/admin-dashboard.html">
+                <form >
                   <div class="input-block mb-4">
                     <label class="col-form-label">Email Address</label>
                     <input
                       class="form-control"
                       type="text"
-                      value="admin@dreamstechnologies.com"
+                      name="email"
+                      value={loginFormData.email}
+                      onChange={handleChange}
                     />
                   </div>
                   <div class="input-block mb-4">
@@ -41,8 +73,9 @@ const Login = () => {
                       <input
                         class="form-control"
                         type="password"
-                        value="123456"
-                        id="password"
+                        name ="password"
+                        value={loginFormData.password}
+                        onChange={handleChange}
                       />
                       <span
                         class="fa-solid fa-eye-slash"
@@ -51,7 +84,7 @@ const Login = () => {
                     </div>
                   </div>
                   <div class="input-block mb-4 text-center">
-                    <button class="btn btn-primary account-btn" type="submit">
+                    <button class="btn btn-primary account-btn" type="submit" onClick={handleSubmit}>
                       Login
                     </button>
                   </div>

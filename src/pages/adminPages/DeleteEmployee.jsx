@@ -1,10 +1,9 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { deleteEmployee } from '../../reduxStore/slices/employeeSlice';
 const DeleteEmployee = ({employeeId, ShowDeleteEmployeeModal}) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
-    dispatch(deleteEmployee(employeeId));
+    // dispatch(deleteEmployee(employeeId));
     ShowDeleteEmployeeModal();
   };
   return (

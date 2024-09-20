@@ -18,7 +18,7 @@ const initialState = {
       id: 2,
       employee_name: " Rolland Webber",
       designation: "Web Developer",
-      leave_type: "Casual leave",
+      leave_type: "Medical Leave",
       from: "7 Jan 2019",
       to: "8 Jan 2019",
       no_of_day: "2 day",
@@ -46,18 +46,20 @@ const leaveSlice = createSlice({
   initialState,
   reducers: {
     addLeave: (state, action) => {
-      console.log("addLeave");
+      console.log("addLeave",action.payload);
       state.leaves.push(action.payload);
       console.log("action.payload: ", action.payload);
     },
     deleteLeave: (state, action) => {
-      state.leaves = state.holidays.filter(
-        (holiday) => holiday.id !== action.payload
+      console.log("delete leave action", action.payload)
+      state.leaves = state.leaves.filter(
+        (leaves) => leaves.id !== action.payload
       );
     },
     updateLeave: (state, action) => {
+    
       const index = state.leaves.findIndex(
-        (holiday) => holiday.id === action.payload.id
+        (leaves) => leaves.id === action.payload.id
       );
       if (index !== -1) {
         state.leaves[index] = action.payload;

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { addHoliday } from "../../reduxStore/slices/holidaysSlice";
 import { useDispatch } from "react-redux";
+import DatePicker from "react-datepicker";
+import { format } from 'date-fns';
 const AddHoliday = ({ holidayData, actionType, ShowAddHolidayModal }) => {
   // State for form inputs
   const [holidayName, setHolidayName] = useState("");
@@ -8,7 +10,7 @@ const AddHoliday = ({ holidayData, actionType, ShowAddHolidayModal }) => {
   const [isModalOpen, setIsModalOpen] = useState(true);
 
   const dispatch = useDispatch();
-
+  console.log("holiday Dataa", holidayData)
   // Populate fields if editing an existing holiday
   useEffect(() => {
     if (holidayData) {
@@ -16,16 +18,21 @@ const AddHoliday = ({ holidayData, actionType, ShowAddHolidayModal }) => {
       setHolidayDate(holidayData.holiday_date || "");
     }
   }, [holidayData]);
-
+  
+  const formatDate = (date) => {
+    if (!date) return '';
+    return format(date, 'd MMMM yyyy');
+  };
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
       id: Math.random(),
       title: holidayName,
-      holiday_date: holidayDate,
+      title: holidayName,
+      holiday_date: holidayDate ? formatDate(holidayDate) : '',
+      Day: "Sunday"
     };
-
     console.log("formData", formData);
     dispatch(addHoliday(formData));
     ShowAddHolidayModal();
@@ -80,13 +87,19 @@ const AddHoliday = ({ holidayData, actionType, ShowAddHolidayModal }) => {
                     Holiday Date <span className="text-danger">*</span>
                   </label>
                   <div className="cal-icon">
-                    <input
+                    {/* <input
                       className="form-control"
                       type="text"
                       value={holidayDate}
                       onChange={(e) => setHolidayDate(e.target.value)}
                       required
-                    />
+                    /> */}
+                  <DatePicker
+                    selected={holidayDate}
+                    onChange={(date) => setHolidayDate(date)}
+                    className="form-control"
+                    dateFormat="dd/MM/yyyy"
+                  />
                   </div>
                 </div>
                 <div className="submit-section">

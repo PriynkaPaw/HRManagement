@@ -1,24 +1,93 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar } from '../../reduxStore/slices/headerSlice';
+import { toggleSubmenu } from "../../reduxStore/slices/sidebarSlice";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
-    const dispatch = useDispatch();
-    const opensidebar = useSelector((state) => state.header.opensidebar); // Note the `state.header` here
+  //   const dispatch = useDispatch();
+  //   const opensidebar = useSelector((state) => state.header.opensidebar); // Note the `state.header` here
+  //   const [toggleSubMenu , setToggleSubMenu] = useState()
+
+  //   const handleSubmenuToggle = (index) => {
+  //     dispatch(toggleSubmenu(index));
+  //   };
   
-    const handleSidebarToggle = () => {
-      dispatch(toggleSidebar());
-    };
+  //   const handleSidebarToggle = () => {
+  //     dispatch(toggleSidebar());
+  //     handleSubmenuToggle(1)
+  //   };
 
-    useEffect(()=>{
-      let sidebar = document.getElementById('main_body');
-      if(opensidebar){
-        sidebar.setAttribute("class", "mini-sidebar");
-      } else{
-        sidebar.removeAttribute('class')
-      }
+  // const openSubmenu = useSelector((state) => state.sidebar.openSubmenu);
+  // const [activeLink, setActiveLink] = useState(null);
+  // const location = useLocation();
 
-    },[opensidebar])
+ 
+ 
+
+  // useEffect(() => {
+  //   const currentPath = location.pathname;
+  //   setActiveLink(currentPath);
+
+  //   if (openSubmenu !== null && currentPath && !currentPath.includes(activeLink)) {
+  //     dispatch(toggleSubmenu(null)); 
+  //   }
+  // }, [location, dispatch, openSubmenu, activeLink]);
+  //   useEffect(()=>{
+  //     let sidebar = document.getElementById('main_body');
+  //     if(opensidebar){
+  //       sidebar.setAttribute("class", "mini-sidebar");
+  //     } else{
+  //       sidebar.removeAttribute('class')
+  //     }
+
+  //   },[opensidebar])
+
+  const dispatch = useDispatch();
+const opensidebar = useSelector((state) => state.header.opensidebar);
+
+
+// const handleSidebarToggle = () => {
+//   dispatch(toggleSidebar());
+
+//   if (opensidebar) {
+//     dispatch(toggleSubmenu(null)); 
+//   } else {
+//     const lastOpenSubmenu = localStorage.getItem('openSubmenu');
+//     if (lastOpenSubmenu !== null) {
+//       dispatch(toggleSubmenu(Number(lastOpenSubmenu)));
+//     }
+//   }
+// };
+const openSubmenu = useSelector((state) => state.sidebar.openSubmenu);
+const openSubmenuByHeader = useSelector((state) => state.sidebar.openSubmenuByHeader)
+const handleSidebarToggle = () => {
+  dispatch(toggleSidebar());
+console.log("open sideBAR in header",opensidebar)
+console.log("open openSubmenu in header",openSubmenuByHeader)
+
+  if (opensidebar) {
+    dispatch(toggleSubmenu(openSubmenuByHeader)); 
+
+  } else {
+    console.log("else Conditionn")
+    dispatch(toggleSubmenu(null));
+
+  }
+};
+
+
+
+
+useEffect(() => {
+  let sidebar = document.getElementById('main_body');
+  if (opensidebar) {
+    sidebar.setAttribute("class", "mini-sidebar");
+  } else {
+    sidebar.removeAttribute('class');
+  }
+}, [opensidebar]);
+
 
   return (
     <div 

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ReactPaginate from "react-paginate";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 const Departments = () => {
@@ -11,17 +13,34 @@ const Departments = () => {
     { id: 5, name: "Support Management" },
     { id: 6, name: "Marketing" },
   ]);
+  const [departmentDropdown, setDepartmentDropdown] = useState(null); 
+  const [showEditDepartment, setShowEditDepartment] = useState(false);
+  const [showAddDepartment, setShowAddDepartment] = useState(false);
+  const [showDeleteDepartmentModal, setDeleteDepartmentModal] = useState(false);
+  const departmentList = useSelector((state)=> state.department.departments)
+
+  console.log("department List", departmentList)
+  const toggleDropdown = (id) => {
+    setDepartmentDropdown((prevId) => (prevId === id ? null : id));
+  };
+  const ShowEditDepartmentModal = () => {setShowEditDepartment(!showEditDepartment);
+    setDepartmentDropdown(null); 
+  }
+  const ShowAddDepartmentModal = () =>{ setShowAddDepartment(!showAddDepartment);
+    setDepartmentDropdown(null); 
+  }
+  const ShowDeleteDepartmentModal = () => {setDeleteDepartmentModal(!showDeleteDepartmentModal);  setDepartmentDropdown(null); }
 
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 5;
-  const pageCount = Math.ceil(departments.length / itemsPerPage);
+  const pageCount = Math.ceil(departmentList.length / itemsPerPage);
 
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
   };
-
+  const departmentDropdownRef = useRef(null);
   const offset = currentPage * itemsPerPage;
-  const currentDepartments = departments.slice(offset, offset + itemsPerPage);
+  const currentDepartments = departmentList.slice(offset, offset + itemsPerPage);
 
   return (
     <div>
@@ -39,14 +58,15 @@ const Departments = () => {
                 </ul>
               </div>
               <div class="col-auto float-end ms-auto">
-                <a
+                <Link
                   href="#"
                   class="btn add-btn"
                   data-bs-toggle="modal"
                   data-bs-target="#add_department"
+                  onClick={ShowAddDepartmentModal}
                 >
                   <i class="fa-solid fa-plus"></i> Add Department
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -68,36 +88,42 @@ const Departments = () => {
                         <td>{department.id}</td>
                         <td>{department.name}</td>
                         <td className="text-end">
-                          <div className="dropdown dropdown-action">
-                            <a
-                              href="#"
-                              className="action-icon dropdown-toggle"
-                              data-bs-toggle="dropdown"
-                              aria-expanded="false"
+                        <div
+                              ref={departmentDropdownRef}
+                              className="dropdown dropdown-action"
                             >
-                              <i className="material-icons">more_vert</i>
-                            </a>
-                            <div className="dropdown-menu dropdown-menu-right">
-                              <a
-                                className="dropdown-item"
-                                href="#"
-                                data-bs-toggle="modal"
-                                data-bs-target="#edit_department"
+                              <Link
+                                className="action-icon dropdown-toggle show"
+                                data-bs-toggle="dropdown"
+                                aria-expanded={departmentDropdown === department.id}
+                                onClick={() => toggleDropdown(department.id)}
                               >
-                                <i className="fa-solid fa-pencil m-r-5"></i>{" "}
-                                Edit
-                              </a>
-                              <a
-                                className="dropdown-item"
-                                href="#"
-                                data-bs-toggle="modal"
-                                data-bs-target="#delete_department"
-                              >
-                                <i className="fa-regular fa-trash-can m-r-5"></i>{" "}
-                                Delete
-                              </a>
+                                <i className="material-icons">more_vert</i>
+                              </Link>
+                              {departmentDropdown === department.id && (
+                                <div className="dropdown-menu dropdown-menu-right show">
+                                  <Link
+                                    className="dropdown-item"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#edit_department"
+                                    onClick={ShowEditDepartmentModal}
+                                  >
+                                    <i className="fa-solid fa-pencil m-r-5"></i>{" "}
+                                    Edit
+                                  </Link>
+                                  <Link
+                                    className="dropdown-item"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#delete_approve"
+                                    onClick={ShowDeleteDepartmentModal}
+                                  >
+                                    <i className="fa-regular fa-trash-can m-r-5"></i>{" "}
+                                    Delete
+                                  </Link>
+                                </div>
+                              )}
                             </div>
-                          </div>
+
                         </td>
                       </tr>
                     ))}
@@ -129,10 +155,47 @@ const Departments = () => {
           </div>
         </div>
 
-        {/* Add Department Modal */}
-        <div
+       {
+        showEditDepartment && <EditDepartmentModal ShowEditDepartmentModal={ShowEditDepartmentModal} />
+       }
+       {
+        showDeleteDepartmentModal && <DeleteDepartmentModal ShowDeleteDepartmentModal={ShowDeleteDepartmentModal} />
+       }
+       {
+        showAddDepartment && <AddDepartmentModal ShowAddDepartmentModal={ShowAddDepartmentModal} />
+       }
+
+        {/* Edit Department Modal */}
+       
+
+      
+      </div>
+    </div>
+  );
+};
+
+export default Departments;
+
+
+const AddDepartmentModal =({ShowAddDepartmentModal})=>{
+  const [departmentData, setDepartmentData] = useState({
+    id:Math.random(),
+    name:""
+  })
+
+  const handleSubmit =(e)=>{
+    e.preventDefault()
+    console.log("department name",departmentData )
+    ShowAddDepartmentModal()
+  }
+
+  return (
+    <>
+      <div class="modal-backdrop fade show"></div>
+
+      <div
           id="add_department"
-          className="modal custom-modal fade"
+          className="modal custom-modal d-block"
           role="dialog"
         >
           <div className="modal-dialog modal-dialog-centered" role="document">
@@ -144,7 +207,11 @@ const Departments = () => {
                   className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
-                />
+                  onClick={ShowAddDepartmentModal}
+                >
+                <span aria-hidden="true">&times;</span>
+
+                  </button>
               </div>
               <div className="modal-body">
                 <form>
@@ -152,10 +219,10 @@ const Departments = () => {
                     <label className="col-form-label">
                       Department Name <span className="text-danger">*</span>
                     </label>
-                    <input className="form-control" type="text" />
+                    <input className="form-control" name="name" value={departmentData.name} onChange={(e)=>setDepartmentData(e.target.value)} type="text" />
                   </div>
                   <div className="submit-section">
-                    <button className="btn btn-primary submit-btn">
+                    <button className="btn btn-primary submit-btn" onClick={handleSubmit}>
                       Submit
                     </button>
                   </div>
@@ -163,12 +230,18 @@ const Departments = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div></>
+  )
+}
 
-        {/* Edit Department Modal */}
-        <div
+const EditDepartmentModal =({ShowEditDepartmentModal}) =>{
+  return (
+    <>
+      <div class="modal-backdrop fade show"></div>
+
+     <div
           id="edit_department"
-          className="modal custom-modal fade"
+          className="modal custom-modal d-block "
           role="dialog"
         >
           <div className="modal-dialog modal-dialog-centered" role="document">
@@ -180,7 +253,11 @@ const Departments = () => {
                   className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
-                />
+                  onClick={ShowEditDepartmentModal}
+                >
+                <span aria-hidden="true">&times;</span>
+
+                  </button>
               </div>
               <div className="modal-body">
                 <form>
@@ -201,11 +278,18 @@ const Departments = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div></>
+  )
+}
 
-        {/* Delete Department Modal */}
-        <div
-          className="modal custom-modal fade"
+const DeleteDepartmentModal =({ShowDeleteDepartmentModal}) =>{
+  return (
+    <>
+      {/* Delete Department Modal */}
+      <div class="modal-backdrop fade show"></div>
+
+      <div
+          className="modal custom-modal d-block"
           id="delete_department"
           role="dialog"
         >
@@ -228,6 +312,7 @@ const Departments = () => {
                         href="#"
                         data-bs-dismiss="modal"
                         className="btn btn-primary cancel-btn"
+                        onClick={ShowDeleteDepartmentModal}
                       >
                         Cancel
                       </a>
@@ -237,10 +322,6 @@ const Departments = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Departments;
+        </div></>
+  )
+}

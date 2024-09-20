@@ -31,7 +31,8 @@ function AttendanceAdmin() {
             </div>
             <div class="col-sm-6 col-md-3">
               <div class="input-block mb-3 form-focus select-focus">
-                <select class="form-control select floating">
+                <label class="focus-label">Select Month</label>
+                <select class="form-control">
                   <option>-</option>
                   <option>Jan</option>
                   <option>Feb</option>
@@ -46,7 +47,6 @@ function AttendanceAdmin() {
                   <option>Nov</option>
                   <option>Dec</option>
                 </select>
-                <label class="focus-label">Select Month</label>
               </div>
             </div>
             <div class="col-sm-6 col-md-3">

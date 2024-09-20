@@ -1,15 +1,34 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSubmenu } from "../../reduxStore/slices/sidebarSlice";
+import { toggleSubmenu, toggleSubmenuByHeader } from "../../reduxStore/slices/sidebarSlice";
+
 
 const Sidebar = () => {
   const dispatch = useDispatch();
   const openSubmenu = useSelector((state) => state.sidebar.openSubmenu);
+  const [activeLink, setActiveLink] = useState(null);
+  const location = useLocation();
 
   const handleSubmenuToggle = (index) => {
     dispatch(toggleSubmenu(index));
   };
+
+  const handleSetActive = (linkPath) => {
+    console.log("openSubmenu",openSubmenu)
+    setActiveLink(linkPath);
+  };
+
+  useEffect(() => {
+    const currentPath = location.pathname;
+    setActiveLink(currentPath);
+console.log("openSubmenu",openSubmenu)
+
+    if (openSubmenu !== null && currentPath && !currentPath.includes(activeLink)) {
+      dispatch(toggleSubmenu(null)); 
+    }
+  }, [location, dispatch, openSubmenu]);
+
   return (
     <div>
       <div className="sidebar" id="sidebar">
@@ -21,23 +40,22 @@ const Sidebar = () => {
               </li>
 
               <li className="submenu">
-                <Link to="#" onClick={() => handleSubmenuToggle(1)}>
-                  <i className="la la-dashboard"></i> <span> Dashboard</span>{" "}
+                <Link
+                  to="#"
+                  onClick={() => handleSubmenuToggle(1)}
+                >
+                  <i className="la la-dashboard"></i> <span> Dashboard</span>
                   <span className="menu-arrow"></span>
                 </Link>
-                <ul className={`${openSubmenu === 1 ? "d-block" : "d-none"}`}>
-                  <li>
-                    <Link to="/admin-dashboard">Admin Dashboard</Link>
+                <ul className={`${openSubmenu === 1 ? 'd-block' : 'd-none'}`}>
+                  <li className={activeLink === '/admin-dashboard' ? 'active' : ''}>
+                    <Link
+                      to="/admin-dashboard"
+                      onClick={() => handleSetActive('/admin-dashboard')}
+                    >
+                      Admin Dashboard
+                    </Link>
                   </li>
-                  {/* <li>
-                    <Link to="/employee-dashboard">Employee Dashboard</Link>
-                  </li>
-                  <li>
-                    <Link to="/deals-dashboard">Deals Dashboard</Link>
-                  </li>
-                  <li>
-                    <Link to="/leads-dashboard">Leads Dashboard</Link>
-                  </li> */}
                 </ul>
               </li>
 
@@ -48,61 +66,110 @@ const Sidebar = () => {
               <li className="submenu">
                 <Link
                   to="#"
-                  className="noti-dot"
+                  className={`noti-dot active ${openSubmenu === 2 ? 'subdrop' : ''}`}
                   onClick={() => handleSubmenuToggle(2)}
                 >
-                  <i className="la la-user"></i> <span> Employees</span>{" "}
+                  <i className="la la-user"></i> <span> Employees</span>
                   <span className="menu-arrow"></span>
                 </Link>
-                <ul className={`${openSubmenu === 2 ? "d-block" : "d-none"}`}>
-                  <li>
-                    <Link to="/all-employees">All Employees</Link>
-                  </li>
-                  <li>
-                    <Link to="/holidays-list">Holidays</Link>
-                  </li>
-
-                  {/* <li>
-                    <Link to="/holidays">Holidays</Link>
-                  </li> */}
-                  <li>
-                    <Link to="/leaves-admin">
-                      Leaves (Admin){" "}
-                      <span className="badge rounded-pill bg-primary float-end">
-                        1
-                      </span>
+                <ul className={`${openSubmenu === 2 ? 'd-block' : 'd-none'}`}>
+                  <li className={activeLink === '/all-employees' ? 'active' : ''}>
+                    <Link
+                      to="/all-employees"
+                      onClick={() => handleSetActive('/all-employees')}
+                    >
+                      All Employees
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/leaves-employee">Leaves (Employee)</Link>
+                  <li className={activeLink === '/holidays-list' ? 'active' : ''}>
+                    <Link
+                      to="/holidays-list"
+                      onClick={() => handleSetActive('/holidays-list')}
+                    >
+                      Holidays
+                    </Link>
                   </li>
-                  <li>
-                    <Link to="/leave-settings">Leave Settings</Link>
+                  <li
+  className={activeLink === '/leaves-admin' ? 'active' : ''}
+>
+  <Link
+    to="/leaves-admin"
+    onClick={() => handleSetActive('/leaves-admin')}
+  >
+    Leaves (Admin)
+    <span className="badge rounded-pill bg-primary float-end">1</span>
+  </Link>
+</li>
+<li className={activeLink === '/leaves-employee' ? 'active' : ''}>
+                    <Link
+                      to="/leaves-employee"
+                      onClick={() => handleSetActive('/leaves-employee')}
+                    >
+                      Leaves (Employee)
+                    </Link>
                   </li>
-                  <li>
-                    <Link to="/attendance-admin">Attendance (Admin)</Link>
+                  <li className={activeLink === '/attendance-admin' ? 'active' : ''}>
+                    <Link
+                      to="/attendance-admin"
+                      onClick={() => handleSetActive('/attendance-admin')}
+                    >
+                     Attendance (Admin)
+                    </Link>
                   </li>
-                  <li>
-                    <Link to="/attendance-employee">Attendance (Employee)</Link>
+                  <li className={activeLink === '/attendance-employee' ? 'active' : ''}>
+                    <Link
+                      to="/attendance-employee"
+                      onClick={() => handleSetActive('/attendance-employee')}
+                    >
+                    Attendance (Employee)
+                    </Link>
                   </li>
-                  <li>
-                    <Link to="/departments">Departments</Link>
+
+                  <li className={activeLink === '/departments' ? 'active' : ''}>
+                    <Link
+                      to="/departments"
+                      onClick={() => handleSetActive('/departments')}
+                    >
+                  Departments
+                    </Link>
                   </li>
-                  <li>
-                    <Link to="/designations">Designations</Link>
+                  <li className={activeLink === '/designations' ? 'active' : ''}>
+                    <Link
+                      to="/designations"
+                      onClick={() => handleSetActive('/designations')}
+                    >
+                 Designations
+                    </Link>
                   </li>
-                  <li>
-                    <Link to="/timesheet">Timesheet</Link>
+                  <li className={activeLink === '/timesheet' ? 'active' : ''}>
+                    <Link
+                      to="/timesheet"
+                      onClick={() => handleSetActive('/timesheet')}
+                    >
+                Timesheet
+                    </Link>
                   </li>
-                  <li>
-                    <Link to="/shift-scheduling">Shift & Schedule</Link>
+
+                  <li className={activeLink === '/shift-scheduling' ? 'active' : ''}>
+                    <Link
+                      to="/shift-scheduling"
+                      onClick={() => handleSetActive('/shift-scheduling')}
+                    >
+               Shift & Schedule
+                    </Link>
                   </li>
-                  <li>
-                    <Link to="/overtime">Overtime</Link>
+                  <li className={activeLink === '/overtime' ? 'active' : ''}>
+                    <Link
+                      to="/overtime"
+                      onClick={() => handleSetActive('/overtime')}
+                    >
+               Overtime
+                    </Link>
                   </li>
                 </ul>
+               
+
               </li>
-              {/* Add more menu items here */}
             </ul>
           </div>
         </div>
@@ -111,7 +178,145 @@ const Sidebar = () => {
   );
 };
 
+
 export default Sidebar;
+
+
+
+
+
+// const Sidebar = () => {
+//   const dispatch = useDispatch();
+//   const openSubmenu = useSelector((state) => state.sidebar.openSubmenu);
+
+//   const handleSubmenuToggle = (index) => {
+//     dispatch(toggleSubmenu(index));
+//   };
+//   return (
+//     <div>
+//       <div className="sidebar" id="sidebar">
+//         <div className="sidebar-inner slimscroll">
+//           <div id="sidebar-menu" className="sidebar-menu">
+//             <ul className="sidebar-vertical">
+//               <li className="menu-title">
+//                 <span>Main</span>
+//               </li>
+
+//               <li className="submenu">
+//                 <Link to="#" onClick={() => handleSubmenuToggle(1)}>
+//                   <i className="la la-dashboard"></i> <span> Dashboard</span>{" "}
+//                   <span className="menu-arrow"></span>
+//                 </Link>
+//                 <ul className={`${openSubmenu === 1 ? "d-block" : "d-none"}`}>
+//                   <li>
+//                     <Link to="/admin-dashboard">Admin Dashboard</Link>
+//                   </li>
+//                   {/* <li>
+//                     <Link to="/employee-dashboard">Employee Dashboard</Link>
+//                   </li>
+//                   <li>
+//                     <Link to="/deals-dashboard">Deals Dashboard</Link>
+//                   </li>
+//                   <li>
+//                     <Link to="/leads-dashboard">Leads Dashboard</Link>
+//                   </li> */}
+//                 </ul>
+//               </li>
+
+//               <li className="menu-title">
+//                 <span>Employees</span>
+//               </li>
+
+//               <li className="submenu">
+//                 <Link
+//                   to="#"
+//                   className="noti-dot"
+//                   onClick={() => handleSubmenuToggle(2)}
+//                 >
+//                   <i className="la la-user"></i> <span> Employees</span>{" "}
+//                   <span className="menu-arrow"></span>
+//                 </Link>
+//                 <ul className={`${openSubmenu === 2 ? "d-block" : "d-none"}`}>
+//                   <li>
+//                     <Link to="/all-employees">All Employees</Link>
+//                   </li>
+//                   <li>
+//                     <Link to="/holidays-list">Holidays</Link>
+//                   </li>
+
+//                   {/* <li>
+//                     <Link to="/holidays">Holidays</Link>
+//                   </li> */}
+//                   <li>
+//                     <Link to="/leaves-admin">
+//                       Leaves (Admin){" "}
+//                       <span className="badge rounded-pill bg-primary float-end">
+//                         1
+//                       </span>
+//                     </Link>
+//                   </li>
+//                   <li>
+//                     <Link to="/leaves-employee">Leaves (Employee)</Link>
+//                   </li>
+//                   <li>
+//                     <Link to="/leave-settings">Leave Settings</Link>
+//                   </li>
+//                   <li>
+//                     <Link to="/attendance-admin">Attendance (Admin)</Link>
+//                   </li>
+//                   <li>
+//                     <Link to="/attendance-employee">Attendance (Employee)</Link>
+//                   </li>
+//                   <li>
+//                     <Link to="/departments">Departments</Link>
+//                   </li>
+//                   <li>
+//                     <Link to="/designations">Designations</Link>
+//                   </li>
+//                   <li>
+//                     <Link to="/timesheet">Timesheet</Link>
+//                   </li>
+//                   <li>
+//                     <Link to="/shift-scheduling">Shift & Schedule</Link>
+//                   </li>
+//                   <li>
+//                     <Link to="/overtime">Overtime</Link>
+//                   </li>
+//                 </ul>
+//               </li>
+
+//               {/* Add more menu items here */}
+//             </ul>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Sidebar;
+
+
+
+
+
+
+
+
+
+
+
+// ===================================================================================================================>
+
+
+
+
+
+
+
+
+
+
 
 // import React,{useState} from "react";
 // import { Link } from "react-router-dom";

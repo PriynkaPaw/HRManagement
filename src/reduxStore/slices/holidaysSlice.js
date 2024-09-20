@@ -38,6 +38,7 @@ const holidaySlice = createSlice({
       );
     },
     updateHoliday: (state, action) => {
+      console.log("holiday edit slice",action.payload)
       const index = state.holidays.findIndex(
         (holiday) => holiday.id === action.payload.id
       );

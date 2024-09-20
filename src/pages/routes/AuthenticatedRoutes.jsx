@@ -10,6 +10,12 @@ import EmployeeLeave from "../adminPages/EmployeeLeave";
 import AttendanceAdmin from "../adminPages/AttendanceAdmin";
 import EmployeeAttendance from "../adminPages/EmployeeAttendance";
 import Departments from "../adminPages/Departments";
+import Designations from "../adminPages/Designations";
+import Timesheet from "../adminPages/Timesheet";
+import ShiftAndSchedule from "../adminPages/ShiftAndSchedule";
+import ShiftList from "../adminPages/ShiftList";
+import OverTime from "../adminPages/OverTime";
+import EmployeeProfile from "../adminPages/EmployeeProfile";
 
 const AuthenticatedRoutes = () => {
   return (
@@ -25,6 +31,14 @@ const AuthenticatedRoutes = () => {
         <Route path="/attendance-admin" element={<AttendanceAdmin />} />
         <Route path="/attendance-employee" element={<EmployeeAttendance />} />
         <Route path="/departments" element={<Departments />} />
+        <Route path="/designations" element={<Designations />} />
+        <Route path="/timesheet" element={<Timesheet />} />
+        <Route path="/shift-scheduling" element={<ShiftAndSchedule />} />
+        <Route path="/shiftlist" element={<ShiftList />} />
+        <Route path="/overtime" element={<OverTime />} />
+        <Route path="/profile/:id" element={<EmployeeProfile />} />
+
+
       </Routes>
     </Layout>
   );

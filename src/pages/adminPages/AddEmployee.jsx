@@ -1,36 +1,108 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addEmployee } from "../../reduxStore/slices/employeeSlice";
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
+import { format } from "date-fns";
+import { addEmployee } from "../../reduxStore/Reducer/adminReducer";
+import axios from "axios";
 
 const AddEmployee = ({ ShowAddEmployeeModal }) => {
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({});
   const [empField, setEmpField] = useState({
-    firstname: "",
-    lastname: "",
+    first_name: "",
+    last_name: "",
     email: "",
-    password: "",
-    confirmpassword: "",
-    joining_date: "",
+    // password: "",
+    // confirmpassword: "",
+    date_of_joining: "",
     phone: "",
     department: "",
-    position: "",
+    // ctc:"",
+    designation: "",
+    date_of_birth: "",
+    profile_pic: "",
+    address: "",
   });
+  
+  const [departments, setDepartments] = useState([]);
+  const [designation, setDesignation] = useState([]);
+
+  useEffect(() => {
+    const fetchDepartments = async () => {
+      try {
+        const token =process.env.REACT_APP_TOKEN
+        const response = await axios.get(
+          "http://192.168.1.183:8888/api/departments/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        setDepartments(response.data);
+      } catch (error) {
+        console.error("Error fetching departments:", error);
+      }
+    };
+    const fetchDesignations = async () => {
+      try {
+        const token =process.env.REACT_APP_TOKEN
+        const response = await axios.get(
+          "http://192.168.1.183:8888/api/designations/",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        setDesignation(response.data);
+      } catch (error) {
+        console.error("Error fetching departments:", error);
+      }
+    };
+    fetchDesignations()
+    fetchDepartments();
+  }, []);
+
   // Handle input change
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setEmpField({
-      ...empField,
-      [name]: value,
-    });
+  const handleInputChange = (eOrName, value) => {
+    if (typeof eOrName === "object" && eOrName.target) {
+      const { name, type } = eOrName.target;
+  
+      if (type === "file") {
+        const file = eOrName.target.files[0];
+        if (file) {
+          setEmpField({
+            ...empField,
+            [name]: file, 
+          });
+        }
+      } else {
+        const { value } = eOrName.target;
+        setEmpField({
+          ...empField,
+          [name]: value,
+        });
+      }
+    } else {
+      const formattedDate = format(value, "yyyy-MM-dd");
+      setEmpField({
+        ...empField,
+        [eOrName]: formattedDate,
+      });
+    }
   };
+  
 
   // Validate form fields
   const validate = () => {
     let tempErrors = {};
 
-    if (!empField.firstname) tempErrors.firstname = "First name is required.";
-    if (!empField.lastname) tempErrors.lastname = "Last name is required.";
+    if (!empField.first_name) tempErrors.first_name = "First name is required.";
+    if (!empField.last_name) tempErrors.last_name = "Last name is required.";
     if (!empField.email) {
       tempErrors.email = "Email is required.";
     } else if (!/\S+@\S+\.\S+/.test(empField.email)) {
@@ -46,37 +118,38 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
     //   }
     // if (!empField.position) tempErrors.position = "Designation is required.";
     // if (!empField.phone) tempErrors.phone = "Phone is required.";
-    // if (!empField.joining_date) tempErrors.joining_date = "Joining date is required.";
+    // if (!empField.date_of_joining) tempErrors.date_of_joining = "Joining date is required.";
     // if (!empField.department) tempErrors.department = "Department is required.";
 
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+ 
 
-    if (validate()) {
-      // setFormData((prevEmpField) => [...prevEmpField, empField]);
-      dispatch(addEmployee(empField));
-      console.log("Form data is valid:", empField);
-      ShowAddEmployeeModal();
-      // reset the form fields after submission
-      setEmpField({
-        firstname: "",
-        lastname: "",
-        email: "",
-        password: "",
-        confirmpassword: "",
-        joining_date: "",
-        phone: "",
-        department: "",
-        designation: "",
-      });
-    } else {
-      console.log("Form has validation errors:", errors);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const formData = new FormData();
+      for (const key in empField) {
+
+        formData.append(key, empField[key]);
+      }
+      if (validate()) {
+         dispatch(addEmployee(formData));
+  
+        console.log("Form data is valid:", empField);
+        ShowAddEmployeeModal();
+
+      } else {
+        console.log("Form has validation errors:", errors);
+      }
+    } catch (error) {
+      console.error("Error submitting the form:", error);
     }
   };
+  
 
   return (
     <>
@@ -93,7 +166,10 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                 data-bs-dismiss="modal"
                 aria-label="Close"
                 onClick={ShowAddEmployeeModal}
-              ></button>
+              >
+                {" "}
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
             <div class="modal-body">
               <form onSubmit={handleSubmit}>
@@ -106,13 +182,13 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                       <input
                         class="form-control"
                         type="text"
-                        name="firstname"
-                        value={empField.firstname}
+                        name="first_name"
+                        value={empField.first_name}
                         onChange={handleInputChange}
                       />
                     </div>
-                    {errors.firstname && (
-                      <p className="text-danger">{errors.firstname}</p>
+                    {errors.first_name && (
+                      <p className="text-danger">{errors.first_name}</p>
                     )}
                   </div>
                   <div class="col-sm-6">
@@ -121,13 +197,13 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                       <input
                         class="form-control"
                         type="text"
-                        name="lastname"
-                        value={empField.lastname}
+                        name="last_name"
+                        value={empField.last_name}
                         onChange={handleInputChange}
                       />
                     </div>
-                    {errors.lastname && (
-                      <p className="text-danger">{errors.lastname}</p>
+                    {errors.last_name && (
+                      <p className="text-danger">{errors.last_name}</p>
                     )}
                   </div>
                   <div class="col-sm-6">
@@ -147,7 +223,7 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                       <p className="text-danger">{errors.email}</p>
                     )}
                   </div>
-                  <div class="col-sm-6">
+                  {/* <div class="col-sm-6">
                     <div class="input-block mb-3">
                       <label class="col-form-label">Password</label>
                       <input
@@ -161,8 +237,8 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                     {errors.password && (
                       <p className="text-danger">{errors.password}</p>
                     )}
-                  </div>
-                  <div class="col-sm-6">
+                  </div> */}
+                  {/* <div class="col-sm-6">
                     <div class="input-block mb-3">
                       <label class="col-form-label">Confirm Password</label>
                       <input
@@ -176,23 +252,25 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                     {errors.confirmpassword && (
                       <p className="text-danger">{errors.confirmpassword}</p>
                     )}
-                  </div>
+                  </div> */}
                   <div class="col-sm-6">
                     <div class="input-block mb-3">
                       <label class="col-form-label">
                         Joining Date <span class="text-danger">*</span>
                       </label>
-                      <div class="cal-icon">
-                        <input
-                          class="form-control datetimepicker"
-                          type="text"
-                          name="joining_date"
-                          value={empField.joining_date}
-                          onChange={handleInputChange}
+                      <div class="cal-icon ">
+                        <DatePicker
+                          selected={empField.date_of_joining}
+                          name="date_of_joining"
+                          onChange={(date) =>
+                            handleInputChange("date_of_joining", date)
+                          } // Pass name and date directly
+                          className="form-control datetimepicker  "
+                          dateFormat="dd/MM/yyyy"
                         />
                       </div>
-                      {errors.joining_date && (
-                        <p className="text-danger">{errors.joining_date}</p>
+                      {errors.date_of_joining && (
+                        <p className="text-danger">{errors.date_of_joining}</p>
                       )}
                     </div>
                   </div>
@@ -224,9 +302,12 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                         onChange={handleInputChange}
                       >
                         <option>Select Department</option>
-                        <option>Web Development</option>
-                        <option>IT Management</option>
-                        <option>Marketing</option>
+                      
+                        {departments.map((dept) => (
+                          <option key={dept.id} value={dept.id}>
+                            {dept.name}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     {errors.department && (
@@ -240,22 +321,68 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                       </label>
                       <select
                         class="   form-control select"
-                        name="position"
-                        value={empField.position}
+                        name="designation"
+                        value={empField.designation}
                         onChange={handleInputChange}
                       >
                         <option>Select Designation</option>
-                        <option>Web Designer</option>
-                        <option>Web Developer</option>
-                        <option>Android Developer</option>
+                      
+                        {designation.map((desg) => (
+                          <option key={desg.id} value={desg.id}>
+                            {desg.name}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     {errors.designation && (
                       <p className="text-danger">{errors.designation}</p>
                     )}
                   </div>
+                  {/* <div class="col-sm-6">
+                    <div class="input-block mb-3">
+                      <label class="col-form-label">CTC </label> <span class="text-danger"> *</span>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="ctc"
+                        value={empField.ctc}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    {errors.ctc && (
+                      <p className="text-danger">{errors.ctc}</p>
+                    )}
+                  </div> */}
+
+                  <div class="col-sm-6">
+                    <div class="input-block mb-3">
+                      <label class="col-form-label">Profile Pic </label>{" "}
+                      <span class="text-danger"> *</span>
+                      <input
+                        class="form-control"
+                        type="file"
+                        name="profile_pic"
+                        accept=".jpg, .jpeg, .png"
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    {errors.profile_pic && (
+                      <p className="text-danger">{errors.profile_pic}</p>
+                    )}
+                  </div>
+                  <div class="cal-icon ">
+                    <DatePicker
+                      selected={empField.date_of_birth}
+                      name="date_of_birth"
+                      onChange={(date) =>
+                        handleInputChange("date_of_birth", date)
+                      } // Pass name and date directly
+                      className="form-control datetimepicker  "
+                      dateFormat="dd/MM/yyyy"
+                    />
+                  </div>
                 </div>
-                <div class="table-responsive m-t-15">
+                {/* <div class="table-responsive m-t-15">
                   <table class="table table-striped custom-table">
                     <thead>
                       <tr>
@@ -679,7 +806,7 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                       </tr>
                     </tbody>
                   </table>
-                </div>
+                </div> */}
                 <div class="submit-section">
                   <button class="btn btn-primary submit-btn">Submit</button>
                 </div>
