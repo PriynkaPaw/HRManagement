@@ -15,20 +15,27 @@ const Sidebar = () => {
   };
 
   const handleSetActive = (linkPath) => {
-    console.log("openSubmenu",openSubmenu)
     setActiveLink(linkPath);
   };
 
+
+
   useEffect(() => {
     const currentPath = location.pathname;
-    setActiveLink(currentPath);
-console.log("openSubmenu",openSubmenu)
-
-    if (openSubmenu !== null && currentPath && !currentPath.includes(activeLink)) {
-      dispatch(toggleSubmenu(null)); 
+  
+    if (activeLink !== currentPath) {
+      setActiveLink(currentPath);
     }
-  }, [location, dispatch, openSubmenu]);
+  }, [location, activeLink]);
+  
+  useEffect(() => {
+    if (openSubmenu === null && activeLink && !location.pathname?.includes(activeLink)) {
+    dispatch(toggleSubmenu(null)); 
+    }
 
+  }, [activeLink, openSubmenu, location.pathname]);
+  
+  
   return (
     <div>
       <div className="sidebar" id="sidebar">
@@ -42,6 +49,8 @@ console.log("openSubmenu",openSubmenu)
               <li className="submenu">
                 <Link
                   to="#"
+                  className={` ${openSubmenu === 1 ? 'subdrop' : ''}`}
+
                   onClick={() => handleSubmenuToggle(1)}
                 >
                   <i className="la la-dashboard"></i> <span> Dashboard</span>
@@ -73,7 +82,7 @@ console.log("openSubmenu",openSubmenu)
                   <span className="menu-arrow"></span>
                 </Link>
                 <ul className={`${openSubmenu === 2 ? 'd-block' : 'd-none'}`}>
-                  <li className={activeLink === '/all-employees' ? 'active' : ''}>
+                  <li className={activeLink === '/all-employees' ? 'active yellow-text' : ''}>
                     <Link
                       to="/all-employees"
                       onClick={() => handleSetActive('/all-employees')}
@@ -81,7 +90,7 @@ console.log("openSubmenu",openSubmenu)
                       All Employees
                     </Link>
                   </li>
-                  <li className={activeLink === '/holidays-list' ? 'active' : ''}>
+                  <li className={activeLink === '/holidays-list' ? 'active yellow-text' : ''}>
                     <Link
                       to="/holidays-list"
                       onClick={() => handleSetActive('/holidays-list')}
@@ -90,7 +99,7 @@ console.log("openSubmenu",openSubmenu)
                     </Link>
                   </li>
                   <li
-  className={activeLink === '/leaves-admin' ? 'active' : ''}
+  className={activeLink === '/leaves-admin' ? 'active yellow-text' : ''}
 >
   <Link
     to="/leaves-admin"
@@ -100,7 +109,7 @@ console.log("openSubmenu",openSubmenu)
     <span className="badge rounded-pill bg-primary float-end">1</span>
   </Link>
 </li>
-<li className={activeLink === '/leaves-employee' ? 'active' : ''}>
+<li className={activeLink === '/leaves-employee' ? 'active yellow-text' : ''}>
                     <Link
                       to="/leaves-employee"
                       onClick={() => handleSetActive('/leaves-employee')}
@@ -108,7 +117,7 @@ console.log("openSubmenu",openSubmenu)
                       Leaves (Employee)
                     </Link>
                   </li>
-                  <li className={activeLink === '/attendance-admin' ? 'active' : ''}>
+                  <li className={activeLink === '/attendance-admin' ? 'active yellow-text' : ''}>
                     <Link
                       to="/attendance-admin"
                       onClick={() => handleSetActive('/attendance-admin')}
@@ -116,7 +125,7 @@ console.log("openSubmenu",openSubmenu)
                      Attendance (Admin)
                     </Link>
                   </li>
-                  <li className={activeLink === '/attendance-employee' ? 'active' : ''}>
+                  <li className={activeLink === '/attendance-employee' ? 'active yellow-text' : ''}>
                     <Link
                       to="/attendance-employee"
                       onClick={() => handleSetActive('/attendance-employee')}
@@ -125,7 +134,7 @@ console.log("openSubmenu",openSubmenu)
                     </Link>
                   </li>
 
-                  <li className={activeLink === '/departments' ? 'active' : ''}>
+                  <li className={activeLink === '/departments' ? 'active yellow-text' : ''}>
                     <Link
                       to="/departments"
                       onClick={() => handleSetActive('/departments')}
@@ -133,7 +142,7 @@ console.log("openSubmenu",openSubmenu)
                   Departments
                     </Link>
                   </li>
-                  <li className={activeLink === '/designations' ? 'active' : ''}>
+                  <li className={activeLink === '/designations' ? 'active yellow-text' : ''}>
                     <Link
                       to="/designations"
                       onClick={() => handleSetActive('/designations')}
@@ -141,7 +150,7 @@ console.log("openSubmenu",openSubmenu)
                  Designations
                     </Link>
                   </li>
-                  <li className={activeLink === '/timesheet' ? 'active' : ''}>
+                  <li className={activeLink === '/timesheet' ? 'active yellow-text' : ''}>
                     <Link
                       to="/timesheet"
                       onClick={() => handleSetActive('/timesheet')}
@@ -150,7 +159,7 @@ console.log("openSubmenu",openSubmenu)
                     </Link>
                   </li>
 
-                  <li className={activeLink === '/shift-scheduling' ? 'active' : ''}>
+                  <li className={activeLink === '/shift-scheduling' ? 'active yellow-text' : ''}>
                     <Link
                       to="/shift-scheduling"
                       onClick={() => handleSetActive('/shift-scheduling')}
@@ -158,7 +167,7 @@ console.log("openSubmenu",openSubmenu)
                Shift & Schedule
                     </Link>
                   </li>
-                  <li className={activeLink === '/overtime' ? 'active' : ''}>
+                  <li className={activeLink === '/overtime' ? 'active yellow-text' : ''}>
                     <Link
                       to="/overtime"
                       onClick={() => handleSetActive('/overtime')}

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Lock_screen = () => {
   return (
@@ -18,7 +17,7 @@ const Lock_screen = () => {
                 <div class="lock-user">
                   <img
                     src="assets/img/profiles/avatar-02.jpg"
-                    alt="User Image"
+                    alt="User_Image"
                     class="rounded-circle"
                   />
                   <h4>John Doe</h4>

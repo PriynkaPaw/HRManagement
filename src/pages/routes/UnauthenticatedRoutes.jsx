@@ -10,8 +10,8 @@ import Job_list from '../authPages/Job-list';
 const UnauthenticatedRoutes = () => {
   return (
     <Routes>
-        {/* <Route path="*" element={<Navigate to="/login" />} />
-        <Route path="/" element={<Navigate to="/login" />} /> */}
+        {/* <Route path="*" element={<Navigate to="/login" />} /> */}
+        <Route path="/" element={<Navigate to="/login" />} /> 
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/lock-screen" element={<Lock_screen />} />

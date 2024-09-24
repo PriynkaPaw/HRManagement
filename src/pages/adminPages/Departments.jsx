@@ -1,29 +1,27 @@
-import React, { useRef, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
 import ReactPaginate from "react-paginate";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { addDepartment, fetchDepartmentList, updateDepartment } from "../../reduxStore/Reducer/adminReducer";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 const Departments = () => {
-  const [departments] = useState([
-    { id: 1, name: "Web Development" },
-    { id: 2, name: "Application Development" },
-    { id: 3, name: "IT Management" },
-    { id: 4, name: "Accounts Management" },
-    { id: 5, name: "Support Management" },
-    { id: 6, name: "Marketing" },
+  const [departments, setDepartments] = useState([
+  
   ]);
   const [departmentDropdown, setDepartmentDropdown] = useState(null); 
   const [showEditDepartment, setShowEditDepartment] = useState(false);
   const [showAddDepartment, setShowAddDepartment] = useState(false);
   const [showDeleteDepartmentModal, setDeleteDepartmentModal] = useState(false);
+  const [selectedData, setSelectedData]  = useState("")
   const departmentList = useSelector((state)=> state.department.departments)
 
-  console.log("department List", departmentList)
   const toggleDropdown = (id) => {
     setDepartmentDropdown((prevId) => (prevId === id ? null : id));
   };
-  const ShowEditDepartmentModal = () => {setShowEditDepartment(!showEditDepartment);
+  const ShowEditDepartmentModal = (department) => {setShowEditDepartment(!showEditDepartment);
+    setSelectedData(department)
     setDepartmentDropdown(null); 
   }
   const ShowAddDepartmentModal = () =>{ setShowAddDepartment(!showAddDepartment);
@@ -33,15 +31,22 @@ const Departments = () => {
 
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 5;
-  const pageCount = Math.ceil(departmentList.length / itemsPerPage);
+  // const pageCount = Math.ceil(departmentList.length / itemsPerPage);
 
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
   };
   const departmentDropdownRef = useRef(null);
   const offset = currentPage * itemsPerPage;
-  const currentDepartments = departmentList.slice(offset, offset + itemsPerPage);
-
+  // const currentDepartments = departmentList.slice(offset, offset + itemsPerPage);
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchDepartmentList())
+      .then((res) => {
+        setDepartments(res.payload)
+      });
+  }, [dispatch]);
+  
   return (
     <div>
       <div className="page-wrapper">
@@ -83,7 +88,7 @@ const Departments = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {currentDepartments.map((department, index) => (
+                    {departmentList?.slice().reverse().map((department, index) => (
                       <tr key={department.id}>
                         <td>{department.id}</td>
                         <td>{department.name}</td>
@@ -106,7 +111,7 @@ const Departments = () => {
                                     className="dropdown-item"
                                     data-bs-toggle="modal"
                                     data-bs-target="#edit_department"
-                                    onClick={ShowEditDepartmentModal}
+                                    onClick={()=>ShowEditDepartmentModal(department)}
                                   >
                                     <i className="fa-solid fa-pencil m-r-5"></i>{" "}
                                     Edit
@@ -131,7 +136,7 @@ const Departments = () => {
                 </table>
 
                 {/* Pagination */}
-                <ReactPaginate
+                {/* <ReactPaginate
                   previousLabel={"Previous"}
                   nextLabel={"Next"}
                   breakLabel={"..."}
@@ -149,14 +154,14 @@ const Departments = () => {
                   breakClassName={"page-item"}
                   breakLinkClassName={"page-link"}
                   activeClassName={"active"}
-                />
+                /> */}
               </div>
             </div>
           </div>
         </div>
 
        {
-        showEditDepartment && <EditDepartmentModal ShowEditDepartmentModal={ShowEditDepartmentModal} />
+        showEditDepartment && <EditDepartmentModal ShowEditDepartmentModal={ShowEditDepartmentModal} selectedData={selectedData} />
        }
        {
         showDeleteDepartmentModal && <DeleteDepartmentModal ShowDeleteDepartmentModal={ShowDeleteDepartmentModal} />
@@ -179,15 +184,35 @@ export default Departments;
 
 const AddDepartmentModal =({ShowAddDepartmentModal})=>{
   const [departmentData, setDepartmentData] = useState({
-    id:Math.random(),
-    name:""
+    name:"",
+    code: "106",
+    description:"department"
   })
 
-  const handleSubmit =(e)=>{
+  // const handleSubmit =(e)=>{
+  //   e.preventDefault()
+  //   console.log("department name",departmentData )
+  //   ShowAddDepartmentModal()
+  // }
+const dispatch = useDispatch()
+  const handleSubmit = async(e)=>{
     e.preventDefault()
-    console.log("department name",departmentData )
-    ShowAddDepartmentModal()
-  }
+    console.log('department Form data', departmentData)
+    try {
+      dispatch(addDepartment(departmentData))
+     ShowAddDepartmentModal()
+     
+   } catch (err) {
+     return err
+   }
+}
+const handleOnChange =(e)=>{
+  const {name, value} = e.target
+  setDepartmentData({
+    ...departmentData,
+    [name]:value
+  })
+}
 
   return (
     <>
@@ -219,7 +244,7 @@ const AddDepartmentModal =({ShowAddDepartmentModal})=>{
                     <label className="col-form-label">
                       Department Name <span className="text-danger">*</span>
                     </label>
-                    <input className="form-control" name="name" value={departmentData.name} onChange={(e)=>setDepartmentData(e.target.value)} type="text" />
+                    <input className="form-control" name="name" value={departmentData.name} onChange={handleOnChange} type="text" />
                   </div>
                   <div className="submit-section">
                     <button className="btn btn-primary submit-btn" onClick={handleSubmit}>
@@ -234,7 +259,33 @@ const AddDepartmentModal =({ShowAddDepartmentModal})=>{
   )
 }
 
-const EditDepartmentModal =({ShowEditDepartmentModal}) =>{
+const EditDepartmentModal =({ShowEditDepartmentModal,selectedData}) =>{
+  const [departmentData, setDepartmentData] = useState({
+    id: selectedData.id,
+    name:selectedData.name,
+    code: selectedData.code,
+    description:"department"
+  })
+
+  const dispatch = useDispatch()
+  const handleSubmit = async(e)=>{
+    e.preventDefault()
+    console.log('department Form data', departmentData)
+    try {
+      dispatch(updateDepartment(departmentData))
+      ShowEditDepartmentModal()
+     
+   } catch (err) {
+     return err
+   }
+}
+const handleOnChange =(e)=>{
+  const {name, value} = e.target
+  setDepartmentData({
+    ...departmentData,
+    [name]:value
+  })
+}
   return (
     <>
       <div class="modal-backdrop fade show"></div>
@@ -268,11 +319,13 @@ const EditDepartmentModal =({ShowEditDepartmentModal}) =>{
                     <input
                       className="form-control"
                       type="text"
-                      defaultValue="IT Management"
+                     name="name"
+                     value={departmentData.name}
+                     onChange={handleOnChange}
                     />
                   </div>
                   <div className="submit-section">
-                    <button className="btn btn-primary submit-btn">Save</button>
+                    <button className="btn btn-primary submit-btn" onClick={handleSubmit}>Save</button>
                   </div>
                 </form>
               </div>

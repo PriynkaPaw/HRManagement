@@ -4,13 +4,13 @@ import AuthenticatedRoutes from './pages/routes/AuthenticatedRoutes';
 import UnauthenticatedRoutes from './pages/routes/UnauthenticatedRoutes';
 
 const App = () => {
-  const isAuthenticated = true;
+  const isAuthenticated = localStorage.getItem("isLogin") === "true";
+  
+  console.log("isAuthenticated", isAuthenticated);
 
   return (
     <Router>
-      {/* {isAuthenticated ? <AuthenticatedRoutes /> : <UnauthenticatedRoutes />} */}
-      <AuthenticatedRoutes />
-      <UnauthenticatedRoutes />
+      {isAuthenticated ? <AuthenticatedRoutes /> : <UnauthenticatedRoutes />}
     </Router>
   );
 };

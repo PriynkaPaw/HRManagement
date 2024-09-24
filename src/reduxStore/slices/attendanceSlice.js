@@ -31,7 +31,6 @@ const initialState = {
         day21: "present",
         day22: "present",
         day23: "present",
-        day23: "present",
         day24: "present",
         day25: "present",
         day26: "present",

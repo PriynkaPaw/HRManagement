@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Dashboard from "../adminPages/Admin-dashboard";
 import AllEmployees from "../adminPages/AllEmployees";
 import AddEmployee from "../adminPages/AddEmployee";
@@ -21,7 +21,7 @@ const AuthenticatedRoutes = () => {
   return (
     <Layout>
       <Routes>
-        <Route path="*" element={<Navigate to="/dashboard" />} />
+        {/* <Route path="*" element={<Navigate to="/dashboard" />} /> */}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/all-employees" element={<AllEmployees />} />
         <Route path="/add-employee" element={<AddEmployee />} />

@@ -10,7 +10,7 @@ body {
     font-weight: 400;
     color: #4D5154;
     background-color: #f7f7f7;
-    overflow-x: hidden;
+    overflow-x: hidden; 
     line-height: 1.5;
     margin: 0;
    
@@ -21,3 +21,40 @@ body {
     /* color: red; */
     font-size: 19px;
 }
+/* 
+.sidebar-menu li.active {
+    background-color: inherit  !important; 
+  } */
+  
+  .sidebar-menu li.active.yellow-text a {
+    color: #FF902F  !important; 
+    background-color: transparent !important;
+
+  }
+
+
+  .sidebar .sidebar-menu ul ul li a.active {
+    text-decoration: none !important;
+}
+
+.sidebar .sidebar-menu ul ul {
+    background: #373B3E !important;
+  
+}
+
+.sidebar{
+    background: #212529 !important;
+
+}
+.dropdown-menu.notifications {
+    position: absolute !important; /* Make sure it’s positioned absolutely */
+    top: 100%; /* Position it below the bell icon */
+    margin-top: 5px !important; /* Add a little space */
+    z-index: 1000 !important; /* Ensure it appears above other elements */
+    min-width: 250px; /* Set a minimum width */
+  }
+  
+  .dropdown-menu.notifications.show {
+    display: block !important; /* Ensure it shows when active */
+  }
+  

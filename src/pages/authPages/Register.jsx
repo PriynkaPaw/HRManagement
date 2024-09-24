@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { registerUser } from "../../reduxStore/Reducer/authReducer";
 
 const Register = () => {
-  const navigate = useNavigate()
 const dispatch = useDispatch()
   const [formData, setFormData] = useState({
     email:"",

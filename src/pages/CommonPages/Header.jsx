@@ -2,63 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleSidebar } from '../../reduxStore/slices/headerSlice';
 import { toggleSubmenu } from "../../reduxStore/slices/sidebarSlice";
-import { useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
-  //   const dispatch = useDispatch();
-  //   const opensidebar = useSelector((state) => state.header.opensidebar); // Note the `state.header` here
-  //   const [toggleSubMenu , setToggleSubMenu] = useState()
-
-  //   const handleSubmenuToggle = (index) => {
-  //     dispatch(toggleSubmenu(index));
-  //   };
-  
-  //   const handleSidebarToggle = () => {
-  //     dispatch(toggleSidebar());
-  //     handleSubmenuToggle(1)
-  //   };
-
-  // const openSubmenu = useSelector((state) => state.sidebar.openSubmenu);
-  // const [activeLink, setActiveLink] = useState(null);
-  // const location = useLocation();
-
  
- 
-
-  // useEffect(() => {
-  //   const currentPath = location.pathname;
-  //   setActiveLink(currentPath);
-
-  //   if (openSubmenu !== null && currentPath && !currentPath.includes(activeLink)) {
-  //     dispatch(toggleSubmenu(null)); 
-  //   }
-  // }, [location, dispatch, openSubmenu, activeLink]);
-  //   useEffect(()=>{
-  //     let sidebar = document.getElementById('main_body');
-  //     if(opensidebar){
-  //       sidebar.setAttribute("class", "mini-sidebar");
-  //     } else{
-  //       sidebar.removeAttribute('class')
-  //     }
-
-  //   },[opensidebar])
 
   const dispatch = useDispatch();
 const opensidebar = useSelector((state) => state.header.opensidebar);
+const [adminDropDown, setAdminDropDown] = useState(false)
+const [notificationDropDown,setNotificationDropDown] = useState(false)
 
-
-// const handleSidebarToggle = () => {
-//   dispatch(toggleSidebar());
-
-//   if (opensidebar) {
-//     dispatch(toggleSubmenu(null)); 
-//   } else {
-//     const lastOpenSubmenu = localStorage.getItem('openSubmenu');
-//     if (lastOpenSubmenu !== null) {
-//       dispatch(toggleSubmenu(Number(lastOpenSubmenu)));
-//     }
-//   }
-// };
 const openSubmenu = useSelector((state) => state.sidebar.openSubmenu);
 const openSubmenuByHeader = useSelector((state) => state.sidebar.openSubmenuByHeader)
 const handleSidebarToggle = () => {
@@ -75,7 +28,12 @@ console.log("open openSubmenu in header",openSubmenuByHeader)
 
   }
 };
+const navigate = useNavigate()
+const handleLogout = () => {
+  localStorage.setItem('isLogin',false)
+  navigate('/login')
 
+};
 
 
 
@@ -130,11 +88,19 @@ useEffect(() => {
               href="#"
               class="dropdown-toggle nav-link"
               data-bs-toggle="dropdown"
+              onClick={()=>setNotificationDropDown(!notificationDropDown)}
+
             >
               <i class="fa-regular fa-bell"></i>{" "}
               <span class="badge rounded-pill">3</span>
             </a>
-            <div class="dropdown-menu notifications">
+            {
+              notificationDropDown &&  <div class="dropdown-menu notifications show"   style={{ 
+                position: 'absolute', 
+                inset: '0px 0px auto auto',
+                margin: '0px', 
+                transform: 'translate(-5px, 42px)'
+              }}>
               <div class="topnav-dropdown-header">
                 <span class="notification-title">Notifications</span>
                 <a href="javascript:void(0)" class="clear-noti">
@@ -273,6 +239,8 @@ useEffect(() => {
                 <a href="activities.html">View all Notifications</a>
               </div>
             </div>
+            }
+           
           </li>
 
        
@@ -282,6 +250,7 @@ useEffect(() => {
               href="#"
               class="dropdown-toggle nav-link"
               data-bs-toggle="dropdown"
+              onClick={()=>setAdminDropDown(!adminDropDown)}
             >
               <span class="user-img">
                 <img src="assets/img/avatar/avatar-27.jpg" alt="User Image" />
@@ -289,17 +258,20 @@ useEffect(() => {
               </span>
               <span>Admin</span>
             </a>
-            <div class="dropdown-menu">
+            {
+            adminDropDown &&   <div class="dropdown-menu show">
               <a class="dropdown-item" href="profile.html">
                 My Profile
               </a>
               <a class="dropdown-item" href="settings.html">
                 Settings
               </a>
-              <a class="dropdown-item" href="index.html">
+              <a class="dropdown-item" to="/login" onClick={handleLogout}>
                 Logout
               </a>
             </div>
+            }
+          
           </li>
         </ul>
 
@@ -319,9 +291,9 @@ useEffect(() => {
             <a class="dropdown-item" href="settings.html">
               Settings
             </a>
-            <a class="dropdown-item" href="index.html">
+            <Link class="dropdown-item" href="index.html" > 
               Logout
-            </a>
+            </Link>
           </div>
         </div>
       </div>

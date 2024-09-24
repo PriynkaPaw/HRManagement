@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AddHoliday from "./AddHoliday";
-import { deleteHoliday, updateHoliday } from "../../reduxStore/slices/holidaysSlice";
+import { fetchHolidayList, updateHoliday } from "../../reduxStore/Reducer/adminReducer";
+import { format } from "date-fns";
 
 const HolidaysList = () => {
   const holidayDropdownRef = useRef({});
@@ -13,6 +14,7 @@ const HolidaysList = () => {
   const [showEditHoliday, setShowEditHoliday] = useState(false);
   const [showDeleteHoliday, setShowDeleteHoliday] = useState(false);
   const [selectedHoliday, setSelectedHoliday] = useState(null);
+  const [holidays ,setHolidays] = useState("")
 
 
   // console.log("holidayData: ", holidayData);
@@ -48,6 +50,14 @@ const HolidaysList = () => {
 
 
   };
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchHolidayList())
+      .then((res) => {
+        setHolidays(res.payload)
+      });
+  }, [dispatch]);
   // useEffect(() => {
   //   document.addEventListener("mousedown", handleClickOutside);
   //   return () => {
@@ -101,12 +111,12 @@ const HolidaysList = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {holidayListData &&
-                    holidayListData.map((data, index) => (
+                  {holidays &&
+                    holidays.map((data, index) => (
                       <tr class="holiday-completed">
                         <td>{data?.id}</td>
-                        <td>{data?.title}</td>
-                        <td>{data?.holiday_date}</td>
+                        <td>{data?.name}</td>
+                        <td>{data?.date ? format(new Date(data.date), 'd MMMM yyyy') : ''}</td>
                         <td>{data?.Day}</td>
                         <td class="text-end">
                           {/* <div class="dropdown dropdown-action">
@@ -203,16 +213,31 @@ export default HolidaysList;
 const EditHoliday = ({ ShowEditHolidayModal, selectedHoliday }) => {
 
   const [formData, setFormData] = useState({
-    title:selectedHoliday.title,
-    holiday_date:selectedHoliday.holiday_date
+    id:selectedHoliday.id,
+    name:selectedHoliday.name,
+    date:selectedHoliday.date,
+    description: selectedHoliday.description
   })
 
   const dispatch = useDispatch()
-  console.log("updated data", selectedHoliday)
-  const handleUpdate =()=>{
-     dispatch(updateHoliday(selectedHoliday))
+  console.log("updated data", formData)
+
+  const handleUpdate =(e)=>{
+    e.preventDefault()
+     dispatch(updateHoliday(formData))
+     ShowEditHolidayModal()
   }
   
+  const handleOnChange =(e)=>{
+
+    const {name, value} = e.target
+    setFormData({
+      ...formData,
+      [name]:value
+    })
+
+  }
+
   return (
     <>
       <div class="modal-backdrop fade show"></div>
@@ -238,7 +263,7 @@ const EditHoliday = ({ ShowEditHolidayModal, selectedHoliday }) => {
                 <label class="col-form-label">
                   Holiday Name <span class="text-danger">*</span>
                 </label>
-                <input class="form-control" value={formData.title} type="text" />
+                <input class="form-control" value={formData.name} name="name" type="text" onChange={handleOnChange} />
               </div>
               <div class="input-block mb-3">
                 <label class="col-form-label">
@@ -247,10 +272,18 @@ const EditHoliday = ({ ShowEditHolidayModal, selectedHoliday }) => {
                 <div class="cal-icon">
                   <input
                     class="form-control datetimepicker"
-                    value={formData.holiday_date}
+                    value={formData.date}
+                    name="date"
+                    onChange={handleOnChange}
                     type="text"
                   />
                 </div>
+              </div>
+              <div class="input-block mb-3">
+                <label class="col-form-label">
+                  Holiday Description <span class="text-danger">*</span>
+                </label>
+                <input class="form-control" value={formData.description} name="description" type="text" onChange={handleOnChange} />
               </div>
               <div class="submit-section">
                 <button class="btn btn-primary submit-btn" onClick={handleUpdate} >Save</button>
@@ -269,7 +302,7 @@ const DeleteHoliday =({ShowDeleteHolidayModal,selectedHoliday}) =>{
   console.log("Selected holiday ID", selectedHoliday)
   const dispatch = useDispatch()
   const handleDelete =()=>{
-    dispatch(deleteHoliday(selectedHoliday))
+    // dispatch(deleteHoliday(selectedHoliday))
     ShowDeleteHolidayModal()
   }
   return (

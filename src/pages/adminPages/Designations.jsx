@@ -213,7 +213,7 @@ function Designations() {
   
         {/* Modals */}
         {showEditDesignation && (
-          <EditDesignationModal ShowEditDesignationModal={ShowEditDesignationModal} selectedDesignation={selectedDesignation} />
+          <EditDesignationModal ShowEditDesignationModal={ShowEditDesignationModal} selectedDesignation={selectedDesignation} departments ={departments} />
         )}
         {showDeleteDesignationModal && (
           <DeleteDesignationModal ShowDeleteDesignationModal={ShowDeleteDesignationModal} />
@@ -307,7 +307,7 @@ const AddDesignationModdal =({ShowAddDesignationModal,departments})=>{
     )
 }
 
-const EditDesignationModal =({ShowEditDesignationModal,selectedDesignation})=>{
+const EditDesignationModal =({ShowEditDesignationModal,selectedDesignation ,departments})=>{
   console.log("selectedDesignation",selectedDesignation)
 
   const [designationForm , setDesignationForm] = useState({
@@ -327,12 +327,13 @@ const EditDesignationModal =({ShowEditDesignationModal,selectedDesignation})=>{
  }
 
  const handleSubmit = async(e)=>{
+  e.preventDefault()
      console.log('designation Form data', designationForm)
      try {
       const token = process.env.REACT_APP_TOKEN
   
  
-      const response = await axios.post('http://192.168.1.183:8888/api/designations/', designationForm, {
+      const response = await axios.put(`http://192.168.1.183:8888/api/designations/${selectedDesignation.id}/`, designationForm, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -361,19 +362,21 @@ const EditDesignationModal =({ShowEditDesignationModal,selectedDesignation})=>{
     <form>
     <div class="input-block mb-3">
     <label class="col-form-label">Designation Name <span class="text-danger">*</span></label>
-    <input class="form-control" value="Web Developer" type="text" />
+    <input class="form-control" value={designationForm.name} name='name' onChange={handleOnChange} type="text" />
     </div>
     <div class="input-block mb-3">
     <label class="col-form-label">Department <span class="text-danger">*</span></label>
-    <select class="form-control select">
+    <select class="form-control select" name='department' value={designationForm.department} onChange={handleOnChange}>
     <option>Select Department</option>
-    <option>Web Development</option>
-    <option>IT Management</option>
-    <option>Marketing</option>
+    {departments.map((desg) => (
+                          <option key={desg.id} value={desg.id}>
+                            {desg.name}
+                          </option>
+                        ))}
     </select>
     </div>
     <div class="submit-section">
-    <button class="btn btn-primary submit-btn">Save</button>
+    <button class="btn btn-primary submit-btn" onClick={handleSubmit}>Save</button>
     </div>
     </form>
     </div>

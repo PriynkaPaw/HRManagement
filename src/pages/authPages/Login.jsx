@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -26,7 +25,12 @@ const Login = () => {
    try {
     
     dispatch(loginUser(loginFormData))
+    localStorage.setItem('isLogin',true)
+  const Login = localStorage.getItem("isLogin") === "true";
+   if(Login){
     navigate('/dasboard')
+
+   }
     
    } catch (error) {
     
