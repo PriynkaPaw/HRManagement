@@ -8,30 +8,30 @@ const DeleteEmployee = ({employeeId, ShowDeleteEmployeeModal}) => {
   };
   return (
 <>
-<div class="modal-backdrop fade show"></div>
+<div className="modal-backdrop fade show"></div>
 
-<div class="modal custom-modal d-block" id="delete_employee" role="dialog">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-body">
-                <div class="form-header">
+<div className="modal custom-modal d-block" id="delete_employee" role="dialog">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-body">
+                <div className="form-header">
                   <h3>Delete Employee</h3>
                   <p>Are you sure want to delete?</p>
                 </div>
-                <div class="modal-btn delete-action">
-                  <div class="row">
-                    <div class="col-6">
+                <div className="modal-btn delete-action">
+                  <div className="row">
+                    <div className="col-6">
                       <a
                         onClick={handleDelete}
-                        class="btn btn-primary continue-btn"
+                        className="btn btn-primary continue-btn"
                       >
                         Delete
                       </a>
                     </div>
-                    <div class="col-6" onClick={ShowDeleteEmployeeModal}>
+                    <div className="col-6" onClick={ShowDeleteEmployeeModal}>
                       <a
                         data-bs-dismiss="modal"
-                        class="btn btn-primary cancel-btn"
+                        className="btn btn-primary cancel-btn"
                       >
                         Cancel
                       </a>

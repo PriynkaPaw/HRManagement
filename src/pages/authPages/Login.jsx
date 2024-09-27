@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../reduxStore/Reducer/authReducer";
+import { storeTokensInSession } from "../../utils/Utils";
 
 const Login = () => {
   const navigate = useNavigate()
@@ -10,89 +11,158 @@ const Login = () => {
     email:"",
     password:""
    })
+   const [showPassword, setShowPassword] = useState(false);
+   const [errors, setErrors] = useState({ email: "", password: "" });
 
-   const handleChange =(e)=>{
-      const {name, value} = e.target
-      setLoginFormData({
-        ...loginFormData,
-        [name]: value,
-      });
-   }
+   const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
-   const handleSubmit =async(e)=>{
-    e.preventDefault()
-    console.log("loginForm Data", loginFormData)
-   try {
-    
-    dispatch(loginUser(loginFormData))
-    localStorage.setItem('isLogin',true)
-  const Login = localStorage.getItem("isLogin") === "true";
-   if(Login){
-    navigate('/dasboard')
-
-   }
-    
-   } catch (error) {
-    
-   }
-   }
+  const handleChange = (e) => {
+     const { name, value } = e.target;
+     setLoginFormData({
+       ...loginFormData,
+       [name]: value,
+     });
+   };
+   
+   const validateForm = () => {
+     let valid = true;
+     const newErrors = { email: "", password: "" };
+   
+     if (!loginFormData.email) {
+       newErrors.email = "Email is required";
+       valid = false;
+     } 
+     else if (!/\S+@\S+\.\S+/.test(loginFormData.email)) {
+       newErrors.email = "Please enter a valid email";
+       valid = false;                                
+     }
+   
+     if (!loginFormData.password) {
+       newErrors.password = "Password is required";
+       valid = false;
+     }
+   
+     setErrors(newErrors);
+     return valid;
+   };
+   
+  //  const handleSubmit2 = async (e) => {
+	// 	e.preventDefault();
+	// 	const data = validate(formData);
+	// 	if (data) {
+	// 		setLoading(true);
+	// 		dispatch(postLogin(formData))
+	// 			.then((response) => {
+	// 				const cleanedResponse = { response: response.payload }
+	// 				const Authentication = cleanedResponse;
+	// 				storeTokensInSession(Authentication);
+	// 				storeUserInfo(Authentication);
+	// 				setLoading(false);
+	// 			})
+	// 			.catch(() => {
+	// 				setLoading(false);
+	// 			});
+	// 		rememberMeHandler();
+	// 	}
+	// };
+   const handleSubmit = async (e) => {
+     e.preventDefault();
+     console.log("loginFormData:", loginFormData);
+   
+     if (validateForm()) {
+       try {
+      //    dispatch(loginUser(loginFormData)).then((response) => {
+      //     console.log("response", response)
+			// 		const cleanedResponse = { response: response.payload }
+			// 		const Authentication = cleanedResponse;
+      //     console.log('Authentication: ', Authentication);
+			// 		storeTokensInSession(Authentication);
+      //     navigate('/dashboard')
+			// 	}
+      // )
+			// 	.catch(() => {
+			// 	});
+   
+        //  localStorage.setItem('isLogin', true);
+   
+        //  const Login = localStorage.getItem("isLogin") === "true";
+        //  if (Login) {            
+        //    navigate('/dashboard');
+        //  }                       
+       } catch (error) {
+         console.error("Login failed", error);
+       }
+     }
+   };
   return (
-    <div class="account-page">
-      <div class="main-wrapper">
-        <div class="account-content">
-          <Link to="/job-list" class="btn btn-primary apply-btn"> Apply Job</Link>
-          <div class="container">
-            <div class="account-logo">
+    <div className="account-page">
+      <div className="main-wrapper">
+        <div className="account-content">
+          <Link to="/job-list" className="btn btn-primary apply-btn"> Apply Job</Link>
+          <div className="container">
+            <div className="account-logo">
               <a href="admin-dashboard.html">
                 <img src="assets/img/logo2.png" alt="Dreamguy's Technologies" />
               </a>
             </div>
 
-            <div class="account-box">
-              <div class="account-wrapper">
-                <h3 class="account-title">Login</h3>
-                <p class="account-subtitle">Access to our dashboard</p>
+            <div className="account-box">
+              <div className="account-wrapper">
+                <h3 className="account-title">Login</h3>
+                <p className="account-subtitle">Access to our dashboard</p>
 
                 <form >
-                  <div class="input-block mb-4">
-                    <label class="col-form-label">Email Address</label>
+                  <div className="input-block mb-4">
+                    <label className="col-form-label">Email Address</label>
                     <input
-                      class="form-control"
+                      className="form-control"
                       type="text"
                       name="email"
                       value={loginFormData.email}
                       onChange={handleChange}
+                      required
                     />
+                    {errors.email && <span className="text-danger">{errors.email}</span>}
                   </div>
-                  <div class="input-block mb-4">
-                    <div class="row align-items-center">
-                      <div class="col">
-                        <label class="col-form-label">Password</label>
+                  <div className="input-block mb-4">
+                    <div className="row align-items-center">
+                      <div className="col">
+                        <label className="col-form-label">Password</label>
                       </div>
-                      <div class="col-auto">
-                        <Link class="text-muted" to="/forgot-password"> Forgot password?</Link>
+                      <div className="col-auto">
+                        <Link className="text-muted" to="/forgot-password"> Forgot password?</Link>
                       </div>
                     </div>
-                    <div class="position-relative">
+                    <div className="position-relative">
                       <input
-                        class="form-control"
-                        type="password"
+                        className="form-control"
+                        type={showPassword ? "text" : "password"}
                         name ="password"
                         value={loginFormData.password}
                         onChange={handleChange}
+                        required
                       />
-                      <span
-                        class="fa-solid fa-eye-slash"
+                      {/* <span
+                        className="fa-solid fa-eye-slash"
                         id="toggle-password"
-                      ></span>
+                      ></span> */}
+                        <span
+        className={`fa-solid ${showPassword ? "fa-eye" : "fa-eye-slash"}`}
+        id="toggle-password"
+        onClick={togglePasswordVisibility}
+       
+      ></span>
+                      {errors.password && <span className="text-danger">{errors.password}</span>}
                     </div>
                   </div>
-                  <div class="input-block mb-4 text-center">
-                    <button class="btn btn-primary account-btn" type="submit" onClick={handleSubmit}>
+                  <div className="input-block mb-4 text-center">
+                    <button className="btn btn-primary account-btn" type="submit" onClick={handleSubmit}>
                       Login
                     </button>
                   </div>
-                  <div class="account-footer">
+                  <div className="account-footer">
                     <p>
                       Don't have an account yet?
                       {/* <a href="Register.jsx">Register</a> */}

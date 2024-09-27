@@ -267,26 +267,26 @@ const AddDesignationModdal =({ShowAddDesignationModal,departments})=>{
 
     return (
         <>
-      <div class="modal-backdrop fade show"></div>
+      <div className="modal-backdrop fade show"></div>
 
-          <div id="add_designation" class="modal custom-modal d-block" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-    <div class="modal-header">
-    <h5 class="modal-title">Add Designation</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={ShowAddDesignationModal}> 
+          <div id="add_designation" className="modal custom-modal d-block" role="dialog">
+    <div className="modal-dialog modal-dialog-centered" role="document">
+    <div className="modal-content">
+    <div className="modal-header">
+    <h5 className="modal-title">Add Designation</h5>
+    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={ShowAddDesignationModal}> 
     <span aria-hidden="true">&times;</span>
     </button>
     </div>
-    <div class="modal-body">
+    <div className="modal-body">
     <form>
-    <div class="input-block mb-3">
-    <label class="col-form-label">Designation Name <span class="text-danger">*</span></label>
-    <input class="form-control" type="text" name='name' value={designationForm.name}  onChange={handleOnChange} />
+    <div className="input-block mb-3">
+    <label className="col-form-label">Designation Name <span className="text-danger">*</span></label>
+    <input className="form-control" type="text" name='name' value={designationForm.name}  onChange={handleOnChange} />
     </div>
-    <div class="input-block mb-3">
-    <label class="col-form-label">Department <span class="text-danger">*</span></label>
-    <select class="form-control select" name='department' value={designationForm.department}  onChange={handleOnChange}>
+    <div className="input-block mb-3">
+    <label className="col-form-label">Department <span className="text-danger">*</span></label>
+    <select className="form-control select" name='department' value={designationForm.department}  onChange={handleOnChange}>
     <option>Select Department</option>
     {departments.map((desg) => (
                           <option key={desg.id} value={desg.id}>
@@ -295,8 +295,8 @@ const AddDesignationModdal =({ShowAddDesignationModal,departments})=>{
                         ))}
     </select>
     </div>
-    <div class="submit-section">
-    <button class="btn btn-primary submit-btn" onClick={handleSubmit}>Submit</button>
+    <div className="submit-section">
+    <button className="btn btn-primary submit-btn" onClick={handleSubmit}>Submit</button>
     </div>
     </form>
     </div>
@@ -347,26 +347,26 @@ const EditDesignationModal =({ShowEditDesignationModal,selectedDesignation ,depa
 
     return (
         <>
-      <div class="modal-backdrop fade show"></div>
+      <div className="modal-backdrop fade show"></div>
 
-            <div id="edit_designation" class="modal custom-modal d-block" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-    <div class="modal-header">
-    <h5 class="modal-title">Edit Designation</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={ShowEditDesignationModal}>
+            <div id="edit_designation" className="modal custom-modal d-block" role="dialog">
+    <div className="modal-dialog modal-dialog-centered" role="document">
+    <div className="modal-content">
+    <div className="modal-header">
+    <h5 className="modal-title">Edit Designation</h5>
+    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={ShowEditDesignationModal}>
     <span aria-hidden="true">&times;</span>
     </button>
     </div>
-    <div class="modal-body">
+    <div className="modal-body">
     <form>
-    <div class="input-block mb-3">
-    <label class="col-form-label">Designation Name <span class="text-danger">*</span></label>
-    <input class="form-control" value={designationForm.name} name='name' onChange={handleOnChange} type="text" />
+    <div className="input-block mb-3">
+    <label className="col-form-label">Designation Name <span className="text-danger">*</span></label>
+    <input className="form-control" value={designationForm.name} name='name' onChange={handleOnChange} type="text" />
     </div>
-    <div class="input-block mb-3">
-    <label class="col-form-label">Department <span class="text-danger">*</span></label>
-    <select class="form-control select" name='department' value={designationForm.department} onChange={handleOnChange}>
+    <div className="input-block mb-3">
+    <label className="col-form-label">Department <span className="text-danger">*</span></label>
+    <select className="form-control select" name='department' value={designationForm.department} onChange={handleOnChange}>
     <option>Select Department</option>
     {departments.map((desg) => (
                           <option key={desg.id} value={desg.id}>
@@ -375,8 +375,8 @@ const EditDesignationModal =({ShowEditDesignationModal,selectedDesignation ,depa
                         ))}
     </select>
     </div>
-    <div class="submit-section">
-    <button class="btn btn-primary submit-btn" onClick={handleSubmit}>Save</button>
+    <div className="submit-section">
+    <button className="btn btn-primary submit-btn" onClick={handleSubmit}>Save</button>
     </div>
     </form>
     </div>
@@ -391,23 +391,23 @@ const EditDesignationModal =({ShowEditDesignationModal,selectedDesignation ,depa
 const DeleteDesignationModal =({ShowDeleteDesignationModal}) =>{
     return (
         <>
-      <div class="modal-backdrop fade show"></div>
+      <div className="modal-backdrop fade show"></div>
 
-        <div class="modal custom-modal d-block" id="delete_designation" role="dialog">
-    <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-    <div class="modal-body">
-    <div class="form-header">
+        <div className="modal custom-modal d-block" id="delete_designation" role="dialog">
+    <div className="modal-dialog modal-dialog-centered">
+    <div className="modal-content">
+    <div className="modal-body">
+    <div className="form-header">
     <h3>Delete Designation</h3>
     <p>Are you sure want to delete?</p>
     </div>
-    <div class="modal-btn delete-action">
-    <div class="row">
-    <div class="col-6">
-    <a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+    <div className="modal-btn delete-action">
+    <div className="row">
+    <div className="col-6">
+    <a href="javascript:void(0);" className="btn btn-primary continue-btn">Delete</a>
     </div>
-    <div class="col-6">
-    <a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn" onClick={ShowDeleteDesignationModal}>Cancel</a>
+    <div className="col-6">
+    <a href="javascript:void(0);" data-bs-dismiss="modal" className="btn btn-primary cancel-btn" onClick={ShowDeleteDesignationModal}>Cancel</a>
     </div>
     </div>
     </div>

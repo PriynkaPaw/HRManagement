@@ -30,46 +30,46 @@ const dispatch = useDispatch()
     }
   }
   return (
-    <div class="account-page">
-      <div class="main-wrapper">
-        <div class="account-content">
-          <div class="container">
-            <div class="account-logo">
+    <div className="account-page">
+      <div className="main-wrapper">
+        <div className="account-content">
+          <div className="container">
+            <div className="account-logo">
               {/* <a href="admin-dashboard.html"> */}
                 <img src="assets/img/logo2.png" alt="Dreamguy's Technologies" />
               {/* </a> */}
             </div>
 
-            <div class="account-box">
-              <div class="account-wrapper">
-                <h3 class="account-title">Register</h3>
-                <p class="account-subtitle">Access to our dashboard</p>
+            <div className="account-box">
+              <div className="account-wrapper">
+                <h3 className="account-title">Register</h3>
+                <p className="account-subtitle">Access to our dashboard</p>
 
                 <form >
-                  <div class="input-block mb-4">
-                    <label class="col-form-label">
-                      Email<span class="mandatory">*</span>
+                  <div className="input-block mb-4">
+                    <label className="col-form-label">
+                      Email<span className="mandatory">*</span>
                     </label>
-                    <input class="form-control" type="text"  name="email" value={formData.email} onChange={handleChange} />
+                    <input className="form-control" type="text"  name="email" value={formData.email} onChange={handleChange} />
                   </div>
-                  <div class="input-block mb-4">
-                    <label class="col-form-label">
-                      Password<span class="mandatory">*</span>
+                  <div className="input-block mb-4">
+                    <label className="col-form-label">
+                      Password<span className="mandatory">*</span>
                     </label>
-                    <input class="form-control" type="password" name="password" value={formData.password} onChange={handleChange} />
+                    <input className="form-control" type="password" name="password" value={formData.password} onChange={handleChange} />
                   </div>
-                  {/* <div class="input-block mb-4">
-                    <label class="col-form-label">
-                      Repeat Password<span class="mandatory">*</span>
+                  {/* <div className="input-block mb-4">
+                    <label className="col-form-label">
+                      Repeat Password<span className="mandatory">*</span>
                     </label>
-                    <input class="form-control" type="password" name="confirm_password" value={formData.confirm_password} onChange={handleChange} />
+                    <input className="form-control" type="password" name="confirm_password" value={formData.confirm_password} onChange={handleChange} />
                   </div> */}
-                  <div class="input-block mb-4 text-center">
-                    <button class="btn btn-primary account-btn" type="submit" onClick={handleSubmit}>
+                  <div className="input-block mb-4 text-center">
+                    <button className="btn btn-primary account-btn" type="submit" onClick={handleSubmit}>
                       Register
                     </button>
                   </div>
-                  <div class="account-footer">
+                  <div className="account-footer">
                     <p>
                       Already have an account? 
                       {/* <a href="index.html">Login</a> */}

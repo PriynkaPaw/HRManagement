@@ -6,33 +6,33 @@ function AttendanceAdmin() {
   console.log("employees: ", employees);
   return (
     <div>
-      <div class="page-wrapper">
-        <div class="content container-fluid">
-          <div class="page-header">
-            <div class="row">
-              <div class="col-sm-12">
-                <h3 class="page-title">Attendance</h3>
-                <ul class="breadcrumb">
-                  <li class="breadcrumb-item">
+      <div className="page-wrapper">
+        <div className="content container-fluid">
+          <div className="page-header">
+            <div className="row">
+              <div className="col-sm-12">
+                <h3 className="page-title">Attendance</h3>
+                <ul className="breadcrumb">
+                  <li className="breadcrumb-item">
                     <a href="admin-dashboard.html">Dashboard</a>
                   </li>
-                  <li class="breadcrumb-item active">Attendance</li>
+                  <li className="breadcrumb-item active">Attendance</li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <div class="row filter-row">
-            <div class="col-sm-6 col-md-3">
-              <div class="input-block mb-3 form-focus">
-                <input type="text" class="form-control floating" />
-                <label class="focus-label">Employee Name</label>
+          <div className="row filter-row">
+            <div className="col-sm-6 col-md-3">
+              <div className="input-block mb-3 form-focus">
+                <input type="text" className="form-control floating" />
+                <label className="focus-label">Employee Name</label>
               </div>
             </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="input-block mb-3 form-focus select-focus">
-                <label class="focus-label">Select Month</label>
-                <select class="form-control">
+            <div className="col-sm-6 col-md-3">
+              <div className="input-block mb-3 form-focus select-focus">
+                <label className="focus-label">Select Month</label>
+                <select className="form-control">
                   <option>-</option>
                   <option>Jan</option>
                   <option>Feb</option>
@@ -49,9 +49,9 @@ function AttendanceAdmin() {
                 </select>
               </div>
             </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="input-block mb-3 form-focus select-focus">
-                <select class="form-control select floating">
+            <div className="col-sm-6 col-md-3">
+              <div className="input-block mb-3 form-focus select-focus">
+                <select className="form-control select floating">
                   <option>-</option>
                   <option>2019</option>
                   <option>2018</option>
@@ -59,12 +59,12 @@ function AttendanceAdmin() {
                   <option>2016</option>
                   <option>2015</option>
                 </select>
-                <label class="focus-label">Select Year</label>
+                <label className="focus-label">Select Year</label>
               </div>
             </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="d-grid">
-                <a href="#" class="btn btn-success">
+            <div className="col-sm-6 col-md-3">
+              <div className="d-grid">
+                <a href="#" className="btn btn-success">
                   {" "}
                   Search{" "}
                 </a>
@@ -72,10 +72,10 @@ function AttendanceAdmin() {
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="table-responsive">
-                <table class="table table-striped custom-table table-nowrap mb-0">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="table-responsive">
+                <table className="table table-striped custom-table table-nowrap mb-0">
                   <thead>
                     <tr>
                       <th>Employee</th>
@@ -114,8 +114,8 @@ function AttendanceAdmin() {
                   <tbody>
                     <tr>
                       <td>
-                        <h2 class="table-avatar">
-                          <a class="avatar avatar-xs" href="profile.html">
+                        <h2 className="table-avatar">
+                          <a className="avatar avatar-xs" href="profile.html">
                             <img
                               src="assets/img/profiles/avatar-09.jpg"
                               alt="User Image"
@@ -130,7 +130,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -139,7 +139,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -148,7 +148,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -157,7 +157,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -166,7 +166,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -175,22 +175,22 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
-                        <div class="half-day">
-                          <span class="first-off">
+                        <div className="half-day">
+                          <span className="first-off">
                             <a
                               href="javascript:void(0);"
                               data-bs-toggle="modal"
                               data-bs-target="#attendance_info"
                             >
-                              <i class="fa-solid fa-check text-success"></i>
+                              <i className="fa-solid fa-check text-success"></i>
                             </a>
                           </span>
-                          <span class="first-off">
-                            <i class="fa fa-close text-danger"></i>
+                          <span className="first-off">
+                            <i className="fa fa-close text-danger"></i>
                           </span>
                         </div>
                       </td>
@@ -200,7 +200,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -209,17 +209,17 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
                         <a
@@ -227,16 +227,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -245,7 +236,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -254,7 +245,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -263,19 +254,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -284,21 +263,42 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
-                        <div class="half-day">
-                          <span class="first-off">
-                            <i class="fa fa-close text-danger"></i>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <div className="half-day">
+                          <span className="first-off">
+                            <i className="fa fa-close text-danger"></i>
                           </span>
-                          <span class="first-off">
+                          <span className="first-off">
                             <a
                               href="javascript:void(0);"
                               data-bs-toggle="modal"
                               data-bs-target="#attendance_info"
                             >
-                              <i class="fa-solid fa-check text-success"></i>
+                              <i className="fa-solid fa-check text-success"></i>
                             </a>
                           </span>
                         </div>
@@ -309,7 +309,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -318,11 +318,11 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
                         <a
@@ -330,16 +330,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -348,19 +339,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -369,14 +348,35 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <h2 class="table-avatar">
-                          <a class="avatar avatar-xs" href="profile.html">
+                        <h2 className="table-avatar">
+                          <a className="avatar avatar-xs" href="profile.html">
                             <img
                               src="assets/img/profiles/avatar-09.jpg"
                               alt="User Image"
@@ -391,7 +391,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -400,7 +400,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -409,7 +409,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -418,7 +418,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -427,7 +427,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -436,7 +436,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -445,7 +445,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -454,7 +454,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -463,17 +463,17 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
                         <a
@@ -481,16 +481,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -499,7 +490,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -508,7 +499,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -517,19 +508,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -538,7 +517,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -547,7 +538,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -556,7 +547,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -565,19 +556,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -586,7 +565,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -595,19 +586,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -616,14 +595,35 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <h2 class="table-avatar">
-                          <a class="avatar avatar-xs" href="profile.html">
+                        <h2 className="table-avatar">
+                          <a className="avatar avatar-xs" href="profile.html">
                             <img
                               src="assets/img/profiles/avatar-10.jpg"
                               alt="User Image"
@@ -638,7 +638,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -647,7 +647,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -656,7 +656,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -665,7 +665,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -674,7 +674,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -683,7 +683,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -692,7 +692,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -701,7 +701,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -710,17 +710,17 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
                         <a
@@ -728,16 +728,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -746,7 +737,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -755,7 +746,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -764,19 +755,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -785,7 +764,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -794,7 +785,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -803,7 +794,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -812,19 +803,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -833,7 +812,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -842,19 +833,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -863,14 +842,35 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <h2 class="table-avatar">
-                          <a class="avatar avatar-xs" href="profile.html">
+                        <h2 className="table-avatar">
+                          <a className="avatar avatar-xs" href="profile.html">
                             <img
                               src="assets/img/profiles/avatar-05.jpg"
                               alt="User Image"
@@ -885,7 +885,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -894,7 +894,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -903,7 +903,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -912,7 +912,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -921,7 +921,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -930,7 +930,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -939,7 +939,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -948,7 +948,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -957,17 +957,17 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
                         <a
@@ -975,16 +975,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -993,7 +984,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1002,7 +993,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1011,19 +1002,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1032,7 +1011,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1041,7 +1032,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1050,7 +1041,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1059,19 +1050,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1080,7 +1059,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1089,19 +1080,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1110,14 +1089,35 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <h2 class="table-avatar">
-                          <a class="avatar avatar-xs" href="profile.html">
+                        <h2 className="table-avatar">
+                          <a className="avatar avatar-xs" href="profile.html">
                             <img
                               src="assets/img/profiles/avatar-11.jpg"
                               alt="User Image"
@@ -1132,7 +1132,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1141,7 +1141,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1150,7 +1150,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1159,7 +1159,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1168,7 +1168,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1177,7 +1177,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1186,7 +1186,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1195,7 +1195,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1204,17 +1204,17 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
                         <a
@@ -1222,16 +1222,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1240,7 +1231,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1249,7 +1240,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1258,19 +1249,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1279,7 +1258,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1288,7 +1279,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1297,7 +1288,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1306,19 +1297,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1327,7 +1306,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1336,19 +1327,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1357,14 +1336,35 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <h2 class="table-avatar">
-                          <a class="avatar avatar-xs" href="profile.html">
+                        <h2 className="table-avatar">
+                          <a className="avatar avatar-xs" href="profile.html">
                             <img
                               src="assets/img/profiles/avatar-12.jpg"
                               alt="User Image"
@@ -1379,7 +1379,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1388,7 +1388,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1397,7 +1397,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1406,7 +1406,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1415,7 +1415,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1424,7 +1424,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1433,7 +1433,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1442,7 +1442,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1451,17 +1451,17 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
                         <a
@@ -1469,16 +1469,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1487,7 +1478,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1496,7 +1487,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1505,19 +1496,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1526,7 +1505,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1535,7 +1526,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1544,7 +1535,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1553,19 +1544,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1574,7 +1553,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1583,19 +1574,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1604,14 +1583,35 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <h2 class="table-avatar">
-                          <a class="avatar avatar-xs" href="profile.html">
+                        <h2 className="table-avatar">
+                          <a className="avatar avatar-xs" href="profile.html">
                             <img
                               src="assets/img/profiles/avatar-13.jpg"
                               alt="User Image"
@@ -1626,7 +1626,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1635,7 +1635,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1644,7 +1644,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1653,7 +1653,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1662,7 +1662,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1671,7 +1671,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1680,7 +1680,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1689,7 +1689,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1698,17 +1698,17 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
                         <a
@@ -1716,16 +1716,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1734,7 +1725,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1743,7 +1734,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1752,19 +1743,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1773,7 +1752,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1782,7 +1773,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1791,7 +1782,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1800,19 +1791,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1821,7 +1800,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1830,19 +1821,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1851,14 +1830,35 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <h2 class="table-avatar">
-                          <a class="avatar avatar-xs" href="profile.html">
+                        <h2 className="table-avatar">
+                          <a className="avatar avatar-xs" href="profile.html">
                             <img
                               src="assets/img/profiles/avatar-01.jpg"
                               alt="User Image"
@@ -1873,7 +1873,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1882,7 +1882,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1891,7 +1891,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1900,7 +1900,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1909,7 +1909,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1918,7 +1918,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1927,7 +1927,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1936,7 +1936,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1945,17 +1945,17 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
                         <a
@@ -1963,16 +1963,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1981,7 +1972,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1990,7 +1981,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -1999,19 +1990,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2020,7 +1999,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2029,7 +2020,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2038,7 +2029,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2047,19 +2038,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2068,7 +2047,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2077,19 +2068,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2098,14 +2077,35 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <h2 class="table-avatar">
-                          <a class="avatar avatar-xs" href="profile.html">
+                        <h2 className="table-avatar">
+                          <a className="avatar avatar-xs" href="profile.html">
                             <img
                               src="assets/img/profiles/avatar-16.jpg"
                               alt="User Image"
@@ -2120,7 +2120,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2129,7 +2129,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2138,7 +2138,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2147,7 +2147,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2156,7 +2156,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2165,7 +2165,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2174,7 +2174,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2183,7 +2183,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2192,17 +2192,17 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
                         <a
@@ -2210,16 +2210,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2228,7 +2219,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2237,7 +2228,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2246,19 +2237,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2267,7 +2246,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2276,7 +2267,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2285,7 +2276,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2294,19 +2285,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2315,7 +2294,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2324,19 +2315,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2345,14 +2324,35 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <h2 class="table-avatar">
-                          <a class="avatar avatar-xs" href="profile.html">
+                        <h2 className="table-avatar">
+                          <a className="avatar avatar-xs" href="profile.html">
                             <img
                               src="assets/img/profiles/avatar-04.jpg"
                               alt="User Image"
@@ -2367,7 +2367,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2376,7 +2376,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2385,7 +2385,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2394,7 +2394,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2403,7 +2403,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2412,7 +2412,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2421,7 +2421,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2430,7 +2430,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2439,17 +2439,17 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
+                        <i className="fa fa-close text-danger"></i>{" "}
                       </td>
                       <td>
                         <a
@@ -2457,16 +2457,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2475,7 +2466,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2484,7 +2475,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2493,19 +2484,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2514,7 +2493,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2523,7 +2514,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2532,7 +2523,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2541,19 +2532,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2562,7 +2541,19 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2571,19 +2562,7 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <i class="fa fa-close text-danger"></i>{" "}
-                      </td>
-                      <td>
-                        <a
-                          href="javascript:void(0);"
-                          data-bs-toggle="modal"
-                          data-bs-target="#attendance_info"
-                        >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                       <td>
@@ -2592,7 +2571,28 @@ function AttendanceAdmin() {
                           data-bs-toggle="modal"
                           data-bs-target="#attendance_info"
                         >
-                          <i class="fa-solid fa-check text-success"></i>
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <i className="fa fa-close text-danger"></i>{" "}
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
+                        </a>
+                      </td>
+                      <td>
+                        <a
+                          href="javascript:void(0);"
+                          data-bs-toggle="modal"
+                          data-bs-target="#attendance_info"
+                        >
+                          <i className="fa-solid fa-check text-success"></i>
                         </a>
                       </td>
                     </tr>
@@ -2603,55 +2603,55 @@ function AttendanceAdmin() {
           </div>
         </div>
 
-        <div class="modal custom-modal fade" id="attendance_info" role="dialog">
+        <div className="modal custom-modal fade" id="attendance_info" role="dialog">
           <div
-            class="modal-dialog modal-dialog-centered modal-lg"
+            className="modal-dialog modal-dialog-centered modal-lg"
             role="document"
           >
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Attendance Info</h5>
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Attendance Info</h5>
                 <button
                   type="button"
-                  class="btn-close"
+                  className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="card punch-status">
-                      <div class="card-body">
-                        <h5 class="card-title">
+              <div className="modal-body">
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="card punch-status">
+                      <div className="card-body">
+                        <h5 className="card-title">
                           Timesheet{" "}
-                          <small class="text-muted">11 Mar 2019</small>
+                          <small className="text-muted">11 Mar 2019</small>
                         </h5>
-                        <div class="punch-det">
+                        <div className="punch-det">
                           <h6>Punch In at</h6>
                           <p>Wed, 11th Mar 2019 10.00 AM</p>
                         </div>
-                        <div class="punch-info">
-                          <div class="punch-hours">
+                        <div className="punch-info">
+                          <div className="punch-hours">
                             <span>3.45 hrs</span>
                           </div>
                         </div>
-                        <div class="punch-det">
+                        <div className="punch-det">
                           <h6>Punch Out at</h6>
                           <p>Wed, 20th Feb 2019 9.00 PM</p>
                         </div>
-                        <div class="statistics">
-                          <div class="row">
-                            <div class="col-md-6 col-6 text-center">
-                              <div class="stats-box">
+                        <div className="statistics">
+                          <div className="row">
+                            <div className="col-md-6 col-6 text-center">
+                              <div className="stats-box">
                                 <p>Break</p>
                                 <h6>1.21 hrs</h6>
                               </div>
                             </div>
-                            <div class="col-md-6 col-6 text-center">
-                              <div class="stats-box">
+                            <div className="col-md-6 col-6 text-center">
+                              <div className="stats-box">
                                 <p>Overtime</p>
                                 <h6>3 hrs</h6>
                               </div>
@@ -2661,50 +2661,50 @@ function AttendanceAdmin() {
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="card recent-activity">
-                      <div class="card-body">
-                        <h5 class="card-title">Activity</h5>
-                        <ul class="res-activity-list">
+                  <div className="col-md-6">
+                    <div className="card recent-activity">
+                      <div className="card-body">
+                        <h5 className="card-title">Activity</h5>
+                        <ul className="res-activity-list">
                           <li>
-                            <p class="mb-0">Punch In at</p>
-                            <p class="res-activity-time">
-                              <i class="fa-regular fa-clock"></i>
+                            <p className="mb-0">Punch In at</p>
+                            <p className="res-activity-time">
+                              <i className="fa-regular fa-clock"></i>
                               10.00 AM.
                             </p>
                           </li>
                           <li>
-                            <p class="mb-0">Punch Out at</p>
-                            <p class="res-activity-time">
-                              <i class="fa-regular fa-clock"></i>
+                            <p className="mb-0">Punch Out at</p>
+                            <p className="res-activity-time">
+                              <i className="fa-regular fa-clock"></i>
                               11.00 AM.
                             </p>
                           </li>
                           <li>
-                            <p class="mb-0">Punch In at</p>
-                            <p class="res-activity-time">
-                              <i class="fa-regular fa-clock"></i>
+                            <p className="mb-0">Punch In at</p>
+                            <p className="res-activity-time">
+                              <i className="fa-regular fa-clock"></i>
                               11.15 AM.
                             </p>
                           </li>
                           <li>
-                            <p class="mb-0">Punch Out at</p>
-                            <p class="res-activity-time">
-                              <i class="fa-regular fa-clock"></i>
+                            <p className="mb-0">Punch Out at</p>
+                            <p className="res-activity-time">
+                              <i className="fa-regular fa-clock"></i>
                               1.30 PM.
                             </p>
                           </li>
                           <li>
-                            <p class="mb-0">Punch In at</p>
-                            <p class="res-activity-time">
-                              <i class="fa-regular fa-clock"></i>
+                            <p className="mb-0">Punch In at</p>
+                            <p className="res-activity-time">
+                              <i className="fa-regular fa-clock"></i>
                               2.00 PM.
                             </p>
                           </li>
                           <li>
-                            <p class="mb-0">Punch Out at</p>
-                            <p class="res-activity-time">
-                              <i class="fa-regular fa-clock"></i>
+                            <p className="mb-0">Punch Out at</p>
+                            <p className="res-activity-time">
+                              <i className="fa-regular fa-clock"></i>
                               7.30 PM.
                             </p>
                           </li>

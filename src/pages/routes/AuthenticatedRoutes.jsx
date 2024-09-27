@@ -18,6 +18,7 @@ import OverTime from "../adminPages/OverTime";
 import EmployeeProfile from "../adminPages/EmployeeProfile";
 
 const AuthenticatedRoutes = () => {
+  console.log("auth routeeee");
   return (
     <Layout>
       <Routes>

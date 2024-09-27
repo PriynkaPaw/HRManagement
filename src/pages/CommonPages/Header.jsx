@@ -1,297 +1,289 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSidebar } from '../../reduxStore/slices/headerSlice';
+import { toggleSidebar } from "../../reduxStore/slices/headerSlice";
 import { toggleSubmenu } from "../../reduxStore/slices/sidebarSlice";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
- 
-
   const dispatch = useDispatch();
-const opensidebar = useSelector((state) => state.header.opensidebar);
-const [adminDropDown, setAdminDropDown] = useState(false)
-const [notificationDropDown,setNotificationDropDown] = useState(false)
+  const opensidebar = useSelector((state) => state.header.opensidebar);
+  const [adminDropDown, setAdminDropDown] = useState(false);
+  const [notificationDropDown, setNotificationDropDown] = useState(false);
 
-const openSubmenu = useSelector((state) => state.sidebar.openSubmenu);
-const openSubmenuByHeader = useSelector((state) => state.sidebar.openSubmenuByHeader)
-const handleSidebarToggle = () => {
-  dispatch(toggleSidebar());
-console.log("open sideBAR in header",opensidebar)
-console.log("open openSubmenu in header",openSubmenuByHeader)
+  const openSubmenu = useSelector((state) => state.sidebar.openSubmenu);
+  const openSubmenuByHeader = useSelector(
+    (state) => state.sidebar.openSubmenuByHeader
+  );
+  const handleSidebarToggle = () => {
+    dispatch(toggleSidebar());
+    console.log("open sideBAR in header", opensidebar);
+    console.log("open openSubmenu in header", openSubmenuByHeader);
 
-  if (opensidebar) {
-    dispatch(toggleSubmenu(openSubmenuByHeader)); 
+    if (opensidebar) {
+      dispatch(toggleSubmenu(openSubmenuByHeader));
+    } else {
+      console.log("else Conditionn");
+      dispatch(toggleSubmenu(null));
+    }
+  };
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.setItem("isLogin", false);
+    navigate("/login");
+    window.location.reload();
 
-  } else {
-    console.log("else Conditionn")
-    dispatch(toggleSubmenu(null));
+  };
 
-  }
-};
-const navigate = useNavigate()
-const handleLogout = () => {
-  localStorage.setItem('isLogin',false)
-  navigate('/login')
-
-};
-
-
-
-useEffect(() => {
-  let sidebar = document.getElementById('main_body');
-  if (opensidebar) {
-    sidebar.setAttribute("class", "mini-sidebar");
-  } else {
-    sidebar.removeAttribute('class');
-  }
-}, [opensidebar]);
-
+  useEffect(() => {
+    let sidebar = document.getElementById("main_body");
+    if (opensidebar) {
+      sidebar.setAttribute("class", "mini-sidebar");
+    } else {
+      sidebar.removeAttribute("class");
+    }
+  }, [opensidebar]);
 
   return (
-    <div 
-      className={`sidebar ${opensidebar ? 'mini-sidebar' : ''}`} 
-      id="header"
-    >
-      <div class="header">
-        <div class="header-left">
-          <a href="admin-dashboard.html" class="logo">
+    <div className={`sidebar ${opensidebar ? "mini-sidebar" : ""}`} id="header">
+      <div className="header">
+        <div className="header-left">
+          <a href="admin-dashboard.html" className="logo">
             <img src="assets/img/logo.svg" alt="Logo" />
           </a>
-          <a href="admin-dashboard.html" class="logo collapse-logo">
+          <a href="admin-dashboard.html" className="logo collapse-logo">
             <img src="assets/img/collapse-logo.svg" alt="Logo" />
           </a>
-          <a href="admin-dashboard.html" class="logo2">
+          <a href="admin-dashboard.html" className="logo2">
             <img src="assets/img/logo2.png" width="40" height="40" alt="Logo" />
           </a>
         </div>
 
         <a id="toggle_btn" onClick={handleSidebarToggle}>
-          <span class="bar-icon">
+          <span className="bar-icon">
             <span></span>
             <span></span>
             <span></span>
           </span>
         </a>
 
-        <div class="page-title-box">
+        <div className="page-title-box">
           <h3>CIS</h3>
         </div>
 
-        <a id="mobile_btn" class="mobile_btn" href="#sidebar">
-          <i class="fa-solid fa-bars"></i>
+        <a id="mobile_btn" className="mobile_btn" href="#sidebar">
+          <i className="fa-solid fa-bars"></i>
         </a>
 
-        <ul class="nav user-menu"> 
-
-          <li class="nav-item dropdown">
+        <ul className="nav user-menu">
+          <li className="nav-item dropdown">
             <a
               href="#"
-              class="dropdown-toggle nav-link"
+              className="dropdown-toggle nav-link"
               data-bs-toggle="dropdown"
-              onClick={()=>setNotificationDropDown(!notificationDropDown)}
-
+              onClick={() => setNotificationDropDown(!notificationDropDown)}
             >
-              <i class="fa-regular fa-bell"></i>{" "}
-              <span class="badge rounded-pill">3</span>
+              <i className="fa-regular fa-bell"></i>{" "}
+              <span className="badge rounded-pill">3</span>
             </a>
-            {
-              notificationDropDown &&  <div class="dropdown-menu notifications show"   style={{ 
-                position: 'absolute', 
-                inset: '0px 0px auto auto',
-                margin: '0px', 
-                transform: 'translate(-5px, 42px)'
-              }}>
-              <div class="topnav-dropdown-header">
-                <span class="notification-title">Notifications</span>
-                <a href="javascript:void(0)" class="clear-noti">
-                  {" "}
-                  Clear All{" "}
-                </a>
+            {notificationDropDown && (
+              <div
+                className="dropdown-menu notifications show"
+                style={{
+                  position: "absolute",
+                  inset: "0px 0px auto auto",
+                  margin: "0px",
+                  transform: "translate(-5px, 42px)",
+                }}
+              >
+                <div className="topnav-dropdown-header">
+                  <span className="notification-title">Notifications</span>
+                  <a href="javascript:void(0)" className="clear-noti">
+                    {" "}
+                    Clear All{" "}
+                  </a>
+                </div>
+                <div className="noti-content">
+                  <ul className="notification-list">
+                    <li className="notification-message">
+                      <a href="activities.html">
+                        <div className="chat-block d-flex">
+                          <span className="avatar flex-shrink-0">
+                            <img
+                              src="assets/img/profiles/avatar-02.jpg"
+                              alt="User Image"
+                            />
+                          </span>
+                          <div className="media-body flex-grow-1">
+                            <p className="noti-details">
+                              <span className="noti-title">John Doe</span> added new
+                              task{" "}
+                              <span className="noti-title">
+                                Patient appointment booking
+                              </span>
+                            </p>
+                            <p className="noti-time">
+                              <span className="notification-time">4 mins ago</span>
+                            </p>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li className="notification-message">
+                      <a href="activities.html">
+                        <div className="chat-block d-flex">
+                          <span className="avatar flex-shrink-0">
+                            <img
+                              src="assets/img/profiles/avatar-03.jpg"
+                              alt="User Image"
+                            />
+                          </span>
+                          <div className="media-body flex-grow-1">
+                            <p className="noti-details">
+                              <span className="noti-title">Tarah Shropshire</span>
+                              changed the task name{" "}
+                              <span className="noti-title">
+                                Appointment booking with payment gateway
+                              </span>
+                            </p>
+                            <p className="noti-time">
+                              <span className="notification-time">6 mins ago</span>
+                            </p>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li className="notification-message">
+                      <a href="activities.html">
+                        <div className="chat-block d-flex">
+                          <span className="avatar flex-shrink-0">
+                            <img
+                              src="assets/img/profiles/avatar-06.jpg"
+                              alt="User Image"
+                            />
+                          </span>
+                          <div className="media-body flex-grow-1">
+                            <p className="noti-details">
+                              <span className="noti-title">Misty Tison</span>
+                              added{" "}
+                              <span className="noti-title">
+                                Domenic Houston
+                              </span>{" "}
+                              and <span className="noti-title">Claire Mapes</span>{" "}
+                              to project{" "}
+                              <span className="noti-title">
+                                Doctor available module
+                              </span>
+                            </p>
+                            <p className="noti-time">
+                              <span className="notification-time">8 mins ago</span>
+                            </p>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li className="notification-message">
+                      <a href="activities.html">
+                        <div className="chat-block d-flex">
+                          <span className="avatar flex-shrink-0">
+                            <img
+                              src="assets/img/profiles/avatar-17.jpg"
+                              alt="User Image"
+                            />
+                          </span>
+                          <div className="media-body flex-grow-1">
+                            <p className="noti-details">
+                              <span className="noti-title">Rolland Webber</span>
+                              completed task{" "}
+                              <span className="noti-title">
+                                Patient and Doctor video conferencing
+                              </span>
+                            </p>
+                            <p className="noti-time">
+                              <span className="notification-time">12 mins ago</span>
+                            </p>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li className="notification-message">
+                      <a href="activities.html">
+                        <div className="chat-block d-flex">
+                          <span className="avatar flex-shrink-0">
+                            <img
+                              src="assets/img/profiles/avatar-13.jpg"
+                              alt="User Image"
+                            />
+                          </span>
+                          <div className="media-body flex-grow-1">
+                            <p className="noti-details">
+                              <span className="noti-title">Bernardo Galaviz</span>
+                              added new task{" "}
+                              <span className="noti-title">
+                                Private chat module
+                              </span>
+                            </p>
+                            <p className="noti-time">
+                              <span className="notification-time">2 days ago</span>
+                            </p>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="topnav-dropdown-footer">
+                  <a href="activities.html">View all Notifications</a>
+                </div>
               </div>
-              <div class="noti-content">
-                <ul class="notification-list">
-                  <li class="notification-message">
-                    <a href="activities.html">
-                      <div class="chat-block d-flex">
-                        <span class="avatar flex-shrink-0">
-                          <img
-                            src="assets/img/profiles/avatar-02.jpg"
-                            alt="User Image"
-                          />
-                        </span>
-                        <div class="media-body flex-grow-1">
-                          <p class="noti-details">
-                            <span class="noti-title">John Doe</span> added new
-                            task{" "}
-                            <span class="noti-title">
-                              Patient appointment booking
-                            </span>
-                          </p>
-                          <p class="noti-time">
-                            <span class="notification-time">4 mins ago</span>
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="notification-message">
-                    <a href="activities.html">
-                      <div class="chat-block d-flex">
-                        <span class="avatar flex-shrink-0">
-                          <img
-                            src="assets/img/profiles/avatar-03.jpg"
-                            alt="User Image"
-                          />
-                        </span>
-                        <div class="media-body flex-grow-1">
-                          <p class="noti-details">
-                            <span class="noti-title">Tarah Shropshire</span>
-                            changed the task name{" "}
-                            <span class="noti-title">
-                              Appointment booking with payment gateway
-                            </span>
-                          </p>
-                          <p class="noti-time">
-                            <span class="notification-time">6 mins ago</span>
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="notification-message">
-                    <a href="activities.html">
-                      <div class="chat-block d-flex">
-                        <span class="avatar flex-shrink-0">
-                          <img
-                            src="assets/img/profiles/avatar-06.jpg"
-                            alt="User Image"
-                          />
-                        </span>
-                        <div class="media-body flex-grow-1">
-                          <p class="noti-details">
-                            <span class="noti-title">Misty Tison</span>
-                            added{" "}
-                            <span class="noti-title">
-                              Domenic Houston
-                            </span> and{" "}
-                            <span class="noti-title">Claire Mapes</span> to
-                            project{" "}
-                            <span class="noti-title">
-                              Doctor available module
-                            </span>
-                          </p>
-                          <p class="noti-time">
-                            <span class="notification-time">8 mins ago</span>
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="notification-message">
-                    <a href="activities.html">
-                      <div class="chat-block d-flex">
-                        <span class="avatar flex-shrink-0">
-                          <img
-                            src="assets/img/profiles/avatar-17.jpg"
-                            alt="User Image"
-                          />
-                        </span>
-                        <div class="media-body flex-grow-1">
-                          <p class="noti-details">
-                            <span class="noti-title">Rolland Webber</span>
-                            completed task{" "}
-                            <span class="noti-title">
-                              Patient and Doctor video conferencing
-                            </span>
-                          </p>
-                          <p class="noti-time">
-                            <span class="notification-time">12 mins ago</span>
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="notification-message">
-                    <a href="activities.html">
-                      <div class="chat-block d-flex">
-                        <span class="avatar flex-shrink-0">
-                          <img
-                            src="assets/img/profiles/avatar-13.jpg"
-                            alt="User Image"
-                          />
-                        </span>
-                        <div class="media-body flex-grow-1">
-                          <p class="noti-details">
-                            <span class="noti-title">Bernardo Galaviz</span>
-                            added new task{" "}
-                            <span class="noti-title">Private chat module</span>
-                          </p>
-                          <p class="noti-time">
-                            <span class="notification-time">2 days ago</span>
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="topnav-dropdown-footer">
-                <a href="activities.html">View all Notifications</a>
-              </div>
-            </div>
-            }
-           
+            )}
           </li>
 
-       
-
-          <li class="nav-item dropdown has-arrow main-drop">
+          <li className="nav-item dropdown has-arrow main-drop">
             <a
               href="#"
-              class="dropdown-toggle nav-link"
+              className="dropdown-toggle nav-link"
               data-bs-toggle="dropdown"
-              onClick={()=>setAdminDropDown(!adminDropDown)}
+              onClick={() => setAdminDropDown(!adminDropDown)}
             >
-              <span class="user-img">
+              <span className="user-img">
                 <img src="assets/img/avatar/avatar-27.jpg" alt="User Image" />
-                <span class="status online"></span>
+                <span className="status online"></span>
               </span>
               <span>Admin</span>
             </a>
-            {
-            adminDropDown &&   <div class="dropdown-menu show">
-              <a class="dropdown-item" href="profile.html">
-                My Profile
-              </a>
-              <a class="dropdown-item" href="settings.html">
-                Settings
-              </a>
-              <a class="dropdown-item" to="/login" onClick={handleLogout}>
-                Logout
-              </a>
-            </div>
-            }
-          
+            {adminDropDown && (
+              <div className="dropdown-menu show">
+                <a className="dropdown-item" href="profile.html">
+                  My Profile
+                </a>
+                <a className="dropdown-item" href="settings.html">
+                  Settings
+                </a>
+                <a className="dropdown-item" to="/login" onClick={handleLogout}>
+                  Logout
+                </a>
+              </div>
+            )}
           </li>
         </ul>
 
-        <div class="dropdown mobile-user-menu">
+        <div className="dropdown mobile-user-menu">
           <a
             href="#"
-            class="nav-link dropdown-toggle"
+            className="nav-link dropdown-toggle"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <i class="fa-solid fa-ellipsis-vertical"></i>
+            <i className="fa-solid fa-ellipsis-vertical"></i>
           </a>
-          <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="profile.html">
+          <div className="dropdown-menu dropdown-menu-right">
+            <a className="dropdown-item" href="profile.html">
               My Profile
             </a>
-            <a class="dropdown-item" href="settings.html">
+            <a className="dropdown-item" href="settings.html">
               Settings
             </a>
-            <Link class="dropdown-item" href="index.html" > 
+            <Link className="dropdown-item" href="index.html">
               Logout
             </Link>
           </div>

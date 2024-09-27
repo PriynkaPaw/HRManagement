@@ -43,73 +43,73 @@ function ShiftAndSchedule() {
     
       
   return (
-    <><div class="page-wrapper">
+    <><div className="page-wrapper">
 
-    <div class="content container-fluid">
+    <div className="content container-fluid">
     
-    <div class="page-header">
-    <div class="row">
-    <div class="col">
-    <h3 class="page-title">Daily Scheduling</h3>
-    <ul class="breadcrumb">
-    <li class="breadcrumb-item"><a href="admin-dashboard.html">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="employees.html">Employees</a></li>
-    <li class="breadcrumb-item active">Shift Scheduling</li>
+    <div className="page-header">
+    <div className="row">
+    <div className="col">
+    <h3 className="page-title">Daily Scheduling</h3>
+    <ul className="breadcrumb">
+    <li className="breadcrumb-item"><a href="admin-dashboard.html">Dashboard</a></li>
+    <li className="breadcrumb-item"><a href="employees.html">Employees</a></li>
+    <li className="breadcrumb-item active">Shift Scheduling</li>
     </ul>
     </div>
-    <div class="col-auto float-end ms-auto">
-    <Link to="/shiftlist" class="btn add-btn m-r-5" >Shifts</Link>
-    <a href="#" class="btn add-btn m-r-5" data-bs-toggle="modal" data-bs-target="#add_schedule" onClick={ShowAddShiftScheduleModal}> Assign Shifts</a>
+    <div className="col-auto float-end ms-auto">
+    <Link to="/shiftlist" className="btn add-btn m-r-5" >Shifts</Link>
+    <a href="#" className="btn add-btn m-r-5" data-bs-toggle="modal" data-bs-target="#add_schedule" onClick={ShowAddShiftScheduleModal}> Assign Shifts</a>
     </div>
     </div>
     </div>
     
     
     
-    <div class="row filter-row">
-    <div class="col-sm-6 col-md-3">
-    <div class="input-block mb-3 form-focus">
-    <input type="text" class="form-control floating"/>
-    <label class="focus-label">Employee</label>
+    <div className="row filter-row">
+    <div className="col-sm-6 col-md-3">
+    <div className="input-block mb-3 form-focus">
+    <input type="text" className="form-control floating"/>
+    <label className="focus-label">Employee</label>
     </div>
     </div>
-    <div class="col-sm-6 col-md-3">
-    <div class="input-block mb-3 form-focus select-focus">
-    <select class="form-control select floating">
+    <div className="col-sm-6 col-md-3">
+    <div className="input-block mb-3 form-focus select-focus">
+    <select className="form-control select floating">
     <option>All Department</option>
     <option value="1">Finance</option>
     <option value="2">Finance and Management</option>
     <option value="3">Hr & Finance</option>
     <option value="4">ITech</option>
     </select>
-    <label class="focus-label">Department</label>
+    <label className="focus-label">Department</label>
     </div>
     </div>
-    <div class="col-sm-6 col-md-2">
-    <div class="input-block mb-3 form-focus focused">
-    <div class="cal-icon">
-    <input class="form-control floating datetimepicker" type="text"/>
+    <div className="col-sm-6 col-md-2">
+    <div className="input-block mb-3 form-focus focused">
+    <div className="cal-icon">
+    <input className="form-control floating datetimepicker" type="text"/>
     </div>
-    <label class="focus-label">From</label>
-    </div>
-    </div>
-    <div class="col-sm-6 col-md-2">
-    <div class="input-block mb-3 form-focus focused">
-    <div class="cal-icon">
-    <input class="form-control floating datetimepicker" type="text"/>
-    </div>
-    <label class="focus-label">To</label>
+    <label className="focus-label">From</label>
     </div>
     </div>
-    <div class="col-sm-6 col-md-2">
-    <a href="#" class="btn btn-success w-100"> Search </a>
+    <div className="col-sm-6 col-md-2">
+    <div className="input-block mb-3 form-focus focused">
+    <div className="cal-icon">
+    <input className="form-control floating datetimepicker" type="text"/>
+    </div>
+    <label className="focus-label">To</label>
+    </div>
+    </div>
+    <div className="col-sm-6 col-md-2">
+    <a href="#" className="btn btn-success w-100"> Search </a>
     </div>
     </div>
     
-    <div class="row">
-    <div class="col-md-12">
-    <div class="table-responsive">
-    <table class="table table-striped custom-table datatable leave-employee-table">
+    <div className="row">
+    <div className="col-md-12">
+    <div className="table-responsive">
+    <table className="table table-striped custom-table datatable leave-employee-table">
     <thead>
     <tr>
     <th>Scheduled Shift</th>
@@ -129,77 +129,77 @@ function ShiftAndSchedule() {
     employees.map((data)=>(
         <>  <tr>
         <td>
-        <h2 class="table-avatar">
-        <a href="profile.html" class="avatar"><img src="assets/img/profiles/avatar-02.jpg" alt="User Image"/></a>
+        <h2 className="table-avatar">
+        <a href="profile.html" className="avatar"><img src="assets/img/profiles/avatar-02.jpg" alt="User Image"/></a>
         <a href="profile.html">{data.name} <span>{data.role}</span></a>
         </h2>
         </td>
         <td>
-        <div class="user-add-shedule-list">
+        <div className="user-add-shedule-list">
         <h2>
-        <a href="#" data-bs-toggle="modal" data-bs-target="#edit_schedule" class="green-border" onClick={ShowEditShiftScheduleModal}>
-        <span class="username-info m-b-10">{data.scheduledShift} </span>
-        <span class="userrole-info">Web Designer - {data.department}</span>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#edit_schedule" className="green-border" onClick={ShowEditShiftScheduleModal}>
+        <span className="username-info m-b-10">{data.scheduledShift} </span>
+        <span className="userrole-info">Web Designer - {data.department}</span>
         </a>
         </h2>
         </div>
         </td>
         <td>
-        <div class="user-add-shedule-list">
+        <div className="user-add-shedule-list">
         <a href="#" data-bs-toggle="modal" data-bs-target="#add_schedule"onClick={ShowAddShiftScheduleModal}>
-        <span><i class="fa-solid fa-plus"  ></i></span>
+        <span><i className="fa-solid fa-plus"  ></i></span>
         </a>
         </div>
         </td>
         <td>
-        <div class="user-add-shedule-list">
+        <div className="user-add-shedule-list">
         <a href="#" data-bs-toggle="modal" data-bs-target="#add_schedule" onClick={ShowAddShiftScheduleModal}>
-        <span><i class="fa-solid fa-plus" ></i></span>
+        <span><i className="fa-solid fa-plus" ></i></span>
         </a>
         </div>
         </td>
         <td>
-        <div class="user-add-shedule-list">
+        <div className="user-add-shedule-list">
         <a href="#" data-bs-toggle="modal" data-bs-target="#add_schedule"  onClick={ShowAddShiftScheduleModal}>
-        <span><i class="fa-solid fa-plus"></i></span>
+        <span><i className="fa-solid fa-plus"></i></span>
         </a>
         </div>
         </td>
         <td>
-        <div class="user-add-shedule-list">
+        <div className="user-add-shedule-list">
         <a href="#" data-bs-toggle="modal" data-bs-target="#add_schedule"onClick={ShowAddShiftScheduleModal}>
-        <span><i class="fa-solid fa-plus" ></i></span>
+        <span><i className="fa-solid fa-plus" ></i></span>
         </a>
         </div>
         </td>
         <td>
-        <div class="user-add-shedule-list">
+        <div className="user-add-shedule-list">
         <a href="#" data-bs-toggle="modal" data-bs-target="#add_schedule"onClick={ShowAddShiftScheduleModal} >
-        <span><i class="fa-solid fa-plus" ></i></span>
+        <span><i className="fa-solid fa-plus" ></i></span>
         </a>
         </div>
         </td>
         <td>
-        <div class="user-add-shedule-list">
+        <div className="user-add-shedule-list">
         <h2>
-        <a href="#" data-bs-toggle="modal" data-bs-target="#edit_schedule" class="green-border" onClick={ShowEditShiftScheduleModal}>
-        <span class="username-info m-b-10">6:30 am - 9:30 pm ( 14 hrs 15 mins)</span>
-        <span class="userrole-info">Web Designer - SMARTHR</span>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#edit_schedule" className="green-border" onClick={ShowEditShiftScheduleModal}>
+        <span className="username-info m-b-10">6:30 am - 9:30 pm ( 14 hrs 15 mins)</span>
+        <span className="userrole-info">Web Designer - SMARTHR</span>
         </a>
         </h2>
         </div>
         </td>
         <td>
-        <div class="user-add-shedule-list">
+        <div className="user-add-shedule-list">
         <a href="#" data-bs-toggle="modal" data-bs-target="#add_schedule" onClick={ShowAddShiftScheduleModal}>
-        <span><i class="fa-solid fa-plus"></i></span>
+        <span><i className="fa-solid fa-plus"></i></span>
         </a>
         </div>
         </td>
         <td>
-        <div class="user-add-shedule-list">
+        <div className="user-add-shedule-list">
         <a href="#" data-bs-toggle="modal" data-bs-target="#add_schedule"onClick={ShowAddShiftScheduleModal}>
-        <span><i class="fa-solid fa-plus" ></i></span>
+        <span><i className="fa-solid fa-plus" ></i></span>
         </a>
         </div>
         </td>
@@ -235,69 +235,69 @@ export default ShiftAndSchedule
 const AddShiftSchedule =({ShowAddShiftScheduleModal}) =>{
     return (
         <>
-      <div class="modal-backdrop fade show"></div>
+      <div className="modal-backdrop fade show"></div>
 
         
-<div id="add_schedule" class="modal custom-modal d-block" role="dialog">
-<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title">Add Schedule</h5>
-<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={ShowAddShiftScheduleModal}>
+<div id="add_schedule" className="modal custom-modal d-block" role="dialog">
+<div className="modal-dialog modal-dialog-centered modal-lg" role="document">
+<div className="modal-content">
+<div className="modal-header">
+<h5 className="modal-title">Add Schedule</h5>
+<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={ShowAddShiftScheduleModal}>
 <span aria-hidden="true">&times;</span>
 </button>
 </div>
-<div class="modal-body">
+<div className="modal-body">
 <form>
-<div class="row">
-<div class="col-sm-6">
+<div className="row">
+<div className="col-sm-6">
 
 </div>
-<div class="col-sm-6">
+<div className="col-sm-6">
 
 </div>
 
-<div class="col-sm-6">
+<div className="col-sm-6">
 
 </div>
-<div class="col-sm-4">
+<div className="col-sm-4">
 
 </div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">Start Time <span class="text-danger">*</span></label>
-<div class="input-group time">
-<input class="form-control timepicker" /><span class="input-group-text"><i class="fa-regular fa-clock"></i></span>
+<div className="col-sm-4">
+<div className="input-block mb-3">
+<label className="col-form-label">Start Time <span className="text-danger">*</span></label>
+<div className="input-group time">
+<input className="form-control timepicker" /><span className="input-group-text"><i className="fa-regular fa-clock"></i></span>
 </div>
 </div>
 </div>
 
-<div class="col-sm-4">
+<div className="col-sm-4">
 
 </div>
-<div class="col-sm-4">
-<div class="input-block mb-3">
-<label class="col-form-label">End Time <span class="text-danger">*</span></label>
-<div class="input-group time">
-<input class="form-control timepicker" /><span class="input-group-text"><i class="fa-regular fa-clock"></i></span>
+<div className="col-sm-4">
+<div className="input-block mb-3">
+<label className="col-form-label">End Time <span className="text-danger">*</span></label>
+<div className="input-group time">
+<input className="form-control timepicker" /><span className="input-group-text"><i className="fa-regular fa-clock"></i></span>
 </div>
 </div>
 </div>
-<div class="col-sm-4">
+<div className="col-sm-4">
 
 </div>
-<div class="col-sm-4">
+<div className="col-sm-4">
 
 </div>
-<div class="col-sm-12">
+<div className="col-sm-12">
 
 </div>
-<div class="col-sm-12">
+<div className="col-sm-12">
 
 </div>
 </div>
-<div class="submit-section">
-<button class="btn btn-primary submit-btn">Submit</button>
+<div className="submit-section">
+<button className="btn btn-primary submit-btn">Submit</button>
 </div>
 </form>
 </div>
@@ -311,24 +311,24 @@ const AddShiftSchedule =({ShowAddShiftScheduleModal}) =>{
 const EditShiftSchedule =({ShowEditShiftScheduleModal}) =>{
     return (
         <>
-      <div class="modal-backdrop fade show"></div>
+      <div className="modal-backdrop fade show"></div>
 
-        <div id="edit_schedule" class="modal custom-modal d-block" role="dialog">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title">Edit Schedule</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={ShowEditShiftScheduleModal}>
+        <div id="edit_schedule" className="modal custom-modal d-block" role="dialog">
+        <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div className="modal-content">
+        <div className="modal-header">
+        <h5 className="modal-title">Edit Schedule</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={ShowEditShiftScheduleModal}>
         <span aria-hidden="true">&times;</span>
         </button>
         </div>
-        <div class="modal-body">
+        <div className="modal-body">
         <form>
-        <div class="row">
-        <div class="col-sm-6">
-        <div class="input-block mb-3">
-        <label class="col-form-label">Department <span class="text-danger">*</span></label>
-        <select class="form-control select">
+        <div className="row">
+        <div className="col-sm-6">
+        <div className="input-block mb-3">
+        <label className="col-form-label">Department <span className="text-danger">*</span></label>
+        <select className="form-control select">
         <option value>Select</option>
         <option selected value>Development</option>
         <option value="1">Finance</option>
@@ -338,10 +338,10 @@ const EditShiftSchedule =({ShowEditShiftScheduleModal}) =>{
         </select>
         </div>
         </div>
-        <div class="col-sm-6">
-        <div class="input-block mb-3">
-        <label class="col-form-label">Employee Name <span class="text-danger">*</span></label>
-        <select class="form-control select">
+        <div className="col-sm-6">
+        <div className="input-block mb-3">
+        <label className="col-form-label">Employee Name <span className="text-danger">*</span></label>
+        <select className="form-control select">
         <option value>Select </option>
         <option selected value="1">Richard Miles </option>
         <option value="2">John Smith</option>
@@ -350,16 +350,16 @@ const EditShiftSchedule =({ShowEditShiftScheduleModal}) =>{
         </select>
         </div>
         </div>
-        <div class="col-sm-6">
-        <div class="input-block mb-3">
-        <label class="col-form-label">Date <span class="text-danger">*</span></label>
-        <div class="cal-icon"><input class="form-control datetimepicker" type="text" /></div>
+        <div className="col-sm-6">
+        <div className="input-block mb-3">
+        <label className="col-form-label">Date <span className="text-danger">*</span></label>
+        <div className="cal-icon"><input className="form-control datetimepicker" type="text" /></div>
         </div>
         </div>
-        <div class="col-sm-6">
-        <div class="input-block mb-3">
-        <label class="col-form-label">Shifts <span class="text-danger">*</span></label>
-        <select class="form-control select">
+        <div className="col-sm-6">
+        <div className="input-block mb-3">
+        <label className="col-form-label">Shifts <span className="text-danger">*</span></label>
+        <select className="form-control select">
         <option value>Select </option>
         <option value="1">10'o clock Shift</option>
         <option value="2">10:30 shift</option>
@@ -368,58 +368,58 @@ const EditShiftSchedule =({ShowEditShiftScheduleModal}) =>{
         </select>
         </div>
         </div>
-        <div class="col-sm-4">
-        <div class="input-block mb-3">
-        <label class="col-form-label">Min Start Time <span class="text-danger">*</span></label>
-        <input class="form-control timepicker" type="text" value="06:11 am" />
+        <div className="col-sm-4">
+        <div className="input-block mb-3">
+        <label className="col-form-label">Min Start Time <span className="text-danger">*</span></label>
+        <input className="form-control timepicker" type="text" value="06:11 am" />
         </div>
         </div>
-        <div class="col-sm-4">
-        <div class="input-block mb-3">
-        <label class="col-form-label">Start Time <span class="text-danger">*</span></label>
-        <input class="form-control timepicker" type="text" value="06:30 am" />
+        <div className="col-sm-4">
+        <div className="input-block mb-3">
+        <label className="col-form-label">Start Time <span className="text-danger">*</span></label>
+        <input className="form-control timepicker" type="text" value="06:30 am" />
         </div>
         </div>
-        <div class="col-sm-4">
-        <div class="input-block mb-3">
-        <label class="col-form-label">Max Start Time <span class="text-danger">*</span></label>
-        <input class="form-control timepicker" type="text" value="08:12 am" />
+        <div className="col-sm-4">
+        <div className="input-block mb-3">
+        <label className="col-form-label">Max Start Time <span className="text-danger">*</span></label>
+        <input className="form-control timepicker" type="text" value="08:12 am" />
         </div>
         </div>
-        <div class="col-sm-4">
-        <div class="input-block mb-3">
-        <label class="col-form-label">Min End Time <span class="text-danger">*</span></label>
-        <input class="form-control timepicker" type="text" value="09:12 pm" />
+        <div className="col-sm-4">
+        <div className="input-block mb-3">
+        <label className="col-form-label">Min End Time <span className="text-danger">*</span></label>
+        <input className="form-control timepicker" type="text" value="09:12 pm" />
         </div>
         </div>
-        <div class="col-sm-4">
-        <div class="input-block mb-3">
-        <label class="col-form-label">End Time <span class="text-danger">*</span></label>
-        <input class="form-control timepicker" type="text" value="09:30 pm" />
+        <div className="col-sm-4">
+        <div className="input-block mb-3">
+        <label className="col-form-label">End Time <span className="text-danger">*</span></label>
+        <input className="form-control timepicker" type="text" value="09:30 pm" />
         </div>
         </div>
-        <div class="col-sm-4">
-        <div class="input-block mb-3">
-        <label class="col-form-label">Max End Time <span class="text-danger">*</span></label>
-        <input class="form-control timepicker" type="text" value="09:45 pm" />
+        <div className="col-sm-4">
+        <div className="input-block mb-3">
+        <label className="col-form-label">Max End Time <span className="text-danger">*</span></label>
+        <input className="form-control timepicker" type="text" value="09:45 pm" />
         </div>
         </div>
-        <div class="col-sm-4">
-        <div class="input-block mb-3">
-        <label class="col-form-label">Break Time <span class="text-danger">*</span></label>
-        <input class="form-control timepicker" type="text" value="45" />
+        <div className="col-sm-4">
+        <div className="input-block mb-3">
+        <label className="col-form-label">Break Time <span className="text-danger">*</span></label>
+        <input className="form-control timepicker" type="text" value="45" />
         </div>
         </div>
-        <div class="col-sm-12">
-        <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="customCheck1" />
-        <label class="form-check-label" for="customCheck1">Recurring Shift</label>
+        <div className="col-sm-12">
+        <div className="form-check">
+        <input type="checkbox" className="form-check-input" id="customCheck1" />
+        <label className="form-check-label" for="customCheck1">Recurring Shift</label>
         </div>
         </div>
-        <div class="col-sm-12">
-        <div class="input-block mb-3">
-        <label class="col-form-label">Repeat Every</label>
-        <select class="form-control select">
+        <div className="col-sm-12">
+        <div className="input-block mb-3">
+        <label className="col-form-label">Repeat Every</label>
+        <select className="form-control select">
         <option value>1 </option>
         <option value="1">2</option>
         <option value="2">3</option>
@@ -427,53 +427,53 @@ const EditShiftSchedule =({ShowEditShiftScheduleModal}) =>{
         <option selected value="4">5</option>
         <option value="3">6</option>
         </select>
-        <label class="col-form-label">Week(s)</label>
+        <label className="col-form-label">Week(s)</label>
         </div>
         </div>
-        <div class="col-sm-12">
-        <div class="input-block mb-3 wday-box">
-        <label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="monday" class="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-fc8cb6f9411e59086ea96cca- /><span class="checkmark">M</span></label>
-        <label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="tuesday" class="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-fc8cb6f9411e59086ea96cca- /><span class="checkmark">T</span></label>
-        <label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="wednesday" class="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-fc8cb6f9411e59086ea96cca- /><span class="checkmark">W</span></label>
-        <label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="thursday" class="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-fc8cb6f9411e59086ea96cca- /><span class="checkmark">T</span></label>
-        <label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="friday" class="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-fc8cb6f9411e59086ea96cca- /><span class="checkmark">F</span></label>
-        <label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="saturday" class="days recurring" onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-fc8cb6f9411e59086ea96cca- /><span class="checkmark">S</span></label>
-        <label class="checkbox-inline"><input type="checkbox" name="week_days[]" value="sunday" class="days recurring" onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-fc8cb6f9411e59086ea96cca- /><span class="checkmark">S</span></label>
+        <div className="col-sm-12">
+        <div className="input-block mb-3 wday-box">
+        <label className="checkbox-inline"><input type="checkbox" name="week_days[]" value="monday" className="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-fc8cb6f9411e59086ea96cca- /><span className="checkmark">M</span></label>
+        <label className="checkbox-inline"><input type="checkbox" name="week_days[]" value="tuesday" className="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-fc8cb6f9411e59086ea96cca- /><span className="checkmark">T</span></label>
+        <label className="checkbox-inline"><input type="checkbox" name="week_days[]" value="wednesday" className="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-fc8cb6f9411e59086ea96cca- /><span className="checkmark">W</span></label>
+        <label className="checkbox-inline"><input type="checkbox" name="week_days[]" value="thursday" className="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-fc8cb6f9411e59086ea96cca- /><span className="checkmark">T</span></label>
+        <label className="checkbox-inline"><input type="checkbox" name="week_days[]" value="friday" className="days recurring" checked onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-fc8cb6f9411e59086ea96cca- /><span className="checkmark">F</span></label>
+        <label className="checkbox-inline"><input type="checkbox" name="week_days[]" value="saturday" className="days recurring" onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-fc8cb6f9411e59086ea96cca- /><span className="checkmark">S</span></label>
+        <label className="checkbox-inline"><input type="checkbox" name="week_days[]" value="sunday" className="days recurring" onclick="if (!window.__cfRLUnblockHandlers) return false; return false;" data-cf-modified-fc8cb6f9411e59086ea96cca- /><span className="checkmark">S</span></label>
         </div>
         </div>
-        <div class="col-sm-6">
-        <div class="input-block mb-3">
-        <label class="col-form-label">End On <span class="text-danger">*</span></label>
-        <div class="cal-icon"><input class="form-control datetimepicker" type="text" /></div>
+        <div className="col-sm-6">
+        <div className="input-block mb-3">
+        <label className="col-form-label">End On <span className="text-danger">*</span></label>
+        <div className="cal-icon"><input className="form-control datetimepicker" type="text" /></div>
         </div>
         </div>
-        <div class="col-sm-12">
-        <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="customCheck2" />
-        <label class="form-check-label" for="customCheck2">Indefinite</label>
+        <div className="col-sm-12">
+        <div className="form-check">
+        <input type="checkbox" className="form-check-input" id="customCheck2" />
+        <label className="form-check-label" for="customCheck2">Indefinite</label>
         </div>
         </div>
-        <div class="col-sm-12">
-        <div class="input-block mb-3">
-        <label class="col-form-label">Accept Extra Hours </label>
-        <div class="form-check form-switch">
-        <input type="checkbox" class="form-check-input" id="customSwitch3" checked />
-        <label class="form-check-label" for="customSwitch3"></label>
-        </div>
-        </div>
-        </div>
-        <div class="col-sm-12">
-        <div class="input-block mb-3">
-        <label class="col-form-label">Publish </label>
-        <div class="form-check form-switch">
-        <input type="checkbox" class="form-check-input" id="customSwitch4" checked /> 
-        <label class="form-check-label" for="customSwitch4"></label>
+        <div className="col-sm-12">
+        <div className="input-block mb-3">
+        <label className="col-form-label">Accept Extra Hours </label>
+        <div className="form-check form-switch">
+        <input type="checkbox" className="form-check-input" id="customSwitch3" checked />
+        <label className="form-check-label" for="customSwitch3"></label>
         </div>
         </div>
         </div>
+        <div className="col-sm-12">
+        <div className="input-block mb-3">
+        <label className="col-form-label">Publish </label>
+        <div className="form-check form-switch">
+        <input type="checkbox" className="form-check-input" id="customSwitch4" checked /> 
+        <label className="form-check-label" for="customSwitch4"></label>
         </div>
-        <div class="submit-section">
-        <button class="btn btn-primary submit-btn">Submit</button>
+        </div>
+        </div>
+        </div>
+        <div className="submit-section">
+        <button className="btn btn-primary submit-btn">Submit</button>
         </div>
         </form>
         </div>

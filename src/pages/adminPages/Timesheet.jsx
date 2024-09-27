@@ -1,4 +1,6 @@
+import { format } from 'date-fns';
 import React, { useRef, useState } from 'react';
+import DatePicker from 'react-datepicker';
 import { Link } from 'react-router-dom';
 
 function Timesheet() {
@@ -276,25 +278,60 @@ export default Timesheet
 
 
 const AddTodayWork =({ShowAddTimesheetModal}) =>{
+
+  const [timesheetFormData, setTimeSheetFormData] = useState({
+deadline :"",
+date:""
+  })
+  const handleInputChange = (eOrName, value) => {
+    if (typeof eOrName === "object" && eOrName.target) {
+      const { name, type } = eOrName.target;
+      const inputValue = eOrName.target.value;
+  
+      // For text input
+      if (type === "text") {
+        setTimeSheetFormData({
+          ...timesheetFormData,
+          [name]: inputValue,
+        });
+      } 
+      // Handle other input types (e.g., date)
+      else if (type === "date") {
+        const formattedDate = format(new Date(inputValue), "yyyy-MM-dd");
+        setTimeSheetFormData({
+          ...timesheetFormData,
+          [name]: formattedDate,
+        });
+      }
+    } else {
+      // For non-event scenarios
+      const formattedDate = format(value, "yyyy-MM-dd");
+      setTimeSheetFormData({
+        ...timesheetFormData,
+        [eOrName]: formattedDate,
+      });
+    }
+  };
+  
     return (
         <>
-      <div class="modal-backdrop fade show"></div>
+      <div className="modal-backdrop fade show"></div>
 
-        <div id="add_todaywork" class="modal custom-modal d-block" role="dialog">
-<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title">Add Today Work details</h5>
-<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={ShowAddTimesheetModal}>
+        <div id="add_todaywork" className="modal custom-modal d-block" role="dialog">
+<div className="modal-dialog modal-dialog-centered modal-lg" role="document">
+<div className="modal-content">
+<div className="modal-header">
+<h5 className="modal-title">Add Today Work details</h5>
+<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={ShowAddTimesheetModal}>
 <span aria-hidden="true">&times;</span>
 </button>
 </div>
-<div class="modal-body">
+<div className="modal-body">
 <form>
-<div class="row">
-<div class="input-block mb-3 col-sm-6">
-<label class="col-form-label">Project <span class="text-danger">*</span></label>
-<select class="select">
+<div className="row">
+<div className=" input-block mb-3 col-sm-6">
+<label className="col-form-label">Project <span className="text-danger">*</span></label>
+<select className="form-control select">
 <option>Office Management</option>
 <option>Project Management</option>
 <option>Video Calling App</option>
@@ -302,40 +339,58 @@ const AddTodayWork =({ShowAddTimesheetModal}) =>{
 </select>
 </div>
 </div>
-<div class="row">
-<div class="input-block mb-3 col-sm-4">
-<label class="col-form-label">Deadline <span class="text-danger">*</span></label>
-<div class="cal-icon">
-<input class="form-control" type="text" value="5 May 2019" readonly />
+<div className="row">
+<div className="input-block mb-3 col-sm-4">
+<label className="col-form-label">Deadline <span className="text-danger">*</span></label>
+<div className="cal-icon">
+{/* <input className="form-control" type="text" value="5 May 2019" readonly /> */}
+<DatePicker
+                          selected={timesheetFormData.deadline}
+                          name="deadline"
+                          onChange={(date) =>
+                            handleInputChange("deadline", date)
+                          } 
+                          className="form-control datetimepicker  "
+                          dateFormat="dd/MM/yyyy"
+                        />
 </div>
 </div>
-<div class="input-block mb-3 col-sm-4">
-<label class="col-form-label">Total Hours <span class="text-danger">*</span></label>
-<input class="form-control" type="text" value="100" readonly />
+<div className="input-block mb-3 col-sm-4">
+<label className="col-form-label">Total Hours <span className="text-danger">*</span></label>
+<input className="form-control" type="text" value="100" readonly />
 </div>
-<div class="input-block mb-3 col-sm-4">
-<label class="col-form-label">Remaining Hours <span class="text-danger">*</span></label>
-<input class="form-control" type="text" value="60" readonly />
-</div>
-</div>
-<div class="row">
-<div class="input-block mb-3 col-sm-6">
-<label class="col-form-label">Date <span class="text-danger">*</span></label>
-<div class="cal-icon">
-<input class="form-control datetimepicker" type="text" />
+<div className="input-block mb-3 col-sm-4">
+<label className="col-form-label">Remaining Hours <span className="text-danger">*</span></label>
+<input className="form-control" type="text" value="60" readonly />
 </div>
 </div>
-<div class="input-block mb-3 col-sm-6">
-<label class="col-form-label">Hours <span class="text-danger">*</span></label>
-<input class="form-control" type="text" />
+<div className="row">
+<div className="input-block mb-3 col-sm-6">
+<label className="col-form-label">Date <span className="text-danger">*</span></label>
+<div className="cal-icon">
+{/* <input className="form-control datetimepicker" type="text" /> */}
+<DatePicker
+                          selected={timesheetFormData.date}
+                          name="date"
+                          onChange={(date) =>
+                            handleInputChange("date", date)
+                          } 
+                          className="form-control datetimepicker  "
+                          dateFormat="dd/MM/yyyy"
+                        />
 </div>
 </div>
-<div class="input-block mb-3">
-<label class="col-form-label">Description <span class="text-danger">*</span></label>
-<textarea rows="4" class="form-control"></textarea>
+<div className="input-block mb-3 col-sm-6">
+<label className="col-form-label">Hours <span className="text-danger">*</span></label>
+<input className="form-control" type="text" />
 </div>
-<div class="submit-section">
-<button class="btn btn-primary submit-btn">Submit</button>
+</div>
+<div className="input-block mb-3">
+<label className="col-form-label">Description <span className="text-danger">*</span></label>
+<textarea rows="4" className="form-control"></textarea>
+</div>
+<div className="submit-section">
+<button className="btn btn-primary submit-btn">Submit</button>
 </div>
 </form>
 </div>
@@ -348,23 +403,23 @@ const AddTodayWork =({ShowAddTimesheetModal}) =>{
 const EditTodayWork =({ShowEditTimesheetModal}) =>{
     return (
         <>
-      <div class="modal-backdrop fade show"></div>
+      <div className="modal-backdrop fade show"></div>
         
-<div id="edit_todaywork" class="modal custom-modal d-block" role="dialog">
-<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title">Edit Work Details</h5>
-<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={ShowEditTimesheetModal}>
+<div id="edit_todaywork" className="modal custom-modal d-block" role="dialog">
+<div className="modal-dialog modal-dialog-centered modal-lg" role="document">
+<div className="modal-content">
+<div className="modal-header">
+<h5 className="modal-title">Edit Work Details</h5>
+<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={ShowEditTimesheetModal}>
 <span aria-hidden="true">&times;</span>
 </button>
 </div>
-<div class="modal-body">
+<div className="modal-body">
 <form>
-<div class="row">
-<div class="input-block mb-3 col-sm-6">
-<label class="col-form-label">Project <span class="text-danger">*</span></label>
-<select class="select">
+<div className="row">
+<div className="input-block mb-3 col-sm-6">
+<label className="col-form-label">Project <span className="text-danger">*</span></label>
+<select className="form-control select">
 <option>Office Management</option>
 <option>Project Management</option>
 <option>Video Calling App</option>
@@ -372,40 +427,40 @@ const EditTodayWork =({ShowEditTimesheetModal}) =>{
 </select>
 </div>
 </div>
-<div class="row">
-<div class="input-block mb-3 col-sm-4">
-<label class="col-form-label">Deadline <span class="text-danger">*</span></label>
-<div class="cal-icon">
-<input class="form-control" type="text" value="5 May 2019" readonly />
+<div className="row">
+<div className="input-block mb-3 col-sm-4">
+<label className="col-form-label">Deadline <span className="text-danger">*</span></label>
+<div className="cal-icon">
+<input className="form-control" type="text" value="5 May 2019" readonly />
 </div>
 </div>
-<div class="input-block mb-3 col-sm-4">
-<label class="col-form-label">Total Hours <span class="text-danger">*</span></label>
-<input class="form-control" type="text" value="100" readonly />
+<div className="input-block mb-3 col-sm-4">
+<label className="col-form-label">Total Hours <span className="text-danger">*</span></label>
+<input className="form-control" type="text" value="100" readonly />
 </div>
-<div class="input-block mb-3 col-sm-4">
-<label class="col-form-label">Remaining Hours <span class="text-danger">*</span></label>
-<input class="form-control" type="text" value="60" readonly />
-</div>
-</div>
-<div class="row">
-<div class="input-block mb-3 col-sm-6">
-<label class="col-form-label">Date <span class="text-danger">*</span></label>
-<div class="cal-icon">
-<input class="form-control datetimepicker" value="03/03/2019" type="text" />
+<div className="input-block mb-3 col-sm-4">
+<label className="col-form-label">Remaining Hours <span className="text-danger">*</span></label>
+<input className="form-control" type="text" value="60" readonly />
 </div>
 </div>
-<div class="input-block mb-3 col-sm-6">
-<label class="col-form-label">Hours <span class="text-danger">*</span></label>
-<input class="form-control" type="text" value="9" />
+<div className="row">
+<div className="input-block mb-3 col-sm-6">
+<label className="col-form-label">Date <span className="text-danger">*</span></label>
+<div className="cal-icon">
+<input className="form-control datetimepicker" value="03/03/2019" type="text" />
 </div>
 </div>
-<div class="input-block mb-3">
-<label class="col-form-label">Description <span class="text-danger">*</span></label>
-<textarea rows="4" class="form-control">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel elit neque.</textarea>
+<div className="input-block mb-3 col-sm-6">
+<label className="col-form-label">Hours <span className="text-danger">*</span></label>
+<input className="form-control" type="text" value="9" />
 </div>
-<div class="submit-section">
-<button class="btn btn-primary submit-btn">Save</button>
+</div>
+<div className="input-block mb-3">
+<label className="col-form-label">Description <span className="text-danger">*</span></label>
+<textarea rows="4" className="form-control">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel elit neque.</textarea>
+</div>
+<div className="submit-section">
+<button className="btn btn-primary submit-btn">Save</button>
 </div>
 </form>
 </div>
@@ -420,23 +475,23 @@ const DeleteTodayWork =({ShowDeleteTimesheetModal}) =>{
     return (
 
         <>
-      <div class="modal-backdrop fade show"></div>
+      <div className="modal-backdrop fade show"></div>
 
-<div class="modal custom-modal d-block" id="delete_workdetail" role="dialog">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-<div class="modal-body">
-<div class="form-header">
+<div className="modal custom-modal d-block" id="delete_workdetail" role="dialog">
+<div className="modal-dialog modal-dialog-centered">
+<div className="modal-content">
+<div className="modal-body">
+<div className="form-header">
 <h3>Delete Work Details</h3>
 <p>Are you sure want to delete?</p>
 </div>
-<div class="modal-btn delete-action">
-<div class="row">
-<div class="col-6">
-<a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+<div className="modal-btn delete-action">
+<div className="row">
+<div className="col-6">
+<a href="javascript:void(0);" className="btn btn-primary continue-btn">Delete</a>
 </div>
-<div class="col-6">
-<a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn" onClick={ShowDeleteTimesheetModal}>Cancel</a>
+<div className="col-6">
+<a href="javascript:void(0);" data-bs-dismiss="modal" className="btn btn-primary cancel-btn" onClick={ShowDeleteTimesheetModal}>Cancel</a>
 </div>
 </div>
 </div>

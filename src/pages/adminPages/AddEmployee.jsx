@@ -153,16 +153,16 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
 
   return (
     <>
-      <div class="modal-backdrop fade show"></div>
+      <div className="modal-backdrop fade show"></div>
 
-      <div class="modal custom-modal modal-open d-block" role="dialog">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Add Employee</h5>
+      <div className="modal custom-modal modal-open d-block" role="dialog">
+        <div className="modal-dialog modal-dialog-centered modal-lg">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Add Employee</h5>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
                 onClick={ShowAddEmployeeModal}
@@ -171,16 +171,16 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <form onSubmit={handleSubmit}>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="input-block mb-3">
-                      <label class="col-form-label">
-                        First Name <span class="text-danger">*</span>
+                <div className="row">
+                  <div className="col-sm-6">
+                    <div className="input-block mb-3">
+                      <label className="col-form-label">
+                        First Name <span className="text-danger">*</span>
                       </label>
                       <input
-                        class="form-control"
+                        className="form-control"
                         type="text"
                         name="first_name"
                         value={empField.first_name}
@@ -191,11 +191,11 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                       <p className="text-danger">{errors.first_name}</p>
                     )}
                   </div>
-                  <div class="col-sm-6">
-                    <div class="input-block mb-3">
-                      <label class="col-form-label">Last Name</label>
+                  <div className="col-sm-6">
+                    <div className="input-block mb-3">
+                      <label className="col-form-label">Last Name</label>
                       <input
-                        class="form-control"
+                        className="form-control"
                         type="text"
                         name="last_name"
                         value={empField.last_name}
@@ -206,13 +206,13 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                       <p className="text-danger">{errors.last_name}</p>
                     )}
                   </div>
-                  <div class="col-sm-6">
-                    <div class="input-block mb-3">
-                      <label class="col-form-label">
-                        Email <span class="text-danger">*</span>
+                  <div className="col-sm-6">
+                    <div className="input-block mb-3">
+                      <label className="col-form-label">
+                        Email <span className="text-danger">*</span>
                       </label>
                       <input
-                        class="form-control"
+                        className="form-control"
                         type="email"
                         name="email"
                         value={empField.email}
@@ -223,11 +223,11 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                       <p className="text-danger">{errors.email}</p>
                     )}
                   </div>
-                  {/* <div class="col-sm-6">
-                    <div class="input-block mb-3">
-                      <label class="col-form-label">Password</label>
+                  {/* <div className="col-sm-6">
+                    <div className="input-block mb-3">
+                      <label className="col-form-label">Password</label>
                       <input
-                        class="form-control"
+                        className="form-control"
                         type="password"
                         name="password"
                         value={empField.password}
@@ -238,11 +238,11 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                       <p className="text-danger">{errors.password}</p>
                     )}
                   </div> */}
-                  {/* <div class="col-sm-6">
-                    <div class="input-block mb-3">
-                      <label class="col-form-label">Confirm Password</label>
+                  {/* <div className="col-sm-6">
+                    <div className="input-block mb-3">
+                      <label className="col-form-label">Confirm Password</label>
                       <input
-                        class="form-control"
+                        className="form-control"
                         type="password"
                         name="confirmpassword"
                         value={empField.confirmpassword}
@@ -253,12 +253,12 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                       <p className="text-danger">{errors.confirmpassword}</p>
                     )}
                   </div> */}
-                  <div class="col-sm-6">
-                    <div class="input-block mb-3">
-                      <label class="col-form-label">
-                        Joining Date <span class="text-danger">*</span>
+                  <div className="col-sm-6">
+                    <div className="input-block mb-3">
+                      <label className="col-form-label">
+                        Joining Date <span className="text-danger">*</span>
                       </label>
-                      <div class="cal-icon ">
+                      <div className="cal-icon ">
                         <DatePicker
                           selected={empField.date_of_joining}
                           name="date_of_joining"
@@ -274,11 +274,11 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                       )}
                     </div>
                   </div>
-                  <div class="col-sm-6">
-                    <div class="input-block mb-3">
-                      <label class="col-form-label">Phone </label>
+                  <div className="col-sm-6">
+                    <div className="input-block mb-3">
+                      <label className="col-form-label">Phone </label>
                       <input
-                        class="form-control"
+                        className="form-control"
                         type="text"
                         name="phone"
                         value={empField.phone}
@@ -290,13 +290,13 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                     )}
                   </div>
 
-                  <div class="col-md-6">
-                    <div class="input-block mb-3">
-                      <label class="col-form-label">
-                        Department <span class="text-danger"></span>
+                  <div className="col-md-6">
+                    <div className="input-block mb-3">
+                      <label className="col-form-label">
+                        Department <span className="text-danger"></span>
                       </label>
                       <select
-                        class="   form-control select"
+                        className="   form-control select"
                         name="department"
                         value={empField.department}
                         onChange={handleInputChange}
@@ -314,13 +314,13 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                       <p className="text-danger">{errors.department}</p>
                     )}
                   </div>
-                  <div class="col-md-6">
-                    <div class="input-block mb-3">
-                      <label class="col-form-label">
-                        Designation <span class="text-danger">*</span>
+                  <div className="col-md-6">
+                    <div className="input-block mb-3">
+                      <label className="col-form-label">
+                        Designation <span className="text-danger">*</span>
                       </label>
                       <select
-                        class="   form-control select"
+                        className="   form-control select"
                         name="designation"
                         value={empField.designation}
                         onChange={handleInputChange}
@@ -338,11 +338,11 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                       <p className="text-danger">{errors.designation}</p>
                     )}
                   </div>
-                  {/* <div class="col-sm-6">
-                    <div class="input-block mb-3">
-                      <label class="col-form-label">CTC </label> <span class="text-danger"> *</span>
+                  {/* <div className="col-sm-6">
+                    <div className="input-block mb-3">
+                      <label className="col-form-label">CTC </label> <span className="text-danger"> *</span>
                       <input
-                        class="form-control"
+                        className="form-control"
                         type="text"
                         name="ctc"
                         value={empField.ctc}
@@ -354,12 +354,12 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                     )}
                   </div> */}
 
-                  <div class="col-sm-6">
-                    <div class="input-block mb-3">
-                      <label class="col-form-label">Profile Pic </label>{" "}
-                      <span class="text-danger"> *</span>
+                  <div className="col-sm-6">
+                    <div className="input-block mb-3">
+                      <label className="col-form-label">Profile Pic </label>{" "}
+                      <span className="text-danger"> *</span>
                       <input
-                        class="form-control"
+                        className="form-control"
                         type="file"
                         name="profile_pic"
                         accept=".jpg, .jpeg, .png"
@@ -370,7 +370,7 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                       <p className="text-danger">{errors.profile_pic}</p>
                     )}
                   </div>
-                  <div class="cal-icon ">
+                  <div className="cal-icon ">
                     <DatePicker
                       selected={empField.date_of_birth}
                       name="date_of_birth"
@@ -382,433 +382,433 @@ const AddEmployee = ({ ShowAddEmployeeModal }) => {
                     />
                   </div>
                 </div>
-                {/* <div class="table-responsive m-t-15">
-                  <table class="table table-striped custom-table">
+                {/* <div className="table-responsive m-t-15">
+                  <table className="table table-striped custom-table">
                     <thead>
                       <tr>
                         <th>Module Permission</th>
-                        <th class="text-center">Read</th>
-                        <th class="text-center">Write</th>
-                        <th class="text-center">Create</th>
-                        <th class="text-center">Delete</th>
-                        <th class="text-center">Import</th>
-                        <th class="text-center">Export</th>
+                        <th className="text-center">Read</th>
+                        <th className="text-center">Write</th>
+                        <th className="text-center">Create</th>
+                        <th className="text-center">Delete</th>
+                        <th className="text-center">Import</th>
+                        <th className="text-center">Export</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>Holidays</td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
                       </tr>
                       <tr>
                         <td>Leaves</td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
                       </tr>
                       <tr>
                         <td>Clients</td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
                       </tr>
                       <tr>
                         <td>Projects</td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
                       </tr>
                       <tr>
                         <td>Tasks</td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
                       </tr>
                       <tr>
                         <td>Chats</td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
                       </tr>
                       <tr>
                         <td>Assets</td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
                       </tr>
                       <tr>
                         <td>Timing Sheets</td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input type="checkbox" checked />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
-                        <td class="text-center">
-                          <label class="custom_check">
+                        <td className="text-center">
+                          <label className="custom_check">
                             <input
                               type="checkbox"
                               name="rememberme"
-                              class="rememberme"
+                              className="rememberme"
                             />
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                           </label>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div> */}
-                <div class="submit-section">
-                  <button class="btn btn-primary submit-btn">Submit</button>
+                <div className="submit-section">
+                  <button className="btn btn-primary submit-btn">Submit</button>
                 </div>
               </form>
             </div>

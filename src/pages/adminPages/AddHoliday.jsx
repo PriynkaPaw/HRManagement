@@ -56,7 +56,7 @@ const AddHoliday = ({ holidayData, actionType, ShowAddHolidayModal }) => {
   };
   return (
     <>
-      <div class="modal-backdrop fade show"></div>
+      <div className="modal-backdrop fade show"></div>
 
       <div
         className={`modal custom-modal fade ${

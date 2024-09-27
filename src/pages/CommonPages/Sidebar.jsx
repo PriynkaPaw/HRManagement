@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSubmenu, toggleSubmenuByHeader } from "../../reduxStore/slices/sidebarSlice";
-
+import {
+  toggleSubmenu,
+  toggleSubmenuByHeader,
+} from "../../reduxStore/slices/sidebarSlice";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -18,24 +20,24 @@ const Sidebar = () => {
     setActiveLink(linkPath);
   };
 
-
-
   useEffect(() => {
     const currentPath = location.pathname;
-  
+
     if (activeLink !== currentPath) {
       setActiveLink(currentPath);
     }
   }, [location, activeLink]);
-  
-  useEffect(() => {
-    if (openSubmenu === null && activeLink && !location.pathname?.includes(activeLink)) {
-    dispatch(toggleSubmenu(null)); 
-    }
 
+  useEffect(() => {
+    if (
+      openSubmenu === null &&
+      activeLink &&
+      !location.pathname?.includes(activeLink)
+    ) {
+      dispatch(toggleSubmenu(null));
+    }
   }, [activeLink, openSubmenu, location.pathname]);
-  
-  
+
   return (
     <div>
       <div className="sidebar" id="sidebar">
@@ -49,18 +51,21 @@ const Sidebar = () => {
               <li className="submenu">
                 <Link
                   to="#"
-                  className={` ${openSubmenu === 1 ? 'subdrop' : ''}`}
-
+                  className={` ${openSubmenu === 1 ? "subdrop" : ""}`}
                   onClick={() => handleSubmenuToggle(1)}
                 >
                   <i className="la la-dashboard"></i> <span> Dashboard</span>
                   <span className="menu-arrow"></span>
                 </Link>
-                <ul className={`${openSubmenu === 1 ? 'd-block' : 'd-none'}`}>
-                  <li className={activeLink === '/admin-dashboard' ? 'active' : ''}>
+                <ul className={`${openSubmenu === 1 ? "d-block" : "d-none"}`}>
+                  <li
+                    className={
+                      activeLink === "/admin-dashboard" ? "active" : ""
+                    }
+                  >
                     <Link
                       to="/admin-dashboard"
-                      onClick={() => handleSetActive('/admin-dashboard')}
+                      onClick={() => handleSetActive("/admin-dashboard")}
                     >
                       Admin Dashboard
                     </Link>
@@ -75,109 +80,165 @@ const Sidebar = () => {
               <li className="submenu">
                 <Link
                   to="#"
-                  className={`noti-dot active ${openSubmenu === 2 ? 'subdrop' : ''}`}
+                  className={`noti-dot active ${
+                    openSubmenu === 2 ? "subdrop" : ""
+                  }`}
                   onClick={() => handleSubmenuToggle(2)}
                 >
                   <i className="la la-user"></i> <span> Employees</span>
                   <span className="menu-arrow"></span>
                 </Link>
-                <ul className={`${openSubmenu === 2 ? 'd-block' : 'd-none'}`}>
-                  <li className={activeLink === '/all-employees' ? 'active yellow-text' : ''}>
+                <ul className={`${openSubmenu === 2 ? "d-block" : "d-none"}`}>
+                  <li
+                    className={
+                      activeLink === "/all-employees"
+                        ? "active yellow-text"
+                        : ""
+                    }
+                  >
                     <Link
                       to="/all-employees"
-                      onClick={() => handleSetActive('/all-employees')}
+                      onClick={() => handleSetActive("/all-employees")}
                     >
                       All Employees
                     </Link>
                   </li>
-                  <li className={activeLink === '/holidays-list' ? 'active yellow-text' : ''}>
+                  <li
+                    className={
+                      activeLink === "/holidays-list"
+                        ? "active yellow-text"
+                        : ""
+                    }
+                  >
                     <Link
                       to="/holidays-list"
-                      onClick={() => handleSetActive('/holidays-list')}
+                      onClick={() => handleSetActive("/holidays-list")}
                     >
                       Holidays
                     </Link>
                   </li>
                   <li
-  className={activeLink === '/leaves-admin' ? 'active yellow-text' : ''}
->
-  <Link
-    to="/leaves-admin"
-    onClick={() => handleSetActive('/leaves-admin')}
-  >
-    Leaves (Admin)
-    <span className="badge rounded-pill bg-primary float-end">1</span>
-  </Link>
-</li>
-<li className={activeLink === '/leaves-employee' ? 'active yellow-text' : ''}>
+                    className={
+                      activeLink === "/leaves-admin" ? "active yellow-text" : ""
+                    }
+                  >
+                    <Link
+                      to="/leaves-admin"
+                      onClick={() => handleSetActive("/leaves-admin")}
+                    >
+                      Leaves (Admin)
+                      <span className="badge rounded-pill bg-primary float-end">
+                        1
+                      </span>
+                    </Link>
+                  </li>
+                  <li
+                    className={
+                      activeLink === "/leaves-employee"
+                        ? "active yellow-text"
+                        : ""
+                    }
+                  >
                     <Link
                       to="/leaves-employee"
-                      onClick={() => handleSetActive('/leaves-employee')}
+                      onClick={() => handleSetActive("/leaves-employee")}
                     >
                       Leaves (Employee)
                     </Link>
                   </li>
-                  <li className={activeLink === '/attendance-admin' ? 'active yellow-text' : ''}>
+                  <li
+                    className={
+                      activeLink === "/attendance-admin"
+                        ? "active yellow-text"
+                        : ""
+                    }
+                  >
                     <Link
                       to="/attendance-admin"
-                      onClick={() => handleSetActive('/attendance-admin')}
+                      onClick={() => handleSetActive("/attendance-admin")}
                     >
-                     Attendance (Admin)
+                      Attendance (Admin)
                     </Link>
                   </li>
-                  <li className={activeLink === '/attendance-employee' ? 'active yellow-text' : ''}>
+                  <li
+                    className={
+                      activeLink === "/attendance-employee"
+                        ? "active yellow-text"
+                        : ""
+                    }
+                  >
                     <Link
                       to="/attendance-employee"
-                      onClick={() => handleSetActive('/attendance-employee')}
+                      onClick={() => handleSetActive("/attendance-employee")}
                     >
-                    Attendance (Employee)
+                      Attendance (Employee)
                     </Link>
                   </li>
 
-                  <li className={activeLink === '/departments' ? 'active yellow-text' : ''}>
+                  <li
+                    className={
+                      activeLink === "/departments" ? "active yellow-text" : ""
+                    }
+                  >
                     <Link
                       to="/departments"
-                      onClick={() => handleSetActive('/departments')}
+                      onClick={() => handleSetActive("/departments")}
                     >
-                  Departments
+                      Departments
                     </Link>
                   </li>
-                  <li className={activeLink === '/designations' ? 'active yellow-text' : ''}>
+                  <li
+                    className={
+                      activeLink === "/designations" ? "active yellow-text" : ""
+                    }
+                  >
                     <Link
                       to="/designations"
-                      onClick={() => handleSetActive('/designations')}
+                      onClick={() => handleSetActive("/designations")}
                     >
-                 Designations
+                      Designations
                     </Link>
                   </li>
-                  <li className={activeLink === '/timesheet' ? 'active yellow-text' : ''}>
+                  <li
+                    className={
+                      activeLink === "/timesheet" ? "active yellow-text" : ""
+                    }
+                  >
                     <Link
                       to="/timesheet"
-                      onClick={() => handleSetActive('/timesheet')}
+                      onClick={() => handleSetActive("/timesheet")}
                     >
-                Timesheet
+                      Timesheet
                     </Link>
                   </li>
 
-                  <li className={activeLink === '/shift-scheduling' ? 'active yellow-text' : ''}>
+                  <li
+                    className={
+                      activeLink === "/shift-scheduling"
+                        ? "active yellow-text"
+                        : ""
+                    }
+                  >
                     <Link
                       to="/shift-scheduling"
-                      onClick={() => handleSetActive('/shift-scheduling')}
+                      onClick={() => handleSetActive("/shift-scheduling")}
                     >
-               Shift & Schedule
+                      Shift & Schedule
                     </Link>
                   </li>
-                  <li className={activeLink === '/overtime' ? 'active yellow-text' : ''}>
+                  <li
+                    className={
+                      activeLink === "/overtime" ? "active yellow-text" : ""
+                    }
+                  >
                     <Link
                       to="/overtime"
-                      onClick={() => handleSetActive('/overtime')}
+                      onClick={() => handleSetActive("/overtime")}
                     >
-               Overtime
+                      Overtime
                     </Link>
                   </li>
                 </ul>
-               
-
               </li>
             </ul>
           </div>
@@ -187,12 +248,7 @@ const Sidebar = () => {
   );
 };
 
-
 export default Sidebar;
-
-
-
-
 
 // const Sidebar = () => {
 //   const dispatch = useDispatch();
@@ -305,27 +361,7 @@ export default Sidebar;
 
 // export default Sidebar;
 
-
-
-
-
-
-
-
-
-
-
 // ===================================================================================================================>
-
-
-
-
-
-
-
-
-
-
 
 // import React,{useState} from "react";
 // import { Link } from "react-router-dom";

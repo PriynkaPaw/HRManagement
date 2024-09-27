@@ -70,60 +70,60 @@ const HolidaysList = () => {
   }, [holidayData]);
 
   return (
-    <div class="page-wrapper">
-      <div class="content container-fluid">
-        <div class="page-header">
-          <div class="row align-items-center">
-            <div class="col">
-              <h3 class="page-title">Holidays 2019</h3>
-              <ul class="breadcrumb">
-                <li class="breadcrumb-item">
+    <div className="page-wrapper">
+      <div className="content container-fluid">
+        <div className="page-header">
+          <div className="row align-items-center">
+            <div className="col">
+              <h3 className="page-title">Holidays 2019</h3>
+              <ul className="breadcrumb">
+                <li className="breadcrumb-item">
                   <a href="admin-dashboard.html">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active">Holidays</li>
+                <li className="breadcrumb-item active">Holidays</li>
               </ul>
             </div>
-            <div class="col-auto float-end ms-auto">
+            <div className="col-auto float-end ms-auto">
               <a
                 href="#"
-                class="btn add-btn"
+                className="btn add-btn"
                 data-bs-toggle="modal"
                 data-bs-target="#add_holiday"
                 onClick={ShowAddHolidayModal}
               >
-                <i class="fa-solid fa-plus"></i> Add Holiday
+                <i className="fa-solid fa-plus"></i> Add Holiday
               </a>
             </div>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-md-12">
-            <div class="table-responsive">
-              <table class="table table-striped custom-table mb-0">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="table-responsive">
+              <table className="table table-striped custom-table mb-0">
                 <thead>
                   <tr>
                     <th>#</th>
                     <th>Title </th>
                     <th>Holiday Date</th>
                     <th>Day</th>
-                    <th class="text-end">Action</th>
+                    <th className="text-end">Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {holidays &&
                     holidays.map((data, index) => (
-                      <tr class="holiday-completed">
+                      <tr className="holiday-completed">
                         <td>{data?.id}</td>
                         <td>{data?.name}</td>
                         <td>{data?.date ? format(new Date(data.date), 'd MMMM yyyy') : ''}</td>
                         <td>{data?.Day}</td>
-                        <td class="text-end">
-                          {/* <div class="dropdown dropdown-action">
-                          <a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                          <div class="dropdown-menu dropdown-menu-right">
-                          <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_holiday"><i class="fa-solid fa-pencil m-r-5"></i> Edit</a>
-                          <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_holiday"><i class="fa-regular fa-trash-can m-r-5"></i> Delete</a>
+                        <td className="text-end">
+                          {/* <div className="dropdown dropdown-action">
+                          <a href="#" className="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i className="material-icons">more_vert</i></a>
+                          <div className="dropdown-menu dropdown-menu-right">
+                          <a className="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_holiday"><i className="fa-solid fa-pencil m-r-5"></i> Edit</a>
+                          <a className="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_holiday"><i className="fa-regular fa-trash-can m-r-5"></i> Delete</a>
                           </div>
                           </div> */}
                           <div
@@ -141,7 +141,7 @@ const HolidaysList = () => {
                             {/* {holidayDropdown &&  */}
                             {holidayDropdown === data.id && (
                               <div
-                                class="dropdown-menu dropdown-menu-right show"
+                                className="dropdown-menu dropdown-menu-right show"
                                 style={{
                                   position: "absolute",
                                   inset: "0px 0px auto auto",
@@ -151,22 +151,22 @@ const HolidaysList = () => {
                                 data-popper-placement="bottom-end"
                               >
                                 <Link
-                                  class="dropdown-item"
+                                  className="dropdown-item"
                                   data-bs-toggle="modal"
                                   data-bs-target="#edit_holiday"
                                   // onClick={() => ShowEditEmployeeModal(data)}
                                   onClick={()=>ShowEditHolidayModal(data)}
                                 >
-                                  <i class="fa-solid fa-pencil m-r-5"></i> Edit
+                                  <i className="fa-solid fa-pencil m-r-5"></i> Edit
                                 </Link>
                                 <a
-                                  class="dropdown-item"
+                                  className="dropdown-item"
                                   data-bs-toggle="modal"
                                   data-bs-target="#delete_holiday"
                                   // onClick={() => ShowDeleteEmployeeModal(data)}
                                   onClick={()=>ShowDeleteHolidayModal(data.id)}
                                 >
-                                  <i class="fa-regular fa-trash-can m-r-5"></i>{" "}
+                                  <i className="fa-regular fa-trash-can m-r-5"></i>{" "}
                                   Delete
                                 </a>
                               </div>
@@ -240,16 +240,16 @@ const EditHoliday = ({ ShowEditHolidayModal, selectedHoliday }) => {
 
   return (
     <>
-      <div class="modal-backdrop fade show"></div>
+      <div className="modal-backdrop fade show"></div>
 
-    <div class="modal custom-modal d-block" id="edit_holiday" role="dialog">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Edit Holiday</h5>
+    <div className="modal custom-modal d-block" id="edit_holiday" role="dialog">
+      <div className="modal-dialog modal-dialog-centered" role="document">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title">Edit Holiday</h5>
             <button
               type="button"
-              class="btn-close"
+              className="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
               onClick={ShowEditHolidayModal}
@@ -257,21 +257,21 @@ const EditHoliday = ({ ShowEditHolidayModal, selectedHoliday }) => {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div className="modal-body">
             <form>
-              <div class="input-block mb-3">
-                <label class="col-form-label">
-                  Holiday Name <span class="text-danger">*</span>
+              <div className="input-block mb-3">
+                <label className="col-form-label">
+                  Holiday Name <span className="text-danger">*</span>
                 </label>
-                <input class="form-control" value={formData.name} name="name" type="text" onChange={handleOnChange} />
+                <input className="form-control" value={formData.name} name="name" type="text" onChange={handleOnChange} />
               </div>
-              <div class="input-block mb-3">
-                <label class="col-form-label">
-                  Holiday Date <span class="text-danger">*</span>
+              <div className="input-block mb-3">
+                <label className="col-form-label">
+                  Holiday Date <span className="text-danger">*</span>
                 </label>
-                <div class="cal-icon">
+                <div className="cal-icon">
                   <input
-                    class="form-control datetimepicker"
+                    className="form-control datetimepicker"
                     value={formData.date}
                     name="date"
                     onChange={handleOnChange}
@@ -279,14 +279,14 @@ const EditHoliday = ({ ShowEditHolidayModal, selectedHoliday }) => {
                   />
                 </div>
               </div>
-              <div class="input-block mb-3">
-                <label class="col-form-label">
-                  Holiday Description <span class="text-danger">*</span>
+              <div className="input-block mb-3">
+                <label className="col-form-label">
+                  Holiday Description <span className="text-danger">*</span>
                 </label>
-                <input class="form-control" value={formData.description} name="description" type="text" onChange={handleOnChange} />
+                <input className="form-control" value={formData.description} name="description" type="text" onChange={handleOnChange} />
               </div>
-              <div class="submit-section">
-                <button class="btn btn-primary submit-btn" onClick={handleUpdate} >Save</button>
+              <div className="submit-section">
+                <button className="btn btn-primary submit-btn" onClick={handleUpdate} >Save</button>
               </div>
             </form>
           </div>
@@ -307,32 +307,32 @@ const DeleteHoliday =({ShowDeleteHolidayModal,selectedHoliday}) =>{
   }
   return (
     <>
-      <div class="modal-backdrop fade show"></div>
+      <div className="modal-backdrop fade show"></div>
 
-      <div class="modal custom-modal d-block" id="delete_holiday" role="dialog">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-body">
-              <div class="form-header">
+      <div className="modal custom-modal d-block" id="delete_holiday" role="dialog">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-body">
+              <div className="form-header">
                 <h3>Delete Holiday</h3>
                 <p>Are you sure want to delete?</p>
               </div>
-              <div class="modal-btn delete-action">
-                <div class="row">
-                  <div class="col-6">
+              <div className="modal-btn delete-action">
+                <div className="row">
+                  <div className="col-6">
                     <a
                       href="javascript:void(0);"
-                      class="btn btn-primary continue-btn"
+                      className="btn btn-primary continue-btn"
                       onClick={handleDelete}
                     >
                       Delete
                     </a>
                   </div>
-                  <div class="col-6">
+                  <div className="col-6">
                     <a
                       href="javascript:void(0);"
                       data-bs-dismiss="modal"
-                      class="btn btn-primary cancel-btn"
+                      className="btn btn-primary cancel-btn"
                       onClick={ShowDeleteHolidayModal}
                     >
                       Cancel

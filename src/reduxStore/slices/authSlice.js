@@ -20,8 +20,9 @@ const initialState = {
           state.error = null;
         })
         .addCase(loginUser.fulfilled, (state, action) => {
+          console.log("action payload in slice", action.payload)
           state.loading = false;
-        //   state.token = action.payload; 
+          state.token = action.payload; 
           state.error = null;
         })
         .addCase(loginUser.rejected, (state, action) => {

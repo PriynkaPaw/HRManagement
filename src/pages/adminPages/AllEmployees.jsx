@@ -123,49 +123,49 @@ const AllEmployees = () => {
   console.log("ALL EMployee List", getAllEmployee)
   return (
     <div>
-      <div class="page-wrapper">
-        <div class="content container-fluid pb-0">
-          <div class="page-header">
-            <div class="row align-items-center">
-              <div class="col">
-                <h3 class="page-title">Employee</h3>
-                <ul class="breadcrumb">
-                  <li class="breadcrumb-item">
+      <div className="page-wrapper">
+        <div className="content container-fluid pb-0">
+          <div className="page-header">
+            <div className="row align-items-center">
+              <div className="col">
+                <h3 className="page-title">Employee</h3>
+                <ul className="breadcrumb">
+                  <li className="breadcrumb-item">
                     <a href="admin-dashboard.html">Dashboard</a>
                   </li>
-                  <li class="breadcrumb-item active">Employee</li>
+                  <li className="breadcrumb-item active">Employee</li>
                 </ul>
               </div>
-              <div class="col-auto float-end ms-auto">
+              <div className="col-auto float-end ms-auto">
                 <button
                   href="#"
-                  class="btn add-btn"
+                  className="btn add-btn"
                   data-bs-toggle="modal"
                   onClick={ShowAddEmployeeModal}
                 >
-                  <i class="fa-solid fa-plus"></i> Add Employee
+                  <i className="fa-solid fa-plus"></i> Add Employee
                 </button>
               </div>
             </div>
           </div>
           {/* Search row=========================================================== */}
 
-          <div class="row filter-row">
-            <div class="col-sm-6 col-md-3">
-              <div class="input-block mb-3 form-focus">
+          <div className="row filter-row">
+            <div className="col-sm-6 col-md-3">
+              <div className="input-block mb-3 form-focus">
                 <input
                   type="text"
-                  class="form-control floating"
+                  className="form-control floating"
                   placeholder="Search Employee "
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
             </div>
-            <div onClick={handleSearch} class=" col-sm-6 col-md-3">
-              <div class="d-grid">
+            <div onClick={handleSearch} className=" col-sm-6 col-md-3">
+              <div className="d-grid">
                 <text
-                  class="btn btn-success w-100"
+                  className="btn btn-success w-100"
                   onClick={(e) => {
                     e.preventDefault();
                     handleSearch();
@@ -179,7 +179,7 @@ const AllEmployees = () => {
           </div>
           {/* Employee Cards Maplist=========================================================== */}
 
-          <div class="row staff-grid-row">
+          <div className="row staff-grid-row">
             {getAllEmployee &&
               getAllEmployee.map((employee, index) => {
                 return (
@@ -220,7 +220,7 @@ const AllEmployees = () => {
                         {/* {profileDropdown &&  */}
                         {profileDropdown === employee.id && (
                           <div
-                            class="dropdown-menu dropdown-menu-right show"
+                            className="dropdown-menu dropdown-menu-right show"
                             style={{
                               position: "absolute",
                               inset: "0px 0px auto auto",
@@ -230,20 +230,20 @@ const AllEmployees = () => {
                             data-popper-placement="bottom-end"
                           >
                             <Link
-                              class="dropdown-item"
+                              className="dropdown-item"
                               data-bs-toggle="modal"
                               data-bs-target="#edit_employee"
                               onClick={() => ShowEditEmployeeModal(employee)}
                             >
-                              <i class="fa-solid fa-pencil m-r-5"></i> Edit
+                              <i className="fa-solid fa-pencil m-r-5"></i> Edit
                             </Link>
                             <a
-                              class="dropdown-item"
+                              className="dropdown-item"
                               data-bs-toggle="modal"
                               data-bs-target="#delete_employee"
                               onClick={() => ShowDeleteEmployeeModal(employee)}
                             >
-                              <i class="fa-regular fa-trash-can m-r-5"></i>{" "}
+                              <i className="fa-regular fa-trash-can m-r-5"></i>{" "}
                               Delete
                             </a>
                           </div>

@@ -3,32 +3,32 @@ import { Link } from "react-router-dom";
 
 const Forgot_password = () => {
   return (
-    <div class="account-page">
-      <div class="main-wrapper">
-        <div class="account-content">
-          <div class="container">
-            <div class="account-logo">
+    <div className="account-page">
+      <div className="main-wrapper">
+        <div className="account-content">
+          <div className="container">
+            <div className="account-logo">
               <img src="assets/img/logo2.png" alt="Dreamguy's Technologies" />
             </div>
 
-            <div class="account-box">
-              <div class="account-wrapper">
-                <h3 class="account-title">Forgot Password?</h3>
-                <p class="account-subtitle">
+            <div className="account-box">
+              <div className="account-wrapper">
+                <h3 className="account-title">Forgot Password?</h3>
+                <p className="account-subtitle">
                   Enter your email to get a password reset link
                 </p>
 
                 <form>
-                  <div class="input-block mb-4">
-                    <label class="col-form-label">Email Address</label>
-                    <input class="form-control" type="text" />
+                  <div className="input-block mb-4">
+                    <label className="col-form-label">Email Address</label>
+                    <input className="form-control" type="text" />
                   </div>
-                  <div class="input-block mb-4 text-center">
-                    <button class="btn btn-primary account-btn" type="submit">
+                  <div className="input-block mb-4 text-center">
+                    <button className="btn btn-primary account-btn" type="submit">
                       Reset Password
                     </button>
                   </div>
-                  <div class="account-footer">
+                  <div className="account-footer">
                     <p>
                       Remember your password? <Link to="/login">Login</Link>
                     </p>

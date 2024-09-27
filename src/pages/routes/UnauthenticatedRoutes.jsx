@@ -5,7 +5,7 @@ import Register from '../authPages/Register';
 import Lock_screen from '../authPages/Lock-screen';
 import Otp from '../authPages/Otp';
 import Forgot_password from '../authPages/Forgot-password';
-import Job_list from '../authPages/Job-list';
+import Job_list from '../authPages/JobList';
 
 const UnauthenticatedRoutes = () => {
   return (

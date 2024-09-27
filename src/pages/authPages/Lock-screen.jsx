@@ -2,38 +2,38 @@ import React from "react";
 
 const Lock_screen = () => {
   return (
-    <div class="account-page">
-      <div class="main-wrapper">
-        <div class="account-content">
-          <div class="container">
-            <div class="account-logo">
+    <div className="account-page">
+      <div className="main-wrapper">
+        <div className="account-content">
+          <div className="container">
+            <div className="account-logo">
               <a href="admin-dashboard.html">
                 <img src="assets/img/logo2.png" alt="Dreamguy's Technologies" />
               </a>
             </div>
 
-            <div class="account-box">
-              <div class="account-wrapper">
-                <div class="lock-user">
+            <div className="account-box">
+              <div className="account-wrapper">
+                <div className="lock-user">
                   <img
                     src="assets/img/profiles/avatar-02.jpg"
                     alt="User_Image"
-                    class="rounded-circle"
+                    className="rounded-circle"
                   />
                   <h4>John Doe</h4>
                 </div>
 
                 <form action="https://smarthr.dreamstechnologies.com/html/template/admin-dashboard.html">
-                  <div class="input-block mb-3">
-                    <label class="col-form-label">Password</label>
-                    <input class="form-control" type="password" />
+                  <div className="input-block mb-3">
+                    <label className="col-form-label">Password</label>
+                    <input className="form-control" type="password" />
                   </div>
-                  <div class="input-block mb-3 text-center">
-                    <button class="btn btn-primary account-btn" type="submit">
+                  <div className="input-block mb-3 text-center">
+                    <button className="btn btn-primary account-btn" type="submit">
                       Enter
                     </button>
                   </div>
-                  <div class="account-footer">
+                  <div className="account-footer">
                     <p>
                       Sign in as a different user?{" "}
                       <a href="index.html">Login</a>
